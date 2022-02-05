@@ -6,6 +6,7 @@ function issueToken(res, user) {
   const token = jwt.sign({ sub: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
+  return token;
 }
 
 exports.register = async (req, res) => {
@@ -24,7 +25,7 @@ exports.register = async (req, res) => {
       token,
     });
   } catch (err) {
-    res.json(error.message);
+    res.json(err.message);
   }
 };
 
