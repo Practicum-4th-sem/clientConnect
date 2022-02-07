@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
+  phone: {
+    type: String,
+  },
   passwordChangedAt: Date,
 });
 

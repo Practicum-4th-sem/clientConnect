@@ -1,5 +1,6 @@
 const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
+const sendSms = require("../twilio");
 const sendEmail = require("../utils/email");
 
 function issueToken(res, user) {
@@ -16,11 +17,14 @@ exports.register = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      phone: req.body.phone,
     });
 
     await user.save();
     const token = issueToken(res, user);
-    await sendEmail(user, { title: "Welcome to Client Connect" });
+
+    await sendSms(user.phone, "hello from client connect");
+    // await sendEmail(user, { title: "Welcome to Client Connect" });
     return res.status(200).json({
       status: "success",
       token,
