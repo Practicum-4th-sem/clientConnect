@@ -1,5 +1,6 @@
 const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("../utils/email");
 
 function issueToken(res, user) {
   const id = user._id;
@@ -19,7 +20,7 @@ exports.register = async (req, res) => {
 
     await user.save();
     const token = issueToken(res, user);
-
+    await sendEmail(user, { title: "Welcome to Client Connect" });
     return res.status(200).json({
       status: "success",
       token,
