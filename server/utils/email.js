@@ -15,7 +15,7 @@ const sendEmail = async (user, subject) => {
     from: `Client Connect <${process.env.USER_ADDRESS}>`,
     to,
     subject: subject.title,
-    html: "<p>Hello and welcome to Client Connect</p>",
+    html: `<p>Hello and welcome to Client Connect${subject.token}</p>`,
   };
 
   await transport.sendMail(mailOptions, (err) => {
