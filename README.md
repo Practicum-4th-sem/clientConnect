@@ -1,7 +1,7 @@
 # ClientConnect WebApp
 
 ### Developers: 
-- Naman Agarwal - 12011002 - [Github](https://github.com/NamanAgarwal214)
+- Naman Agarwal - 12011002 - [Github](https://github.com/NamanAgarwal214) -OP
 - Satwik Pal - 12011018 - [Github](https://github.com/Satwik-pal-git)
 - Gunjan Ashok Bhanarkar - 12011014 - [Github](https://github.com/gunjan1909)
 
