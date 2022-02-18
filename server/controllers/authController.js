@@ -1,7 +1,7 @@
 const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const sendSms = require("../twilio");
+const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
 
 function issueToken(res, user) {
