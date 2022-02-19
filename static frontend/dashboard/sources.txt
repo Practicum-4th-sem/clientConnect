@@ -1,0 +1,4 @@
+1) bootstrap : https://getbootstrap.com/docs/5.1/getting-started/introduction/
+2) animate.css: https://animate.style/
+3) ionicons: https://ionic.io/ionicons
+4) navmenu codepen: https://codepen.io/iamsaief/pen/ExPoNjm?editors=1100
