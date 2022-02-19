@@ -14,13 +14,13 @@ exports.sendOtp = (phone) => {
     .then((verification) => console.log(verification.status));
 };
 
-exports.verifyOtp = (req, res) => {
-  if (req.body.phone && req.body.otp.length === 6) {
+exports.verifyOtp = (otp) => {
+  if (req.body.phone && otp.length === 6) {
     client.verify
       .services(process.env.SERVICE_SID)
       .verificationChecks.create({
         to: `${phone}`,
-        code: req.body.otp,
+        code: otp,
       })
       .then((data) => {
         if (data.status === "approved") {
