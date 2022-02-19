@@ -23,22 +23,15 @@ exports.register = async (req, res) => {
     });
 
     sendOtp(user.phone);
-    if (verifyOtp()) {
-      await user.save();
-      const token = issueToken(res, user);
+    await user.save();
+    const token = issueToken(res, user);
 
-      sendSms(user.phone, `hello from client connect.`);
-      // await sendEmail(user, { title: "Welcome to Client Connect" });
-      return res.status(200).json({
-        status: "success",
-        token,
-      });
-    } else {
-      res.status(400).json({
-        message: "Wrong phone number or code :(",
-        phonenumber: req.query.phone,
-      });
-    }
+    sendSms(user.phone, `hello from client connect.`);
+    // await sendEmail(user, { title: "Welcome to Client Connect" });
+    return res.status(200).json({
+      status: "success",
+      token,
+    });
   } catch (err) {
     res.json(err.message);
   }
@@ -119,20 +112,21 @@ exports.resetPassword = async (req, res) => {
 
 exports.verifyPhoneOtp = async (req, res) => {
   try {
-    const { phoneOtp, phone } = req.body;
-    const user = await User.findOne({ phone });
+    const { phoneOtp } = req.body;
+    // const user = await User.findOne({ phone });
 
-    if (!user) {
-      throw new Error("No user registered. Please register first");
-    }
+    // if (!user) {
+    //   throw new Error("No user registered. Please register first");
+    // }
 
-    if (!(await user.verifyPassword(phoneOtp, user.phoneOtp))) {
-      throw new Error("OTP is invalid or has expired. Please try again");
-    }
+    verifyOtp(phoneOtp);
+
+    // if (!(await user.verifyPassword(phoneOtp, user.phoneOtp))) {
+    //   throw new Error("OTP is invalid or has expired. Please try again");
+    // }
 
     const token = issueToken(res, user);
 
-    user.phoneOtp = undefined;
     await user.save();
     res.status(201).json({
       type: "success",
