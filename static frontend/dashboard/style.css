@@ -61,6 +61,7 @@ li {
   height: 7rem;
   width: 7rem;
   float: left;
+  padding-top: 0;
 }
 ion-icon {
   margin: 0 1rem;
