@@ -11,18 +11,18 @@
   "dependencies": {
     "axios": "^0.25.0",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.1",
+    "body-parser": "^1.19.2",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.2",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.0",
+    "mongoose": "^6.2.4",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.2",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
-    "twilio": "^3.73.1",
+    "twilio": "^3.75.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {
