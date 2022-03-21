@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./newstyle.css">
+    <title>ClientConnect</title>
+  </head>
+  <body>
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="container flex-between">
+          <div class="logo">
+            <a href="#">
+               <h2>ClientConnect</h2>             
+            </a>
+          </div>
+          <nav class="main-navgation flex-between flex-ver-top">
+            <!-- <div class="nav-links">
+              <a href="#">Buy</a>
+              <a href="#">Sell</a>
+              <a href="#"></a>
+            </div> -->
+            <div class="nav-buttons">
+              <a href="#" id="login-btn" class="log-in">Login</a>
+              <a href="#" id="signup-btn" class="sign-up btn btn-sm">Sign Up</a>
+            </div>
+          </nav>
+          <div class="burger-menu">
+            <i class="fa-regular fa-bars icon"></i>
+          </div>
+        </div>
+      </header>
+      <!-- Popups -->
+      <section id="popups">
+         <ion-icon class="closebtn" name="close-outline"></ion-icon>
+         <form action="#" style="display: flex; flex-direction: column;">
+            <label for="">Username</label>
+            <input type="email" name="" >
+            <label for="">Password</label>
+            <input type="password" name="" >
+            <button type="submit" class="btn btn-sm">Login</button>
+         </form>
+      </section>
+      <!-- Landing -->
+      <section class="landing">
+        <div class="landing-text">
+          <h1>Connecting Client, Providing Services</h1>
+          <p>
+            <strong>Buy or Sell</strong> services/products, all at one place, #ClientConnect
+          </p>
+          <a href="#url-shorten-form" class="btn btn-lg">Get Started</a>
+        </div>
+        <div class="landing-image">
+          <img
+            src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/illustration-working.svg"
+            alt="Working Illustration"
+          />
+        </div>
+      </section>
+      <!-- Features -->
+      <section class="features" id="features">
+        <!-- <div class="container">
+          <div class="url-shorten-feature">
+            <form class="url-shorten-form" id="url-shorten-form">
+              <div>
+                <input
+                  type="text"
+                  class="url-input"
+                  placeholder="Shorten a link here..."
+                  autocomplete="off"
+                />
+                <span class="alert"></span>
+              </div>
+              <button type="submit" class="btn btn-lg btn-plus-icon">
+                Shorten It!
+              </button>
+            </form>
+            <div class="url-shorten-results"></div>
+          </div> -->
+          <!-- Advanced Features -->
+          <div class="more-features">
+            <div class="section-header">
+              <h2>Roles</h2>
+              <p>
+                User can act as a:-
+              </p>
+            </div>
+            <div class="more-features-content">
+              <div class="feature">
+                <div class="feature-illustration">
+                  <img
+                    src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-brand-recognition.svg"
+                    alt="Feature Illustration Icon"
+                  />
+                </div>
+                <div class="feature-details">
+                  <h3>Customer</h3>
+                  <p>
+                   Get your job done by someone an experienced person.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="feature">
+                <div class="feature-illustration">
+                  <img
+                    src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-detailed-records.svg"
+                    alt="Feature Illustration Icon"
+                  />
+                </div>
+                <div class="feature-details">
+                  <h3>Detailed Records</h3>
+                  <p>
+                    Gain insights into who is clicking your links. Knowing when
+                    and where people engage with your content helps inform
+                    better decisions.
+                  </p>
+                </div>
+              </div> -->
+              <div class="feature">
+                <div class="feature-illustration">
+                  <img
+                    src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-fully-customizable.svg"
+                    alt="Feature Illustration Icon"
+                  />
+                </div>
+                <div class="feature-details">
+                  <h3>Provider</h3>
+                  <p>
+                   You can provide service to others/sell your products.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pricing -->
+      <!-- <section class="pricing" id="pricing">
+        <div class="container">
+          <div class="section-header">
+            <h2>Boost your links today</h2>
+            <a href="#" class="btn btn-lg">Get Started</a>
+          </div>
+        </div>
+      </section> -->
+      <!-- Footer -->
+      <footer class="footer" id="resources">
+        <div class="container">
+          <!-- Website Logo -->
+          <div class="logo">
+            <a href="#">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/logo.svg"
+                alt=""
+              />
+            </a>
+          </div>
+          <!-- Quick Links -->
+          <div class="quick-links">
+            <div class="links-group">
+              <span>Features</span>
+              <div>
+                <a href="#">Link Shortening</a>
+                <a href="#">Branded Links</a>
+                <a href="#">Analytics</a>
+              </div>
+            </div>
+            <div class="links-group">
+              <span>Resources</span>
+              <div>
+                <a href="#">Blog</a>
+                <a href="#">Developers</a>
+                <a href="#">Support</a>
+              </div>
+            </div>
+            <div class="links-group">
+              <span>Company</span>
+              <div>
+                <a href="#">About</a>
+                <a href="#">Our Team</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+          </div>
+          <!-- Social Media -->
+          <div class="social-media">
+            <a href="#">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-facebook.svg"
+                alt="Facebook Logo"
+              />
+            </a>
+            <a href="#">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-twitter.svg"
+                alt="Twitter Logo"
+              />
+            </a>
+            <a href="#">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-pinterest.svg"
+                alt="Pinterest Logo"
+              />
+            </a>
+            <a href="#">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-instagram.svg"
+                alt="Instagram Logo"
+              />
+            </a>
+          </div>
+        </div>
+        <!-- Made By -->
+        <div class="attribution">
+          Challenge by
+          <a
+            href="https://www.frontendmentor.io?ref=challenge"
+            class="outer-link"
+            target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <span class="outer-link">Mohamed Aridah</span>.
+          <ul class="social-media">
+            <li>
+              <a
+                href="https://www.codepen.io/FedLover"
+                title="go To My Codepen Account"
+              >
+                <i class="fa-brands fa-codepen icon"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.frontendmentor.io/profile/MohamedAridah"
+                title="go To My Frontend Mentor Account"
+              >
+                <img
+                  src="https://mohamedaridah.github.io/hosted-assets/FEM.png"
+                  class="image"
+                  alt=""
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </main>
+     <!-- IONICONS CDN -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
