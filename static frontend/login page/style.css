@@ -69,10 +69,19 @@ img {
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+
+  background: rgba(11, 11, 80, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .btn.btn-sm {
-  padding: 7px 21px;
+  padding: 0.5rem 1rem;
 }
 
 .btn.btn-lg {
@@ -113,6 +122,7 @@ img {
 .section-header {
   text-align: center;
   margin-top: 2rem;
+  padding-top: 2rem;
 }
 
 .section-header h2 {

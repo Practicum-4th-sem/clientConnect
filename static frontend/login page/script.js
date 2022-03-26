@@ -10,7 +10,7 @@ login.addEventListener("click", function () {
 });
 var closebtn = document.querySelector(".closebtn");
 closebtn.addEventListener("click", function () {
-  closebtn.parentElement.style.display = "none";
+  document.getElementById("popups").style.display = "none";
   header.classList.remove("makeblur");
   landing.classList.remove("makeblur");
   body.classList.remove("removescroll");
