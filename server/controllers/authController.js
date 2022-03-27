@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
-const { sendOtp, generateOtp } = require("../utils/verify");
+const { sendOtp } = require("../utils/verify");
 
 function issueToken(res, user) {
   const id = user._id;
@@ -23,15 +23,15 @@ exports.register = async (req, res) => {
     });
 
     // sendOtp(user.phone);
-    // await user.save();
+    await user.save();
 
     // let otp = ;
     // user.otp = otp;
-    sendOtp(user.phone);
-    if (await this.verifyOtp(req, user.phone)) {
-      await user.save();
-      sendSms(user.phone, `hello from client connect.`);
-    }
+    sendOtp(req.body.phone);
+    // if (await this.verifyOTP(req)) {
+    // await user.save();
+    sendSms(user.phone, `hello from client connect.`);
+
     const token = issueToken(res, user);
 
     // await sendEmail(user, { title: "Welcome to Client Connect" });
@@ -39,6 +39,7 @@ exports.register = async (req, res) => {
       status: "success",
       token,
     });
+    // }
   } catch (err) {
     res.json(err.message);
   }
@@ -117,12 +118,14 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-exports.verifyOtp = async (req, phone) => {
-  const user = await User.findOne({ phone });
+exports.verifyOTP = async (req, res) => {
+  const user = await User.findOne({ phone: req.body.phone });
   const { otp } = req.body;
-  if (!(await user.verifyOtp(otp, user.otp))) {
+  if (!(await user.verifyOntp(otp, user.otp))) {
     throw new Error("Incorrect otp entered");
   } else {
-    return true;
+    res.json({
+      status: "verified",
+    });
   }
 };

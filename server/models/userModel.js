@@ -27,7 +27,10 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
-  otp: String,
+  otp: {
+    type: String,
+    default: "",
+  },
 });
 
 userSchema.pre("save", async function (next) {
@@ -60,7 +63,7 @@ userSchema.methods.verifyPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userSchema.methods.verifyOtp = async function (candidateOtp, userOtp) {
+userSchema.methods.verifyOntp = async function (candidateOtp, userOtp) {
   return await bcrypt.compare(candidateOtp, userOtp);
 };
 
