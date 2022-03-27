@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
-const { sendOtp, verifyOtp } = require("../utils/verify");
+const { sendOtp, generateOtp } = require("../utils/verify");
 
 function issueToken(res, user) {
   const id = user._id;
@@ -22,11 +22,18 @@ exports.register = async (req, res) => {
       phone: req.body.phone,
     });
 
+    // sendOtp(user.phone);
+    // await user.save();
+
+    // let otp = ;
+    // user.otp = otp;
     sendOtp(user.phone);
-    await user.save();
+    if (await this.verifyOtp(req, user.phone)) {
+      await user.save();
+      sendSms(user.phone, `hello from client connect.`);
+    }
     const token = issueToken(res, user);
 
-    sendSms(user.phone, `hello from client connect.`);
     // await sendEmail(user, { title: "Welcome to Client Connect" });
     return res.status(200).json({
       status: "success",
@@ -110,32 +117,12 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-exports.verifyPhoneOtp = async (req, res) => {
-  try {
-    const { phoneOtp } = req.body;
-    // const user = await User.findOne({ phone });
-
-    // if (!user) {
-    //   throw new Error("No user registered. Please register first");
-    // }
-
-    verifyOtp(phoneOtp);
-
-    // if (!(await user.verifyPassword(phoneOtp, user.phoneOtp))) {
-    //   throw new Error("OTP is invalid or has expired. Please try again");
-    // }
-
-    const token = issueToken(res, user);
-
-    await user.save();
-    res.status(201).json({
-      type: "success",
-      message: "OTP verified successfully",
-      data: {
-        token,
-      },
-    });
-  } catch (err) {
-    res.json(err.message);
+exports.verifyOtp = async (req, phone) => {
+  const user = await User.findOne({ phone });
+  const { otp } = req.body;
+  if (!(await user.verifyOtp(otp, user.otp))) {
+    throw new Error("Incorrect otp entered");
+  } else {
+    return true;
   }
 };
