@@ -364,10 +364,10 @@ img {
   }
 }
 
-.landing .landing-image {
+/* .landing .landing-image {
   position: relative;
   right: -70px;
-}
+} */
 
 @media (max-width: 992px) {
   .landing .landing-image {
@@ -401,9 +401,9 @@ img {
 }
 
 @media (min-width: 1100px) {
-  .landing .landing-image {
+  /* .landing .landing-image {
     right: -130px;
-  }
+  } */
 }
 
 .landing .landing-image img {
@@ -656,7 +656,8 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-  padding: 80px 0 90px 0;
+  /* padding: 80px 0 90px 0; */
+  padding: 2rem;
 }
 
 @media (max-width: 666px) {
