@@ -20,6 +20,9 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   zoom: 95%;
+  min-width: fit-content;
+  max-width: 850px;
+  transition: 0.5s ease-in-out;
 }
 .makeblur {
   /* filter: blur(5px) */
@@ -42,7 +45,41 @@ input {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  max-width: 500px;
 }
 .btn {
   margin: 0.5rem !important;
+}
+.landing-image img {
+  height: 300px;
+  position: relative;
+  right: 20px;
+  border-radius: 25px;
+  /* box-shadow: 0px 4px 64px rgba(0, 0, 0, 0.2); */
+}
+.landing-image {
+  position: relative;
+}
+.landing-text {
+  padding-left: 1rem;
+}
+#imgl,
+#imgr {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  z-index: 100;
+}
+#imgl {
+  left: -45px;
+  top: 20px;
+}
+#imgr {
+  right: 0px;
+  bottom: 20px;
+}
+@media (max-width: 1220px) {
+  .landing-image {
+    zoom: 85%;
+  }
 }

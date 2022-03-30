@@ -21,13 +21,14 @@
         <div class="row">
           <div class="col-sm">
             <div class="logo">
-              <a href="#">
-                <h2>ClientConnect</h2>
+              <a href="#" style="display: flex;">
+                <img src="./logo.jpg" alt="" style="height: 100px; float: left;">
+                <h2 style="margin: auto 0 auto 0">ClientConnect</h2>
               </a>
             </div>
           </div>
           <div class="col-sm">
-            <nav class="main-navgation flex-between flex-ver-top">
+            <nav class="main-navgation flex-between flex-ver-top" style="display: flex; flex-direction: row-reverse;">
               <!-- <div class="nav-links">
               <a href="#">Buy</a>
               <a href="#">Sell</a>
@@ -55,14 +56,10 @@
         <br>
         <button type="submit" class="btn btn-sm">Login</button>
       </form>
-
       <br>
       <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
           aria-controls="collapseExample" id="phonelogin">Login with Phone No.</a>
-        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="googlelogin">
-             Login with Google
-            </button> -->
         <button class="btn btn-primary">Login with Google</button>
       </p>
       <div class="collapse" id="collapseExample">
@@ -84,12 +81,15 @@
         <p>
           <strong>Buy or Sell</strong> services/products, all at one place, #ClientConnect
         </p>
-        <a href="#url-shorten-form" class="btn btn-lg">Get Started</a>
+        <a href="#url-shorten-form" id="get-started" class="btn btn-lg">Get Started</a>
       </div>
       <div class="landing-image">
-        <img
+        <!-- <img
           src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/illustration-working.svg"
-          alt="Working Illustration" />
+          alt="Working Illustration" /> -->
+        <img id="imgl" src="./Vector.png" alt="">
+        <img src="./client_resize.jpg" alt="">
+        <img src="./Vector-1.png" alt="" id="imgr">
       </div>
     </section>
     <!-- Features -->
@@ -187,14 +187,14 @@
         </div>
         <!-- Quick Links -->
         <div class="quick-links">
-          <div class="links-group">
+          <!-- <div class="links-group">
             <span>Features</span>
             <div>
               <a href="#">Customer Login</a>
               <a href="#">Provider Login</a>
-              <!-- <a href="#">Analytics</a> -->
+              <a href="#">Analytics</a>
             </div>
-          </div>
+          </div> -->
           <div class="links-group">
             <span>Resources</span>
             <div>
@@ -204,17 +204,16 @@
             </div>
           </div>
           <div class="links-group">
-            <span>Company</span>
+            <span>Team</span>
             <div>
-              <a href="#">About Us</a>
               <a href="#">Our Team</a>
+              <a href="#">Feedback</a>
               <!-- <a href="#">Careers</a> -->
-              <a href="#">Contact Us</a>
             </div>
           </div>
         </div>
         <!-- Social Media -->
-        <div class="social-media">
+        <!-- <div class="social-media">
           <a href="#">
             <img
               src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-facebook.svg"
@@ -224,16 +223,14 @@
             <img
               src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-twitter.svg"
               alt="Twitter Logo" />
-          </a>
-          <a href="#">
-            <img
-              src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-instagram.svg"
-              alt="Instagram Logo" />
-          </a>
-        </div>
+          </a> -->
+        <a href="https://github.com/Practicum-4th-sem" style="font-size: 1.2rem;">
+          <i class="fa-brands fa-github icon" style="color: #fff;"></i>
+        </a>
+      </div>
       </div>
       <!-- Made By -->
-      <div class="attribution">
+      <!-- <div class="attribution">
         Made By
         <a href="https://www.frontendmentor.io?ref=challenge" class="outer-link" target="_blank">Practicum Team</a>.
         Coded by <span class="outer-link">Gunjan, Satwik, Naman</span>.
@@ -243,20 +240,8 @@
               <i class="fa-brands fa-github icon"></i>
             </a>
           </li>
-          <!-- <li>
-              <a
-                href="https://www.frontendmentor.io/profile/MohamedAridah"
-                title="go To My Frontend Mentor Account"
-              >
-                <img
-                  src="https://mohamedaridah.github.io/hosted-assets/FEM.png"
-                  class="image"
-                  alt=""
-                />
-              </a>
-            </li> -->
         </ul>
-      </div>
+      </div> -->
     </footer>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
