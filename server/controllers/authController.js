@@ -60,6 +60,7 @@ exports.login = async (req, res) => {
     const token = issueJWT(res, user);
     return res.status(200).json({
       status: success,
+      message: "login success",
       token,
     });
   } catch (error) {
