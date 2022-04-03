@@ -1,3 +1,5 @@
+const User = require("../models/userModel");
+
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -14,12 +16,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/dashboard", authcheck, (req, res) => {
-    res.render("dashboard");
+    // console.log(req.user);
+    const UserDetails = req.user;
+    res.render("dashboard", { naam: UserDetails.username, gmail: UserDetails.Gmail, photo: UserDetails.image });
 });
 
 router.get("/login", (req, res) => {
     res.render("login");
-})
+});
 
 router.get("/profile", authcheck, (req, res) => {
     res.render("profile", { User: req.user.username, Image: req.user.image });

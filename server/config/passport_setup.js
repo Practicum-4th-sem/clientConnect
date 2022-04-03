@@ -23,6 +23,7 @@ module.exports = (passport) => {
                 new authuser({
                     googleid: profile.id,
                     username: profile.displayName,
+                    Gmail: profile.emails[0].value,
                     image: profile._json.picture
                 }).save().then((newUser) => {
                     // console.log(`new User created ${newUser}`);
