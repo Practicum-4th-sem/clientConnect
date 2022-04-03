@@ -9,8 +9,9 @@ const CookieSession = require("cookie-session")
 const passport = require("passport");
 require("./config/passport_setup")(passport);
 
+app.use(express.static("../public"));
 app.set("view engine", "ejs");
-app.set('views', path.join(__dirname, "./views"));
+app.set('views', path.join(__dirname, "../views"));
 
 app.use(CookieSession({
     maxAge: 24 * 60 * 60 * 1000,
