@@ -21,6 +21,14 @@ router.get("/dashboard", authcheck, (req, res) => {
     res.render("dashboard", { naam: UserDetails.username, gmail: UserDetails.Gmail, photo: UserDetails.image });
 });
 
+router.post("/register", (req, res) => {
+    console.log("Register", req);
+});
+
+router.post("/login", (req, res) => {
+    console.log("Login", req);
+});
+
 router.get("/login", (req, res) => {
     res.render("login");
 });
