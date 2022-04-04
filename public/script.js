@@ -23,7 +23,12 @@ var signup_tempalate = `
         </div>
         <div>
         <button type="submit" class="btn btn-sm">Sign Up</button></div>
-      </form>`;
+      </form>
+      <a href="/auth/google">
+        <button type="button" class="login-with-google-btn">
+        Sign in with Google
+      </button>
+        </a>`;
 var login_template = `
       <h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
