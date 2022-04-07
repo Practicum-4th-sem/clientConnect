@@ -17,13 +17,13 @@
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.2.10",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "nodemailer": "^6.7.3",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
-    "twilio": "^3.75.0",
+    "twilio": "^3.76.1",
     "validator": "^13.7.0"
   },
   "devDependencies": {
