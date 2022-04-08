@@ -318,8 +318,8 @@ body {
 }
 .details .recentCustomers .userImg {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   overflow: hidden;
 }
 .details .recentCustomers .userImg img {
