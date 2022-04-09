@@ -252,6 +252,9 @@ body {
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
+.recentOrders {
+  columns: 2 !important;
+}
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -315,21 +318,23 @@ body {
   background: var(--white);
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  width: fit-content;
 }
 .details .recentCustomers .userImg {
   display: flex;
   /* justify-content: center;
   align-items: center; */
   overflow: hidden;
+  padding: 1rem;
 }
 .details .recentCustomers .userImg img {
   object-fit: contain;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto auto;
+  /* box-shadow: ; */
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
 }
-/* .details .recentCustomers .userDetils {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
 
 .details .recentCustomers .userDetils strong,
 .details .recentCustomers .userDetils p {

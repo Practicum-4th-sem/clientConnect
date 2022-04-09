@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcom to ClientConnect</title>
   <!-- animate.css cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <title>Welcom to ClientConnect</title>
   <link rel="icon" href="./images/title_favicon.png" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style_dashboard.css" />
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             </span>
           </a>
         </li>
-        <li>
+        <li class="hovered">
           <a href="">
             <span class="icon">
               <ion-icon name="home-outline"></ion-icon>
@@ -106,7 +106,7 @@
 
       <!-- cards -->
       <div class="cardBox">
-        <div class=" card animate__animated animate__fadeInDown">
+        <div class="card animate__animated animate__fadeInDown">
           <div>
             <div class="numbers">1,690</div>
             <div class="cardName">Views</div>
@@ -115,7 +115,7 @@
             <ion-icon name="eye-outline"></ion-icon>
           </div>
         </div>
-        <div class=" card animate__animated animate__fadeInUp">
+        <div class="card animate__animated animate__fadeInUp">
           <div>
             <div class="numbers">5</div>
             <div class="cardName">Posts</div>
@@ -124,7 +124,7 @@
             <ion-icon name="create-outline"></ion-icon>
           </div>
         </div>
-        <div class=" card animate__animated animate__fadeInDown">
+        <div class="card animate__animated animate__fadeInDown">
           <div>
             <div class="numbers">2</div>
             <div class="cardName">Sales</div>
@@ -133,7 +133,7 @@
             <ion-icon name="pricetags-outline"></ion-icon>
           </div>
         </div>
-        <div class=" card animate__animated animate__fadeInUp">
+        <div class="card animate__animated animate__fadeInUp">
           <div>
             <div class="numbers">7</div>
             <div class="cardName">Messages</div>
@@ -153,40 +153,45 @@
             <a href="#" class="btn">View All</a>
           </div>
           <table>
-            <thead>
-              <tr>
-                <td>NAME</td>
-                <td>PRICE</td>
-                <td>PAYMENT</td>
-                <td>STATUS</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Item1</td>
-                <td>Rs.200</td>
-                <td>PAID</td>
-                <td><span class="status delivered">Delivered</span></td>
-              </tr>
-              <tr>
-                <td>Item2</td>
-                <td>Rs.300</td>
-                <td>DUE</td>
-                <td><span class="status delivered">In Progress</span></td>
-              </tr>
-              <tr>
-                <td>Item3</td>
-                <td>Rs.400</td>
-                <td>PAID</td>
-                <td><span class="status delivered">Pending</span></td>
-              </tr>
-              <tr>
-                <td>Item4</td>
-                <td>Rs.500</td>
-                <td>DUE</td>
-                <td><span class="status delivered">Return</span></td>
-              </tr>
-            </tbody>
+            <div class="By_someone">
+              <thead>
+                <tr>
+                  <td>NAME</td>
+                  <td>PRICE</td>
+                  <td>PAYMENT</td>
+                  <td>STATUS</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Item1</td>
+                  <td>Rs.200</td>
+                  <td>PAID</td>
+                  <td><span class="status delivered">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td>Item2</td>
+                  <td>Rs.300</td>
+                  <td>DUE</td>
+                  <td><span class="status delivered">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>Item3</td>
+                  <td>Rs.400</td>
+                  <td>PAID</td>
+                  <td><span class="status delivered">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Item4</td>
+                  <td>Rs.500</td>
+                  <td>DUE</td>
+                  <td><span class="status delivered">Return</span></td>
+                </tr>
+              </tbody>
+            </div>
+            <div class="Done_by_me">
+
+            </div>
           </table>
         </div>
         <!-- details list end -->
@@ -198,13 +203,17 @@
           </div>
           <div style="display: flex; flex-direction: row-reverse;">
             <div class="userImg animate__animated animate__jello">
-              <img src="./images/title_favicon.png" alt="" height="150px" />
+              <img src="<%=pic%>" alt="" height="70px" />
             </div>
-            <div class="userDetails">
+            <div class="userDetails" style="margin-right: 3vw;">
               <strong>Name:</strong>
-              <p>John Doe</p>
+              <p>
+                <%=naam%>
+              </p>
               <strong>Email:</strong>
-              <p>abcxya@gmail.com</p>
+              <p>
+                <%=gmail%>
+              </p>
               <strong>Phone No:</strong>
               <p>9988776655</p>
             </div>
@@ -217,7 +226,7 @@
   <!-- IONICONS CDN -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="./script.js"></script>
+  <script src="./script_dashboard.js"></script>
 </body>
 
 </html>

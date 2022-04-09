@@ -27,8 +27,6 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
 //auth routes
 app.use("/auth", authRoutes);
 //home route

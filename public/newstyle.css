@@ -1,0 +1,134 @@
+#popups {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  width: 90vw;
+  padding: 2rem;
+  top: 50vh;
+  margin: auto;
+  left: 50%;
+  /* background-color: aqua; */
+  border-radius: 12px;
+  display: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  zoom: 95%;
+  min-width: fit-content;
+  max-width: 850px;
+  transition: 0.5s ease-in-out;
+}
+.makeblur {
+  /* filter: blur(5px) */
+  filter: grayscale(100%) blur(5px);
+}
+.removescroll {
+  overflow-y: hidden;
+}
+input {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.5rem;
+  padding-right: 0;
+  margin: 1rem 0;
+  /* width: 100%; */
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  color: #000;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  max-width: 500px;
+}
+.btn {
+  margin: 0.5rem !important;
+}
+.landing-image img {
+  height: 300px;
+  position: relative;
+  right: 20px;
+  border-radius: 25px;
+  /* box-shadow: 0px 4px 64px rgba(0, 0, 0, 0.2); */
+}
+.landing-image {
+  position: relative;
+}
+.landing-text {
+  padding-left: 1rem;
+}
+#imgl,
+#imgr {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  z-index: 100;
+}
+#imgl {
+  left: -45px;
+  top: 20px;
+}
+#imgr {
+  right: 0px;
+  bottom: 20px;
+}
+@media (max-width: 1220px) {
+  .landing-image {
+    zoom: 85%;
+  }
+}
+
+.login-with-google-btn {
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 12px 10px 12px 60px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #757575;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=");
+  background-size: 30px 30px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+}
+.login-with-google-btn:hover {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.login-with-google-btn:active {
+  background-color: #eee;
+}
+.login-with-google-btn:focus {
+  outline: none;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 0 3px #c8dafc;
+}
+.login-with-google-btn:disabled {
+  filter: grayscale(100%);
+  background-color: #ebebeb;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+#signup {
+  min-width: none;
+  width: 50vw !important;
+}
+#signup label {
+  min-width: 128px;
+}
+#signup .signup-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+#signup div {
+  margin: 10px 20px;
+}

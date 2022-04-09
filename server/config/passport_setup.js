@@ -22,8 +22,9 @@ module.exports = (passport) => {
             else {
                 new authuser({
                     googleid: profile.id,
-                    username: profile.displayName,
-                    image: profile._json.picture
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    photo: profile._json.picture
                 }).save().then((newUser) => {
                     // console.log(`new User created ${newUser}`);
                     done(null, newUser);
