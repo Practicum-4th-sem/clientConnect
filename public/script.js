@@ -6,19 +6,19 @@ var signup_tempalate = `
         <div class="signup-div">
         <div>
         <label for="Phone">Name:</label>
-        <input type="text" maxlength="" placeholder="Name..">
+        <input type="text" maxlength="", name="name" placeholder="Name..">
         </div>
         <div>
         <label for="">Email:</label>
-        <input type="email" name="" placeholder="abc@xyz.com">
+        <input type="email" name="email" placeholder="abc@xyz.com">
         </div>
         <div>
         <label for="">Password:</label>
-        <input type="password" name="">
+        <input type="password" name="password">
         </div>
         <div>
         <label for="Phone">Phone Number: </label>
-        <input maxlength="10" placeholder="Phone..">
+        <input maxlength="10" placeholder="Phone.." name="phone">
         </div>
         </div>
         <div>
