@@ -18,7 +18,7 @@ router.post("/register", authController.register, (req, res) => {
 
 router.get("/register", (req, res) => {
     console.log("this is the register");
-    res.render("langing_page");
+    res.render("landing_page");
     //rendering the landing page for trial....
 });
 
@@ -26,7 +26,7 @@ router.post("/login", authController.login);
 
 router.get("/login", (req, res) => {
     console.log("this is the login");
-    res.render("langing_page");
+    res.render("landing_page");
 });
 
 router.post("/verifyOtp", authController.verifyOTP);
