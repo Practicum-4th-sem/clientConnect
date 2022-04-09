@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
     user.password = undefined;
 
     const token = issueJWT(res, user);
-    return res.status(200).json({
+     res.status(200).json({
       status: success,
       message: "login success",
       token,
