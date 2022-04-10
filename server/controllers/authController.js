@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      phone: req.body.phone,
+      phone: `+91${req.body.phone}`,
     });
 
     // sendOtp(user.phone);
@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
 
     // let otp = ;
     // user.otp = otp;
-    sendOtp(req.body.phone);
+    sendOtp(user.phone);
     // if (await this.verifyOTP(req)) {
     // await user.save();
     sendSms(user.phone, `hello from client connect.`);
