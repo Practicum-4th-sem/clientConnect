@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user || !(await user.verifyPassword(password, user.password))) {
       throw new Error("Incorrect email or password!");
@@ -57,9 +57,9 @@ exports.login = async (req, res) => {
 
     user.password = undefined;
 
-    const token = issueJWT(res, user);
-     res.status(200).json({
-      status: success,
+    const token = issueToken(res, user);
+    return res.status(200).json({
+      status: "success",
       message: "login success",
       token,
     });
