@@ -35,9 +35,9 @@ var login_template = `
       </h2>
       <form action="/api/v1/users/login" method="POST" style="display: flex; flex-direction: column;">
         <label for="">Email</label>
-        <input type="email" name="" placeholder="abc@xyz.com">
+        <input type="email" name="email" placeholder="abc@xyz.com">
         <label for="">Password</label>
-        <input type="password" name="">
+        <input type="password" name="password">
         <br>
         <button type="submit" class="btn btn-sm">Login</button>
       </form>
@@ -70,7 +70,8 @@ var landing = document.querySelector(".landing");
 var signup = document.querySelector("#signup-btn");
 var getStarted = document.querySelector("#get-started");
 var body = document.querySelector("body");
-login.addEventListener("click", function () {
+login.addEventListener("click", function (e) {
+  e.preventDefault();
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = login_template;
   header.classList.add("makeblur");
@@ -84,7 +85,8 @@ login.addEventListener("click", function () {
     //body.classList.remove("removescroll");
   });
 });
-signup.addEventListener("click", function () {
+signup.addEventListener("click", function (e) {
+  e.preventDefault();
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = signup_tempalate;
   header.classList.add("makeblur");
