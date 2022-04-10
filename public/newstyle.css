@@ -130,3 +130,12 @@ input {
 #signup div {
   margin: 10px 20px;
 }
+hr {
+  border-style: none;
+  border-top-style: dotted;
+  border-color: rgba(11, 11, 80);
+  background: transparent;
+  border-width: 8px;
+  width: 20%;
+  margin: 10px auto;
+}

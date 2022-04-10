@@ -1,7 +1,7 @@
 var signup_tempalate = ` 
-        <h2>
+        <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
-        </h2>
+      </h2> <h2><b>ClientConnect</b></h2></div>
         <form action="/api/v1/users/register" method="POST" id="signup">
         <div class="signup-div">
         <div>
@@ -22,44 +22,46 @@ var signup_tempalate = `
         </div>
         </div>
         <div>
-        <button type="submit" class="btn btn-sm">Sign Up</button></div>
+        <button type="submit" class="btn btn-sm" style="width:120px">Sign Up</button></div>
       </form>
+      <hr />
       <a href="/auth/google">
         <button type="button" class="login-with-google-btn">
         Sign in with Google
       </button>
         </a>`;
 var login_template = `
-      <h2>
+      <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
-      </h2>
+      </h2> <h2><b>ClientConnect</b></h2></div>
       <form action="/api/v1/users/login" method="POST" style="display: flex; flex-direction: column;">
         <label for="">Email</label>
         <input type="email" name="email" placeholder="abc@xyz.com">
         <label for="">Password</label>
         <input type="password" name="password">
         <br>
-        <button type="submit" class="btn btn-sm">Login</button>
+        <button type="submit" class="btn btn-sm" style="width:120px">Login</button>
       </form>
-      <br>
+      <hr />
       <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
           aria-controls="collapseExample" id="phonelogin">Login with Phone No.</a>
         <!-- <button class="btn btn-primary">Login with Google</button> -->
+              
         <a href="/auth/google">
         <button type="button" class="login-with-google-btn">
         Sign in with Google
-      </button>
+        </button>
         </a>
       </p>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-          <form action="">
-            <label for="Phone">Phone Number: </label>
+          <form action="" style="display:flex;flex-direction:column; flex-wrap:wrap">
+            <div><label for="Phone" style="width:125px">Phone Number: </label>
             <input maxlength="10" placeholder="Phone..">
-            <button class="btn btn-primary">Send OTP</button>
-            <label for="">Enter OTP: </label>
-            <input type="password" placeholder="OTP">
+            <button class="btn btn-primary">Send OTP</button></div>
+          <div>  <label for="" style="width:125px">Enter OTP: </label>
+            <input type="password" placeholder="OTP"></div>
           </form>
         </div>
       </div>
