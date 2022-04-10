@@ -23,6 +23,7 @@
   min-width: fit-content;
   max-width: 850px;
   transition: 0.5s ease-in-out;
+  width: fit-content !important;
 }
 .makeblur {
   /* filter: blur(5px) */
@@ -120,13 +121,13 @@ input {
 }
 #signup {
   min-width: none;
-  width: 50vw !important;
+  /* width: 50vw !important; */
 }
 #signup label {
   min-width: 128px;
 }
 #signup .signup-div {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
 }
 #signup div {
