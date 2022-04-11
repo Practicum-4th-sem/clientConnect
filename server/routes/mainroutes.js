@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const authController = require("../controllers/authController");
+const userController = require("../controllers/userController");
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -30,10 +31,13 @@ router.get("/register", (req, res) => {
     res.render("dashboard", { naam: userdetails.name, gmail: userdetails.email, phone: userdetails.phone, pic: "" });
 });
 
-router.post("/login", authController.login);
+router.post("/login", authController.login, (req, res) => {
+    const Founduser = req.body;
+});
 
 router.get("/login", (req, res) => {
     console.log("loging in...");
+    // const curUser=
 });
 
 router.post("/verifyOtp", authController.verifyOTP);
@@ -43,5 +47,7 @@ router.patch("/resetPassword", authController.resetPassword);
 router.get("/profile", authcheck, (req, res) => {
     res.render("profile", { User: req.user.username, Image: req.user.image });
 });
+
+router.get("/getUser", authController.protect, userController.getUser);
 
 module.exports = router;

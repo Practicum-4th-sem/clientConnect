@@ -64,7 +64,9 @@ exports.login = async (req, res, next) => {
     user.password = undefined;
 
     const token = issueToken(res, user);
-    return next();
+    return res.status(200).json({
+      token,
+    });
   } catch (error) {
     res.json(error.message);
   }

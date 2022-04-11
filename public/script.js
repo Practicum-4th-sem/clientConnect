@@ -2,9 +2,12 @@ var signup_tempalate = `
         <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
 <<<<<<< HEAD
+<<<<<<< HEAD
         </h2>
         <form action="/register" method="POST" id="signup">
 =======
+=======
+>>>>>>> afb5245e2954ce2d390a68974aef75a663d1336e
       </h2> <h2><b>ClientConnect</b></h2></div>
         <form action="/api/v1/users/register" method="POST" id="signup">
 >>>>>>> afb5245e2954ce2d390a68974aef75a663d1336e
@@ -39,9 +42,12 @@ var login_template = `
       <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
 <<<<<<< HEAD
+<<<<<<< HEAD
       </h2>
       <form action="/login" method="POST" style="display: flex; flex-direction: column;">
 =======
+=======
+>>>>>>> afb5245e2954ce2d390a68974aef75a663d1336e
       </h2> <h2><b>ClientConnect</b></h2></div>
       <form action="/api/v1/users/login" method="POST" style="display: flex; flex-direction: column;">
 >>>>>>> afb5245e2954ce2d390a68974aef75a663d1336e
