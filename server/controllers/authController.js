@@ -1,5 +1,6 @@
 const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
+const {promisify} = require('util');
 const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
@@ -34,9 +35,8 @@ exports.register = async (req, res) => {
 
     const token = issueToken(res, user);
 
-    // await sendEmail(user, { title: "Welcome to Client Connect" });
+    await sendEmail(user, { title: "Welcome to Client Connect family" }, 'welcome');
     return res.status(200).json({
-      status: "success",
       token,
     });
     // }
@@ -59,12 +59,31 @@ exports.login = async (req, res) => {
 
     const token = issueToken(res, user);
     return res.status(200).json({
-      status: "success",
-      message: "login success",
       token,
     });
   } catch (error) {
     res.json(error.message);
+  }
+};
+
+exports.protect = (req, res) => {
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  if (!token) {
+    throw new Error("You are not logged in! Please log in to get access.");
+  }
+
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    throw new Error('The user does not exist anymore.');
   }
 };
 
@@ -78,7 +97,7 @@ exports.forgotPassword = async (req, res) => {
     const resetToken = user.createResetToken();
     await user.save({ validateBeforeSave: false });
     try {
-      await sendEmail(user, { title: "Reset Password", token: resetToken });
+      await sendEmail(user, { title: "Reset Password", token: resetToken }, 'resetPassword');
       res.status(200).json({
         status: "success",
         user,
@@ -87,7 +106,7 @@ exports.forgotPassword = async (req, res) => {
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
       await user.save({ validateBeforeSave: false });
-      throw new Error("There was an error sending the mail.");
+      throw new Error("There was an error sending the email.");
     }
   } catch (err) {
     res.json(err.message);

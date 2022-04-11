@@ -39,6 +39,21 @@ exports.resizeUserPhoto = async (req, res, next) => {
     .toFile(`public/img/users/${req.file.filename}`);
 };
 
+exports.getUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.status(200).json({
+      username: user.name,
+      photo: user.photo,
+      email: user.email,
+      phone: user.phone,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json(error.message);
+  }
+};
+
 exports.deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

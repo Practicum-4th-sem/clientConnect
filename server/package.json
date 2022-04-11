@@ -23,6 +23,7 @@
     "nodemailer": "^6.7.3",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
+    "pug": "^3.0.2",
     "sharp": "^0.30.3",
     "twilio": "^3.75.0",
     "validator": "^13.7.0"
