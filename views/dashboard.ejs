@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcom to ClientConnect</title>
   <!-- animate.css cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cd2njs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="icon" href="./images/title_favicon.png" />
   <link rel="stylesheet" href="./style_dashboard.css" />
 </head>
@@ -214,8 +214,12 @@
               <p>
                 <%=gmail%>
               </p>
-              <strong>Phone No:</strong>
-              <p>9988776655</p>
+              <%if(phone!=""){%>
+                <strong>Phone No:</strong>
+                <p>
+                  <%=phone%>
+                </p>
+                <%}%>
             </div>
           </div>
         </div>

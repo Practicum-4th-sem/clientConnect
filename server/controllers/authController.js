@@ -13,7 +13,7 @@ function issueToken(res, user) {
   return token;
 }
 
-exports.register = async (req, res) => {
+exports.register = async (req, res, next) => {
   try {
     const user = new User({
       name: req.body.name,
@@ -35,17 +35,17 @@ exports.register = async (req, res) => {
     const token = issueToken(res, user);
 
     // await sendEmail(user, { title: "Welcome to Client Connect" });
-    return res.status(200).json({
-      status: "success",
-      token,
-    });
+    // console.log(req.body);
+    return next();
     // }
   } catch (err) {
     res.json(err.message);
+    return;
+
   }
 };
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -58,11 +58,7 @@ exports.login = async (req, res) => {
     user.password = undefined;
 
     const token = issueToken(res, user);
-    return res.status(200).json({
-      status: "success",
-      message: "login success",
-      token,
-    });
+    return next();
   } catch (error) {
     res.json(error.message);
   }

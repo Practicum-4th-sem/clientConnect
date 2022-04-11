@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-
+const authController = require("../controllers/authController");
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -16,9 +16,29 @@ router.get("/", (req, res) => {
 
 router.get("/dashboard", authcheck, (req, res) => {
     const UserDetails = req.user;
-    res.render("dashboard", { UserDetails, naam: UserDetails.name, gmail: UserDetails.email, pic: UserDetails.photo, phone: UserDetails.phone });
+    res.render("dashboard", { naam: UserDetails.name, gmail: UserDetails.email, pic: UserDetails.photo, phone: "" });
 });
 
+var userdetails;
+router.post("/register", authController.register, (req, res) => {
+    console.log(req.body);
+    userdetails = req.body;
+    res.render("dashboard", { naam: req.body.name, gmail: req.body.email, phone: req.body.phone, pic: "" });
+});
+
+router.get("/register", (req, res) => {
+    res.render("dashboard", { naam: userdetails.name, gmail: userdetails.email, phone: userdetails.phone, pic: "" });
+});
+
+router.post("/login", authController.login);
+
+router.get("/login", (req, res) => {
+    console.log("loging in...");
+});
+
+router.post("/verifyOtp", authController.verifyOTP);
+router.post("/forgotPassword", authController.forgotPassword);
+router.patch("/resetPassword", authController.resetPassword);
 
 router.get("/profile", authcheck, (req, res) => {
     res.render("profile", { User: req.user.username, Image: req.user.image });

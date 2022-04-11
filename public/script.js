@@ -2,7 +2,7 @@ var signup_tempalate = `
         <h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
         </h2>
-        <form action="/api/v1/users/register" method="POST" id="signup">
+        <form action="/register" method="POST" id="signup">
         <div class="signup-div">
         <div>
         <label for="Phone">Name:</label>
@@ -33,7 +33,7 @@ var login_template = `
       <h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
       </h2>
-      <form action="/api/v1/users/login" method="POST" style="display: flex; flex-direction: column;">
+      <form action="/login" method="POST" style="display: flex; flex-direction: column;">
         <label for="">Email</label>
         <input type="email" name="email" placeholder="abc@xyz.com">
         <label for="">Password</label>

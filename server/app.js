@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authroutes");
 const mainRoutes = require("./routes/mainroutes");
 const keys = require("./config/keys");
 const CookieSession = require("cookie-session");
+const ejs = require("ejs");
 const passport = require("passport");
 require("./config/passport_setup")(passport);
 
@@ -34,10 +35,6 @@ app.use("/auth", authRoutes);
 //home route
 app.use("/", mainRoutes);
 
-app.use("/api/v1/users", userRoutes);
-
-app.get("/get", (req, res) => {
-  console.log(keys.google.clientId);
-});
+// app.use("/users", userRoutes);
 
 module.exports = app;
