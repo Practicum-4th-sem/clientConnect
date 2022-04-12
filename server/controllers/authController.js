@@ -40,18 +40,18 @@ exports.register = async (req, res, next) => {
       { title: "Welcome to Client Connect family" },
       "welcome"
     );
-    return res.status(200).json({
-      token,
-    });
+    // return res.status(200).json({
+    //   token,
+    // });
+    return next();
     // }
   } catch (err) {
     res.json(err.message);
     return;
-
   }
 };
 
-exports.login = async (req, res, next) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -64,9 +64,11 @@ exports.login = async (req, res, next) => {
     user.password = undefined;
 
     const token = issueToken(res, user);
-    return res.status(200).json({
-      token,
-    });
+    // return res.status(200).json({
+    //   token,
+    // });
+
+    return next();
   } catch (error) {
     res.json(error.message);
   }
