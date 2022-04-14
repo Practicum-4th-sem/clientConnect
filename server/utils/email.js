@@ -24,7 +24,7 @@ const sendEmail = async (user, subject, template) => {
     html,
   };
 
-  await transport.sendMail(mailOptions, (err) => {
+  transport.sendMail(mailOptions, (err) => {
     if (err) {
       return console.log(err);
     }
