@@ -23,9 +23,15 @@
   width: fit-content !important;
 }
 .makeblur {
-  /* filter: blur(5px) */
-  filter: grayscale(100%) blur(5px);
+  filter: blur(20px);
+  pointer-events: none;
+  /* filter: grayscale(100%) blur(5px); */
 }
+
+.closebtn{
+  cursor: pointer;
+}
+
 .removescroll {
   overflow-y: hidden;
 }
