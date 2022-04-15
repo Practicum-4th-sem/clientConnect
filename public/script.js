@@ -14,7 +14,11 @@ var signup_tempalate = `
         </div>
         <div>
         <label for="">Password:</label>
-        <input type="password" name="password">
+        <input type="password" id = "password" name="password">
+        <span>
+        <i class="fa-solid fa-eye" id = "open" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none" onClick = "toggle()"></i>
+        </span>
         </div>
         <div>
         <label for="Phone">Phone Number: </label>
@@ -38,7 +42,11 @@ var login_template = `
         <label for="">Email</label>
         <input type="email" name="email" placeholder="abc@xyz.com">
         <label for="">Password</label>
-        <input type="password" name="password">
+        <input type="password" id = "password" name="password">
+        <span>
+        <i class="fa-solid fa-eye" id = "open" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none" onClick = "toggle()"></i>
+        </span>
         <br>
         <button type="submit" class="btn btn-sm" style="width:120px">Login</button>
       </form>
@@ -116,3 +124,18 @@ getStarted.addEventListener("click", function () {
     //body.classList.remove("removescroll");
   });
 });
+
+var state = false;
+function toggle() {
+  if (state) {
+    document.getElementById("password").setAttribute("type", "password");
+    state = false;
+    document.getElementById("open").style.display = "inline-block";
+    document.getElementById("close").style.display = "none";
+  } else {
+    document.getElementById("password").setAttribute("type", "text");
+    state = true;
+    document.getElementById("open").style.display = "none";
+    document.getElementById("close").style.display = "inline-block";
+  }
+}
