@@ -16,8 +16,8 @@ var signup_tempalate = `
         <label for="">Password:</label>
         <input type="password" id = "password" name="password">
         <span>
-        <i class="fa-solid fa-eye" id = "open" onClick = "toggle()"></i>
-        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye" id = "open" style = "cursor: pointer" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none; cursor: pointer" onClick = "toggle()"></i>
         </span>
         </div>
         <div>
@@ -44,8 +44,8 @@ var login_template = `
         <label for="">Password</label>
         <input type="password" id = "password" name="password">
         <span>
-        <i class="fa-solid fa-eye" id = "open" onClick = "toggle()"></i>
-        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye" id = "open" style = "cursor: pointer" onClick = "toggle()"></i>
+        <i class="fa-solid fa-eye-slash" id = "close" style = "display: none; cursor: pointer" onClick = "toggle()"></i>
         </span>
         <br>
         <button type="submit" class="btn btn-sm" style="width:120px">Login</button>
