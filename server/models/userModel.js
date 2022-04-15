@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
     phone: {
       type: String,
     },
+    role: {
+      type: String,
+      enum: ["consumer", "merchant"],
+      default: "consumer",
+    },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
