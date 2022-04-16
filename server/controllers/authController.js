@@ -40,9 +40,9 @@ exports.register = async (req, res, next) => {
       { title: "Welcome to Client Connect family" },
       "welcome"
     );
-    // return res.status(200).json({
-    //   token,
-    // });
+    return res.status(200).json({
+      token,
+    });
     return next();
     // }
   } catch (err) {

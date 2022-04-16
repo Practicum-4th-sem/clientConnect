@@ -2,6 +2,15 @@ const User = require("./../models/userModel");
 const multer = require("multer");
 const sharp = require("sharp");
 
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys[obj].forEach((el) => {
+    if (allowedFields.includes(el)) {
+      newObj[el] = obj[el];
+    }
+  });
+  return newObj;
+};
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, "public/img/users");
@@ -15,7 +24,7 @@ const sharp = require("sharp");
 const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image")) {
+  if (file.mimetype.startsWith("photo")) {
     cb(null, true);
   } else {
     cb(new Error("Not an image. Please upload an image"), false);
@@ -52,6 +61,29 @@ exports.getUser = async (req, res, next) => {
     console.log(error);
     res.json(error.message);
   }
+};
+
+exports.updateMe = async (req, res, next) => {
+  //1) create error if user postd password data
+  if (req.body.password) {
+    throw new Error(
+      "Cannot update password here. Please route to /resetPassword"
+    );
+  }
+
+  // updating user
+  const filteredBody = filterObj(req.body, "name", "email");
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: updatedUser,
+    },
+  });
 };
 
 exports.deleteUser = async (req, res) => {
