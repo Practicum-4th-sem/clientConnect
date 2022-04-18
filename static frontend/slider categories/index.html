@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="./style.css">
+   <!-- SLICK CDN -->
+   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+</head>
+
+<body>
+   <!-- SLIDER -->
+
+   <section id="sliding">
+      <div class="slider">
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/AT&T.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/CenturyLink.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/Cox.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/ViaSat.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/Frontier.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/AT&T.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/CenturyLink.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/Cox.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/ViaSat.png" alt="" class="img-responsive" /></a>
+         </div>
+         <div class="slides slide slick-slide">
+            <a href="#" target="_blank"><img src="./assets/Frontier.png" alt="" class="img-responsive" /></a>
+         </div>
+      </div>
+   </section>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <!-- slick slide -->
+   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   <script>
+      // SLIDER
+      window.onload = function () {
+         $(".slider").slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [
+               {
+                  breakpoint: 768,
+                  settings: {
+                     slidesToShow: 4,
+                  },
+               },
+               {
+                  breakpoint: 520,
+                  settings: {
+                     slidesToShow: 3,
+                  },
+               },
+            ],
+            speed: 4000,
+            pauseOnFocus: false,
+            pauseOnHover: false,
+         });
+      };
+   </script>
+</body>
+
+</html>
