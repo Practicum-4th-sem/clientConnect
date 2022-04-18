@@ -28,7 +28,7 @@
   /* filter: grayscale(100%) blur(5px); */
 }
 
-.closebtn{
+.closebtn {
   cursor: pointer;
 }
 
@@ -122,17 +122,21 @@ input {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
   cursor: not-allowed;
 }
+#regForm,
 #signup {
   min-width: none;
   /* width: 50vw !important; */
 }
+#regForm label,
 #signup label {
   min-width: 128px;
 }
+#regForm .tab,
 #signup .signup-div {
   /* display: flex; */
   flex-wrap: wrap;
 }
+#regForm div,
 #signup div {
   margin: 10px 20px;
 }
@@ -145,3 +149,38 @@ hr {
   width: 20%;
   margin: 10px auto;
 }
+
+/* MULTI STEP FORM NEW CSS */
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04aa6d;
+}
+/* MULTI STEP FORM NEW CSS END*/

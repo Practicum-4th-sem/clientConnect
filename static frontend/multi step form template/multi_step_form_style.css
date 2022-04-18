@@ -1,3 +1,5 @@
+/* HERE */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
 *,
@@ -15,7 +17,7 @@ body {
 /* Style the form */
 #regForm {
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 10px auto;
   padding: 40px;
   width: 70%;
   min-width: 300px;
@@ -29,6 +31,8 @@ input {
   font-family: Raleway;
   border: 1px solid #aaaaaa;
 }
+
+/* UPTO HERE */
 
 /* Mark input boxes that gets an error on validation: */
 input.invalid {

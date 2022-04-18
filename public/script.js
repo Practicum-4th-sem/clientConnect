@@ -30,12 +30,65 @@ var signup_tempalate = `
         <div>
         <button type="submit" class="btn btn-sm" style="width:120px">Sign Up</button></div>
       </form>
-      <hr />
+        <hr />
       <a href="/auth/google">
         <button type="button" class="login-with-google-btn">
         Sign in with Google
       </button>
         </a>`;
+
+//multi step form template
+/*var signup_tempalate = ` <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
+        <ion-icon class="closebtn" name="close-outline"></ion-icon>
+        </h2> <h2><b>ClientConnect</b></h2></div>
+        <form id="regForm" action="/register" method="POST">
+      <h1>Register:</h1>
+
+      <!-- One "tab" for each step in the form: -->
+      <div class="tab">
+         Name:
+         <p>
+            <input placeholder="Name..." oninput="this.className = ''" />
+         </p>
+         Email:
+         <p><input placeholder="E-mail..." oninput="this.className = ''" /></p>
+         Password:
+         <p>
+            <input type="password" id="password" name="password">
+         </p>
+         Phone No:
+         <p><input placeholder="Phone..." oninput="this.className = ''" /></p>
+      </div>
+      <div class="tab">
+         <label for="" style="width:125px">Enter OTP: </label>
+         <input type="password" placeholder="OTP">
+         <a href="">
+            <button style="margin: 0.3rem;" class="btn btn-primary">Verify OTP</button>
+         </a>
+      </div>
+      <div class="tab">
+         <h2>Welcom to ClientConnect</h2>
+         <h3>you have successfully registered!</h3>
+         <h3>Submit to redirect</h3>
+      </div>
+
+      <div style="overflow: auto">
+         <div style="float: right">
+            <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">
+               Previous
+            </button>
+            <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+         </div>
+      </div>
+
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align: center; margin-top: 10px">
+         <span class="step"></span>
+         <span class="step"></span>
+         <span class="step"></span>
+      </div>
+   </form>
+        `;*/
 var login_template = `
       <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
@@ -101,6 +154,7 @@ login.addEventListener("click", function (e) {
 });
 signup.addEventListener("click", function (e) {
   e.preventDefault();
+  //showTab(0);
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = signup_tempalate;
   header.classList.add("makeblur");
@@ -143,3 +197,84 @@ function toggle() {
     document.getElementById("close").style.display = "inline-block";
   }
 }
+
+//MULTI STEP SIGNIN FORM JS
+/*
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == x.length - 1) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n);
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x,
+    y,
+    i,
+    valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i,
+    x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+//multi step signin form js end
+*/
