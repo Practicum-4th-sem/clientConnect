@@ -26,7 +26,7 @@ body {
   margin: 3vh auto 5vh;
   text-align: center;
   padding: 20px 0;
-  color: black;
+  color: rgb(4, 119, 134);
   animation-timing-function: ease-in-out;
   overflow: hidden;
   position: relative;
@@ -57,7 +57,9 @@ body {
 }
 .slider .slides a {
   text-decoration: none;
-  color: black;
+  color: rgb(4, 119, 134);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 .slider img {
   /* height: 75px !important; */
