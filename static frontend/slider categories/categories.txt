@@ -1,0 +1,18 @@
+SERVICES:
+Appliance Repair
+Painting
+Cleaning
+Plumbing
+Pest Control
+Electrical
+Carpenter
+Car wash
+
+Products:
+Mobile,Laptop&Computers
+TV, Home Appliance
+Beauty
+Kitchen Appliance
+Sports
+Stationery
+Groceries
