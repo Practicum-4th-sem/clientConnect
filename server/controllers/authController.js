@@ -5,12 +5,17 @@ const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
 const { sendOtp } = require("../utils/verify");
+const {deleteUser} = require('./userController');
 
 function issueToken(res, user) {
   const id = user._id;
   const token = jwt.sign({ sub: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
+  res.cookie('jwt', token, {
+		expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000)
+	})
+	// console.log(token);
   return token;
 }
 
@@ -31,15 +36,11 @@ exports.register = async (req, res, next) => {
     sendOtp(user.phone);
     // if (await this.verifyOTP(req)) {
     // await user.save();
-    sendSms(user.phone, `hello from client connect.`);
+    // sendSms(user.phone, `hello from client connect.`);
 
     const token = issueToken(res, user);
 
-    await sendEmail(
-      user,
-      { title: "Welcome to Client Connect family" },
-      "welcome"
-    );
+    
     return res.status(200).json({
       token,
     });
@@ -64,23 +65,25 @@ exports.login = async (req, res) => {
     user.password = undefined;
 
     const token = issueToken(res, user);
-    // return res.status(200).json({
-    //   token,
-    // });
+    return res.status(200).json({
+      token,
+    });
 
-    return next();
+    // return next();
   } catch (error) {
     res.json(error.message);
   }
 };
 
-exports.protect = async (req, res) => {
+exports.protect = async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  }else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
   if (!token) {
@@ -89,11 +92,32 @@ exports.protect = async (req, res) => {
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  const currentUser = await User.findById(decoded.id);
+  const currentUser = await User.findById({_id: decoded.id});
   if (!currentUser) {
     throw new Error("The user does not exist anymore.");
   }
+  // if (currentUser.changedPasswordAfter(decoded.iat)) {
+  //   return next(
+  //     new AppError('User recently changed password! Please log in again.', 401)
+  //   );
+  // }
+
+  // GRANT ACCESS TO PROTECTED ROUTE
+  req.user = currentUser;
+  // res.locals.user = currentUser;
+  next();
 };
+
+exports.logout = (req, res) => {
+	res.cookie('jwt', 'logged out', {
+		expires: new Date(Date.now() + 10 * 1000), //expires in 10 seconds
+		httpOnly: true
+	})
+
+	res.status(200).json({
+		status: 'success'
+	})
+}
 
 exports.forgotPassword = async (req, res) => {
   try {
@@ -155,7 +179,13 @@ exports.verifyOTP = async (req, res) => {
   const { otp } = req.body;
   if (!(await user.verifyOntp(otp, user.otp))) {
     throw new Error("Incorrect otp entered");
+    // deleteUser();
   } else {
+    await sendEmail(
+      user,
+      { title: "Welcome to Client Connect family" },
+      "welcome"
+    );
     res.json({
       status: "verified",
     });
