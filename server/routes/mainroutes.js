@@ -56,7 +56,7 @@ router.get("/login", (req, res) => {
 });
 
 router.patch(
-  "/updateProfile",
+  "/updateProfile/:id",
   authController.protect,
   userController.upload.single("photo"),
   userController.updateMe
@@ -68,7 +68,7 @@ router.patch("/resetPassword", authController.resetPassword);
 router.get("/profile", authcheck, (req, res) => {
   res.render("profile", { User: req.user.username, Image: req.user.image });
 });
-
+router.get('/logout', authController.protect, authController.logout);
 router.get("/getUser", authController.protect, userController.getUser);
-
+router.delete('/deleteUser/:id', authController.protect, userController.deleteUser);
 module.exports = router;
