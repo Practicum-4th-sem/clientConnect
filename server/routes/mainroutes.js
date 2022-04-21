@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
+// ------------------- Routing for dashboard using google oauth--------------------
 router.get("/dashboard", authcheck, (req, res) => {
   const UserDetails = req.user;
   res.render("dashboard", {
@@ -26,7 +27,9 @@ router.get("/dashboard", authcheck, (req, res) => {
     phone: "",
   });
 });
+// ------------------- end of Routing for dashboard using google oauth--------------------
 
+// -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
 router.post("/reg-dashboard", authController.register, (req, res) => {
   console.log(req.body);
@@ -47,8 +50,10 @@ router.get("/reg-dashboard", (req, res) => {
     pic: "",
   });
 });
+// -----------------------end of Routing for dashboard using Register ----------------------------------
 
 
+// -----------------------Routing for dashboard using login ----------------------------------
 var olduser;
 router.post("/log-dashboard", authController.login, async (req, res) => {
   const Founduser = req.body;
@@ -62,6 +67,16 @@ router.get("/log-dashboard", (req, res) => {
   // console.log(olduser);
   res.render("dashboard", { naam: olduser.name, gmail: olduser.email, phone: olduser.email, pic: olduser.photo });
 });
+// -----------------------end of routing for dashboard using login ----------------------------------
+
+
+// -----------------------Routing for Profile ----------------------------------
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+// -----------------------end of Routing for Profile ----------------------------------
+
+
 
 router.patch(
   "/updateProfile/:id",
@@ -73,9 +88,6 @@ router.post("/verifyOtp", authController.verifyOTP);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword", authController.resetPassword);
 
-router.get("/profile", authcheck, (req, res) => {
-  res.render("profile", { User: req.user.username, Image: req.user.image });
-});
 router.get('/logout', authController.protect, authController.logout);
 router.get("/getUser", authController.protect, userController.getUser);
 router.delete('/deleteUser/:id', authController.protect, userController.deleteUser);
