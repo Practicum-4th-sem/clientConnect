@@ -1,16 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
-*,
-*::after,
-*::before {
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
+}
+body {
+  overflow: auto;
+  color: #000;
+}
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* .DP {
-    max-width: 14vw;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-} */
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit;
+  background-clip: padding-box;
+  padding: 1px !important;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00000073;
+  border-radius: 10px;
+  background-clip: padding-box;
+  padding: 1px !important;
+}
+
+/* SCROLLBAR END */
 .row.gx-5 {
   display: flex;
   flex-wrap: wrap;
@@ -94,74 +115,6 @@ input {
   margin: 0.3rem;
 }
 
-/* CSS of button */
-/* 
-.cta {
-  position: relative;
-  margin: auto;
-  padding: 12px 18px;
-  transition: all 0.2s ease;
-  border: none;
-  background: none;
-}
-
-.cta:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  border-radius: 50px;
-  background: #b1dae7;
-  width: 45px;
-  height: 45px;
-  transition: all 0.3s ease;
-}
-
-.cta span {
-  position: relative;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #234567;
-}
-
-.cta svg {
-  position: relative;
-  top: 0;
-  margin-left: 10px;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke: #234567;
-  stroke-width: 2;
-  transform: translateX(-5px);
-  transform: translateY(7px);
-  transition: all 0.3s ease;
-}
-
-.cta:hover:before {
-  width: 100%;
-  background: #b1dae7;
-}
-
-.cta:hover svg {
-  transform: translateX(0);
-  transform: translateY(7px);
-}
-
-.cta:active {
-  transform: scale(0.95);
-}
-
-.cta {
-  display: flex;
-  justify-self: center;
-  align-content: center;
-} */
-
-/* end for button */
 button {
   display: inline-block;
   color: white;
@@ -188,4 +141,168 @@ button:hover {
 .p-3.border.bg-light.pic-box {
   display: flex;
   flex-direction: column;
+  min-width: fit-content;
 }
+.p-3 {
+  min-width: fit-content !important;
+  margin: 10px;
+  display: flex;
+}
+/* NAVIGATION */
+:root {
+  --blue: rgb(4, 119, 134);
+  --white: #fff;
+  --grey: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+.nav-container {
+  position: relative;
+  width: 100%;
+}
+
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.navigation ul li {
+  position: relative !important;
+  width: 100% !important;
+  list-style: none !important;
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background: var(--white) !important;
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px !important;
+  pointer-events: none !important;
+}
+
+.navigation ul li a {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  display: flex !important;
+  text-decoration: none !important;
+  color: var(--white) !important;
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue) !important;
+}
+
+.navigation ul li a .icon {
+  position: relative !important;
+  display: block !important;
+  min-width: 60px !important;
+  height: 60px !important;
+  line-height: 70px !important;
+  text-align: center !important;
+}
+
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75em !important;
+}
+
+.navigation ul li a .title {
+  position: relative !important;
+  display: block !important;
+  padding: 0 10px !important;
+  height: 60px !important;
+  line-height: 60px !important;
+  text-align: start !important;
+  white-space: nowrap !important;
+}
+
+/* curve outside */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "" !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: -50px !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: transparent !important;
+  border-radius: 50% !important;
+  box-shadow: 35px 35px 0 10px var(--white) !important;
+  pointer-events: none !important;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 0 !important;
+  bottom: -50px !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: transparent !important;
+  border-radius: 50% !important;
+  box-shadow: 35px -35px 0 10px var(--white) !important;
+  pointer-events: none !important;
+}
+
+/* main */
+.main {
+  position: absolute !important;
+  width: calc(100% - 300px) !important;
+  left: 300px !important;
+  min-height: 100vh !important;
+  background-color: var(--white) !important;
+  transition: 0.5s !important;
+}
+
+.main.active {
+  width: calc(100% - 80px) !important;
+  left: 80px !important;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  /* top: 0; */
+  width: 60px;
+  height: 60px;
+  /* background: #ccc; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+
+/* NAVIGATION END */
