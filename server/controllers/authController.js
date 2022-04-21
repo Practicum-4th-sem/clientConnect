@@ -41,9 +41,9 @@ exports.register = async (req, res, next) => {
     const token = issueToken(res, user);
 
     
-    return res.status(200).json({
-      token,
-    });
+    // return res.status(200).json({
+    //   token,
+    // });
     return next();
     // }
   } catch (err) {
