@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
 const { sendOtp } = require("../utils/verify");
-const {deleteUser} = require('./userController');
+const { deleteUser } = require('./userController');
 
 function issueToken(res, user) {
   const id = user._id;
@@ -13,9 +13,9 @@ function issueToken(res, user) {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
   res.cookie('jwt', token, {
-		expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000)
-	})
-	// console.log(token);
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000)
+  })
+  // console.log(token);
   return token;
 }
 
@@ -40,7 +40,7 @@ exports.register = async (req, res, next) => {
 
     const token = issueToken(res, user);
 
-    
+
     // return res.status(200).json({
     //   token,
     // });
@@ -52,7 +52,7 @@ exports.register = async (req, res, next) => {
   }
 };
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -64,14 +64,14 @@ exports.login = async (req, res) => {
 
     user.password = undefined;
 
-    const token = issueToken(res, user);
-    return res.status(200).json({
-      token,
-    });
+    // const token = issueToken(res, user);
+    // return res.status(200).json({
+    //   token,
+    // });
 
-    // return next();
+    return next();
   } catch (error) {
-    res.json(error.message);
+    res.send(error.message);
   }
 };
 
@@ -82,7 +82,7 @@ exports.protect = async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-  }else if (req.cookies.jwt) {
+  } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
 
@@ -92,7 +92,7 @@ exports.protect = async (req, res, next) => {
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  const currentUser = await User.findById({_id: decoded.id});
+  const currentUser = await User.findById({ _id: decoded.id });
   if (!currentUser) {
     throw new Error("The user does not exist anymore.");
   }
@@ -109,14 +109,14 @@ exports.protect = async (req, res, next) => {
 };
 
 exports.logout = (req, res) => {
-	res.cookie('jwt', 'logged out', {
-		expires: new Date(Date.now() + 10 * 1000), //expires in 10 seconds
-		httpOnly: true
-	})
+  res.cookie('jwt', 'logged out', {
+    expires: new Date(Date.now() + 10 * 1000), //expires in 10 seconds
+    httpOnly: true
+  })
 
-	res.status(200).json({
-		status: 'success'
-	})
+  res.status(200).json({
+    status: 'success'
+  })
 }
 
 exports.forgotPassword = async (req, res) => {

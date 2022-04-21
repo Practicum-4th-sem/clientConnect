@@ -1,6 +1,8 @@
 const User = require("../models/userModel");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+
+const Db = require("../models/userModel");
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -26,7 +28,7 @@ router.get("/dashboard", authcheck, (req, res) => {
 });
 
 var userdetails;
-router.post("/register", authController.register, (req, res) => {
+router.post("/reg-dashboard", authController.register, (req, res) => {
   console.log(req.body);
   userdetails = req.body;
   res.render("dashboard", {
@@ -37,7 +39,7 @@ router.post("/register", authController.register, (req, res) => {
   });
 });
 
-router.get("/register", (req, res) => {
+router.get("/reg-dashboard", (req, res) => {
   res.render("dashboard", {
     naam: userdetails.name,
     gmail: userdetails.email,
@@ -46,13 +48,19 @@ router.get("/register", (req, res) => {
   });
 });
 
-router.post("/login", authController.login, (req, res) => {
+
+var olduser;
+router.post("/log-dashboard", authController.login, async (req, res) => {
   const Founduser = req.body;
+  // console.log(Founduser);
+  olduser = await User.find({ email: Founduser.email });
+  // console.log(olduser);
+  res.render("dashboard", { naam: olduser.name, gmail: olduser.email, phone: olduser.email, pic: olduser.photo });
 });
 
-router.get("/login", (req, res) => {
-  console.log("loging in...");
-  // const curUser=
+router.get("/log-dashboard", (req, res) => {
+  // console.log(olduser);
+  res.render("dashboard", { naam: olduser.name, gmail: olduser.email, phone: olduser.email, pic: olduser.photo });
 });
 
 router.patch(
