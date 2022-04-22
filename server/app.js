@@ -8,6 +8,7 @@ const CookieSession = require("cookie-session");
 const ejs = require("ejs");
 const passport = require("passport");
 require("./config/passport_setup")(passport);
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +23,7 @@ app.use(
     keys: [keys.session.cookieKey],
   })
 );
-
+app.use(cookieParser());
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());

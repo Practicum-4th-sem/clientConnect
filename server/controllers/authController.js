@@ -5,18 +5,20 @@ const crypto = require("crypto");
 const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
 const { sendOtp } = require("../utils/verify");
-const { deleteUser } = require('./userController');
+const { deleteUser } = require("./userController");
 
 function issueToken(res, user) {
   const id = user._id;
   const token = jwt.sign({ sub: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
-  res.cookie('jwt', token, {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000)
-  })
+  res.cookie("jwt", token, {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+  });
   // console.log(token);
-  return token;
+  // return token;
 }
 
 exports.register = async (req, res, next) => {
@@ -38,8 +40,7 @@ exports.register = async (req, res, next) => {
     // await user.save();
     // sendSms(user.phone, `hello from client connect.`);
 
-    const token = issueToken(res, user);
-
+    issueToken(res, user);
 
     // return res.status(200).json({
     //   token,
@@ -64,7 +65,7 @@ exports.login = async (req, res, next) => {
 
     user.password = undefined;
 
-    // const token = issueToken(res, user);
+    issueToken(res, user);
     // return res.status(200).json({
     //   token,
     // });
@@ -75,49 +76,67 @@ exports.login = async (req, res, next) => {
   }
 };
 
-exports.protect = async (req, res, next) => {
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies.jwt) {
-    token = req.cookies.jwt;
+// exports.protect = async (req, res, next) => {
+//   let token;
+//   if (
+//     req.headers.authorization &&
+//     req.headers.authorization.startsWith("Bearer")
+//   ) {
+//     token = req.headers.authorization.split(" ")[1];
+//   } else if (req.cookies.jwt) {
+//     token = req.cookies.jwt;
+//   }
+
+//   if (!token) {
+//     throw new Error("You are not logged in! Please log in to get access.");
+//   }
+
+//   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+//   const currentUser = await User.findById({ _id: decoded.id });
+//   if (!currentUser) {
+//     throw new Error("The user does not exist anymore.");
+//   }
+//   // if (currentUser.changedPasswordAfter(decoded.iat)) {
+//   //   return next(
+//   //     new AppError('User recently changed password! Please log in again.', 401)
+//   //   );
+//   // }
+
+//   // GRANT ACCESS TO PROTECTED ROUTE
+//   req.user = currentUser;
+//   // res.locals.user = currentUser;
+//   next();
+// };
+
+exports.protect = (req, res, next) => {
+  const token = req.cookies.jwt;
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+      if (err) {
+        console.log(err.message);
+        res.redirect("/");
+      } else {
+        console.log(decodedToken);
+        next();
+      }
+    });
+  } else {
+    res.redirect("/");
   }
-
-  if (!token) {
-    throw new Error("You are not logged in! Please log in to get access.");
-  }
-
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
-  const currentUser = await User.findById({ _id: decoded.id });
-  if (!currentUser) {
-    throw new Error("The user does not exist anymore.");
-  }
-  // if (currentUser.changedPasswordAfter(decoded.iat)) {
-  //   return next(
-  //     new AppError('User recently changed password! Please log in again.', 401)
-  //   );
-  // }
-
-  // GRANT ACCESS TO PROTECTED ROUTE
-  req.user = currentUser;
-  // res.locals.user = currentUser;
-  next();
 };
 
-exports.logout = (req, res) => {
-  res.cookie('jwt', 'logged out', {
+exports.logout = (req, res, next) => {
+  res.cookie("jwt", "logged out", {
     expires: new Date(Date.now() + 10 * 1000), //expires in 10 seconds
-    httpOnly: true
-  })
+    httpOnly: true,
+  });
 
-  res.status(200).json({
-    status: 'success'
-  })
-}
+  // res.status(200).json({
+  //   status: 'success'
+  // })
+  next();
+};
 
 exports.forgotPassword = async (req, res) => {
   try {
