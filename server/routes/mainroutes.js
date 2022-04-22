@@ -52,7 +52,6 @@ router.get("/reg-dashboard", (req, res) => {
 });
 // -----------------------end of Routing for dashboard using Register ----------------------------------
 
-
 // -----------------------Routing for dashboard using login ----------------------------------
 var olduser;
 router.post("/log-dashboard", authController.login, async (req, res) => {
@@ -60,23 +59,31 @@ router.post("/log-dashboard", authController.login, async (req, res) => {
   // console.log(Founduser);
   olduser = await User.find({ email: Founduser.email });
   // console.log(olduser);
-  res.render("dashboard", { naam: olduser.name, gmail: olduser.email, phone: olduser.email, pic: olduser.photo });
+  res.render("dashboard", {
+    naam: olduser.name,
+    gmail: olduser.email,
+    phone: olduser.email,
+    pic: olduser.photo,
+  });
 });
 
 router.get("/log-dashboard", (req, res) => {
   // console.log(olduser);
-  res.render("dashboard", { naam: olduser.name, gmail: olduser.email, phone: olduser.email, pic: olduser.photo });
+  res.render("dashboard", {
+    naam: olduser.name,
+    gmail: olduser.email,
+    phone: olduser.email,
+    pic: olduser.photo,
+  });
 });
 // -----------------------end of routing for dashboard using login ----------------------------------
 
-
 // -----------------------Routing for Profile ----------------------------------
-router.get("/profile", (req, res) => {
+router.get("/profile", authController.protect, (req, res) => {
+  console.log(req.body);
   res.render("profile");
 });
 // -----------------------end of Routing for Profile ----------------------------------
-
-
 
 router.patch(
   "/updateProfile/:id",
@@ -88,7 +95,21 @@ router.post("/verifyOtp", authController.verifyOTP);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword", authController.resetPassword);
 
-router.get('/logout', authController.protect, authController.logout);
+router.get(
+  "/logout",
+  authController.protect,
+  authController.logout,
+  (req, res) => {
+    res.redirect("/");
+  }
+);
 router.get("/getUser", authController.protect, userController.getUser);
-router.delete('/deleteUser/:id', authController.protect, userController.deleteUser);
+router.delete(
+  "/deleteUser/:id",
+  authController.protect,
+  userController.deleteUser,
+  (req, res) => {
+    res.redirect("/");
+  }
+);
 module.exports = router;

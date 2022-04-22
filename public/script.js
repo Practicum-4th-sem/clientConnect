@@ -99,6 +99,7 @@ var login_template = `
         <label for="">Password</label>
         <div style="position:relative">
           <input type="password" id = "password" name="password">
+          <a href = '/forgotPassword'><span>forgot password?</span></a>
           <span>
           <i class="fa-solid fa-eye" id = "open" style = "cursor: pointer" onClick = "toggle()"></i>
           <i class="fa-solid fa-eye-slash" id = "close" style = "display: none; cursor: pointer" onClick = "toggle()"></i>
