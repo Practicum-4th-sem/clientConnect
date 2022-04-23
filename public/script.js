@@ -131,7 +131,7 @@ getStarted.addEventListener("click", function () {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
-    window.location.replace("http://localhost:8000");
+    window.location.href = "/";
     //body.classList.remove("removescroll");
   });
 });
