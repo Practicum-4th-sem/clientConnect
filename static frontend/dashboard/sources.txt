@@ -1,13 +1,4 @@
-USED TILL NOW
-1) bootstrap : https://getbootstrap.com/docs/5.1/getting-started/introduction/
-2) animate.css: https://animate.style/
-3) ionicons: https://ionic.io/ionicons
-4) navmenu codepen: https://codepen.io/iamsaief/pen/ExPoNjm?editors=1100
+USED:-
+1) YT TUTORIAL: https://www.youtube.com/watch?v=nUUsUAPEjFc
 
-
-UNUSED
-5) https://codepen.io/Ester0611/pen/NWPWbZV
-6) https://codepen.io/gregg50/pen/eYmeLgw#!
-7) https://themes.getbootstrap.com/preview/?theme_id=105870
-8) http://startbootstrap.github.io/startbootstrap-sb-admin-2/
-9) https://colorlib.com/wp/template/login-form-10/
+2) IONICONS: https://ionic.io/ionicons/usage

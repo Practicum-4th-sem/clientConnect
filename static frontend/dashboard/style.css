@@ -1,227 +1,400 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-*,
-*::after,
-*::before {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  /* font-family: "Comfortaa", cursive; */
-  /* font-family: "Poppins", sans-serif; */
+  font-family: "Ubuntu", sans-serif;
 }
-html {
-  scroll-behavior: smooth;
+:root {
+  --blue: rgb(4, 119, 134);
+  --white: #fff;
+  --grey: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
 }
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Comfortaa", cursive;
-  background: #1c658c;
-  color: #eeeeee;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-section {
-  padding: 1vh 1vw;
+.container {
+  position: relative;
+  width: 100%;
 }
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-/* SCROLLBAR */
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-  background-clip: padding-box;
-  padding: 1px !important;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #00000073;
-  border-radius: 10px;
-  background-clip: padding-box;
-  padding: 1px !important;
-}
-/* SCROLLBAR END */
-
-/*NAV MENU*/
-a {
-  text-decoration: none;
-  outline: none;
-  color: #333;
-}
-li {
-  list-style: none;
-}
-.nav-menu {
-  /* display: block; */
-  height: 7rem;
-  width: 7rem;
-  float: left;
-  padding-top: 0;
-}
-ion-icon {
-  margin: 0 1rem;
-  font-size: 1rem;
-}
-@keyframes hover {
-  50% {
-    transform: translateX(10px);
-  }
-}
-.offcanvas-menu > label {
-  top: 30px;
-  left: 30px;
+.navigation {
   position: fixed;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: 0.3s ease;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background: var(--white);
+}
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
   display: flex;
-  align-items: center;
-  z-index: 9999;
+  text-decoration: none;
+  color: var(--white);
 }
-.offcanvas-menu label span,
-.offcanvas-menu label span::before,
-.offcanvas-menu label span::after {
-  transition: background 0.3s, transform 0.3s;
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
 }
-.offcanvas-menu label span,
-.offcanvas-menu label span::before,
-.offcanvas-menu label span::after {
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 70px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75em;
+}
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* curve outside */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
   content: "";
   position: absolute;
-  height: 4px;
-  width: 40px;
-  background: #b3b3b3;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
 }
-.offcanvas-menu label span::before {
-  transform: translateY(-12px);
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
 }
-.offcanvas-menu label span::after {
-  transform: translateY(12px);
+
+/* main */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background-color: var(--white);
+  transition: 0.5s;
 }
-.offcanvas-menu nav {
-  position: fixed;
-  height: 100%;
-  width: 350px;
-  left: -350px;
-  overflow: hidden;
-  background: #bdddff;
-  transition: 0.3s ease;
-  padding: 40px 30px;
-  z-index: 9999;
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
 }
-.offcanvas-menu nav > div {
+.topbar {
+  width: 100%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
 }
-.offcanvas-menu nav > div a {
-  font-size: 2rem;
-  font-weight: 500;
+.toggle {
+  position: relative;
+  /* top: 0; */
+  width: 60px;
+  height: 60px;
+  /* background: #ccc; */
   display: flex;
-  align-items: center;
-  /* font-family: "Monoton", cursive; */
-  background: linear-gradient(-90deg, #49a4ed 30%, #3d00a9 110%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.offcanvas-menu nav > div a i {
-  font-size: 1rem;
-  background: linear-gradient(120deg, #49a4ed 30%, #3d00a9 110%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.offcanvas-menu nav > div label {
-  width: 30px;
-  height: 30px;
-  display: flex !important;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
   cursor: pointer;
-  transition: 0.3s ease;
 }
-.offcanvas-menu nav > div label span,
-.offcanvas-menu nav > div label span:before,
-.offcanvas-menu nav > div label span:after {
-  background: #4d4d4d;
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
 }
-.offcanvas-menu nav > ul {
-  margin-top: 30px;
-  counter-reset: nav-link-count;
+.search label {
+  position: relative;
+  width: 100%;
 }
-.offcanvas-menu nav > ul li {
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  outline: none;
+  border: 1px solid var(--black2);
+  padding-left: 35px;
+  font-size: 18px;
+}
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2em;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
   cursor: pointer;
-  padding: 10px 0;
-  transform: translateX(-30px);
-  opacity: 0;
-  transition: 0.4s ease;
-  counter-increment: nav-link-count;
 }
-.offcanvas-menu nav > ul li a {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #333;
-  display: block;
-}
-/* .offcanvas-menu nav > ul li a::after {
-  content: " : " counter(nav-link-count);
-} */
-.offcanvas-menu nav > ul li:hover {
-  animation: hover 0.5s;
-}
-.offcanvas-menu input[type="checkbox"] {
-  display: none;
-}
-.offcanvas-menu input[type="checkbox"]:checked ~ label {
-  opacity: 0;
-  pointer-events: none;
-}
-.offcanvas-menu input[type="checkbox"]:checked ~ nav {
+.user img {
+  position: absolute;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav label span {
-  background: transparent;
+/* cards */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav label span:before {
-  transform: rotate(-45deg);
+.cardBox .card {
+  position: relative;
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav label span:after {
-  transform: rotate(45deg);
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: var(--blue);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav label span:before,
-.offcanvas-menu input[type="checkbox"]:checked ~ nav label span:after {
-  transition-delay: 0.2s;
+.cardBox .card .cardName {
+  /* position: relative; */
+  color: var(--black2);
+  font-size: 1.1em;
+  margin-top: 5px;
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li {
-  opacity: 1;
-  transform: translateX(0px);
+.cardBox .card .iconBx {
+  font-size: 3.3em;
+  color: var(--black2);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(1) {
-  transition-delay: 0.1s;
+.cardBox .card:hover {
+  background-color: var(--blue);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(2) {
-  transition-delay: 0.2s;
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(3) {
-  transition-delay: 0.3s;
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(4) {
-  transition-delay: 0.4s;
+.details .recentOrders {
+  position: relative;
+  /* width: 100%;*/
+  padding: 20px;
+  display: grid;
+  min-height: 250px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(5) {
-  transition-delay: 0.5s;
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(6) {
-  transition-delay: 0.6s;
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
 }
-.offcanvas-menu input[type="checkbox"]:checked ~ nav ul li:nth-child(7) {
-  transition-delay: 0.7s;
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 8px;
+}
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead {
+  background-color: var(--grey);
+  border-radius: 2px;
+}
+.details table thead td {
+  font-weight: 600;
+  /* padding: 8px 2px; */
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.details .recentCustomers {
+  position: relative;
+  /* width: 100%;*/
+  padding: 20px;
+  display: grid;
+  min-height: 250px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.details .recentCustomers .userImg {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  overflow: hidden;
+}
+.details .recentCustomers .userImg img {
+  object-fit: contain;
+}
+/* .details .recentCustomers .userDetils {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+
+.details .recentCustomers .userDetils strong,
+.details .recentCustomers .userDetils p {
+  padding: 12px 10px;
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+/* responsiveness */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    left: 0;
+    width: 300px;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .recentOrders {
+    overflow: auto;
+  }
+  .status {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardBox h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10000;
+  }
+  .main.active .toggle {
+    color: white;
+    position: fixed;
+    left: initial;
+  }
 }
