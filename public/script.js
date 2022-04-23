@@ -86,23 +86,26 @@ var landing = document.querySelector(".landing");
 var signup = document.querySelector("#signup-btn");
 var getStarted = document.querySelector("#get-started");
 var body = document.querySelector("body");
+
+//login button
 login.addEventListener("click", function (e) {
-  // window.location.location("http://localhost:8000/login");
   e.preventDefault();
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = login_template;
   header.classList.add("makeblur");
   landing.classList.add("makeblur");
-  //body.classList.add("removescroll");
+  body.classList.add("removescroll");
   var closebtn = document.querySelector(".closebtn");
   closebtn.addEventListener("click", function () {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
-    window.location.replace("http://localhost:8000");
-    //body.classList.remove("removescroll");
+    window.location.href = "/";
+    body.classList.remove("removescroll");
   });
 });
+
+//signup button
 signup.addEventListener("click", function (e) {
   e.preventDefault();
   //showTab(0);
@@ -110,16 +113,18 @@ signup.addEventListener("click", function (e) {
   document.getElementById("popups").innerHTML = signup_tempalate;
   header.classList.add("makeblur");
   landing.classList.add("makeblur");
-  //body.classList.add("removescroll");
+  body.classList.add("removescroll");
   var closebtn = document.querySelector(".closebtn");
   closebtn.addEventListener("click", function () {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
-    window.location.replace("http://localhost:8000");
-    //body.classList.remove("removescroll");
+    window.location.href = "/";
+    body.classList.remove("removescroll");
   });
 });
+
+//get started button
 getStarted.addEventListener("click", function () {
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = signup_tempalate;
@@ -136,6 +141,7 @@ getStarted.addEventListener("click", function () {
   });
 });
 
+//show password eye toggle function
 var state = false;
 function toggle() {
   if (state) {
