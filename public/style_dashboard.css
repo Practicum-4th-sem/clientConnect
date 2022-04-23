@@ -454,14 +454,6 @@ body {
   }
 }
 .slider .slides {
-  /*padding: 1vh 1vw;
-  margin: 5vh 1vw 0 !important;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  animation-timing-function: ease-in-out;
-  /**/
   overflow: hidden;
   display: block;
   height: auto;
@@ -478,12 +470,6 @@ body {
   font-weight: 700;
 }
 .slider img {
-  /* height: 75px !important; */
-  /* margin: 1vh 1vw !important;
-  max-width: 80% !important;
-  object-fit: contain;
-  max-height: 100% !important;
-  max-width: 100% !important; */
   display: block;
   margin: auto;
   /* width: 90%; */
