@@ -37,58 +37,6 @@ var signup_tempalate = `
       </button>
         </a>`;
 
-//multi step form template
-/*var signup_tempalate = ` <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
-        <ion-icon class="closebtn" name="close-outline"></ion-icon>
-        </h2> <h2><b>ClientConnect</b></h2></div>
-        <form id="regForm" action="/register" method="POST">
-      <h1>Register:</h1>
-
-      <!-- One "tab" for each step in the form: -->
-      <div class="tab">
-         Name:
-         <p>
-            <input placeholder="Name..." oninput="this.className = ''" />
-         </p>
-         Email:
-         <p><input placeholder="E-mail..." oninput="this.className = ''" /></p>
-         Password:
-         <p>
-            <input type="password" id="password" name="password">
-         </p>
-         Phone No:
-         <p><input placeholder="Phone..." oninput="this.className = ''" /></p>
-      </div>
-      <div class="tab">
-         <label for="" style="width:125px">Enter OTP: </label>
-         <input type="password" placeholder="OTP">
-         <a href="">
-            <button style="margin: 0.3rem;" class="btn btn-primary">Verify OTP</button>
-         </a>
-      </div>
-      <div class="tab">
-         <h2>Welcom to ClientConnect</h2>
-         <h3>you have successfully registered!</h3>
-         <h3>Submit to redirect</h3>
-      </div>
-
-      <div style="overflow: auto">
-         <div style="float: right">
-            <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">
-               Previous
-            </button>
-            <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-         </div>
-      </div>
-
-      <!-- Circles which indicates the steps of the form: -->
-      <div style="text-align: center; margin-top: 10px">
-         <span class="step"></span>
-         <span class="step"></span>
-         <span class="step"></span>
-      </div>
-   </form>
-        `;*/
 var login_template = `
       <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
@@ -113,7 +61,7 @@ var login_template = `
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
           aria-controls="collapseExample" id="phonelogin">Login with Phone No.</a>
         <!-- <button class="btn btn-primary">Login with Google</button> -->
-              
+
         <a href="/auth/google">
         <button type="button" class="login-with-google-btn">
         Sign in with Google
@@ -139,6 +87,7 @@ var signup = document.querySelector("#signup-btn");
 var getStarted = document.querySelector("#get-started");
 var body = document.querySelector("body");
 login.addEventListener("click", function (e) {
+  // window.location.location("http://localhost:8000/login");
   e.preventDefault();
   document.getElementById("popups").style.display = "block";
   document.getElementById("popups").innerHTML = login_template;
@@ -150,6 +99,7 @@ login.addEventListener("click", function (e) {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
+    window.location.replace("http://localhost:8000");
     //body.classList.remove("removescroll");
   });
 });
@@ -166,6 +116,7 @@ signup.addEventListener("click", function (e) {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
+    window.location.replace("http://localhost:8000");
     //body.classList.remove("removescroll");
   });
 });
@@ -180,6 +131,7 @@ getStarted.addEventListener("click", function () {
     document.getElementById("popups").style.display = "none";
     header.classList.remove("makeblur");
     landing.classList.remove("makeblur");
+    window.location.replace("http://localhost:8000");
     //body.classList.remove("removescroll");
   });
 });

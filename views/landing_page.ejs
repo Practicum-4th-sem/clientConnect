@@ -2,15 +2,155 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClientConnect</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- animate.css cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./newstyle.css">
+  <title>ClientConnect</title>
 </head>
 
 <body>
-    <!-- <a href="/auth/google">Login with Google</a> -->
-    <p>welcome after registretion</p>
+  <main class="main" style="position: relative;">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="logo">
+              <a href="/" style="display: flex;">
+                <img class="animate__animated animate__zoomIn" src="./logo.jpg" alt=""
+                  style="height: 100px; float: left;">
+                <h2 style="margin: auto 0 auto 0">ClientConnect</h2>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm">
+            <nav class="main-navgation flex-between flex-ver-top" style="display: flex; flex-direction: row-reverse;">
+              <!-- <div class="nav-links">
+              <a href="#">Buy</a>
+              <a href="#">Sell</a>
+              <a href="#"></a>
+            </div> -->
+              <div class="nav-buttons">
+                <a href="/login" id="login-btn" class="animate__animated animate__rubberBand log-in">Login</a>
+                <a href="/" id="signup-btn" class="animate__animated animate__rubberBand sign-up btn btn-sm">Sign Up</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Popups -->
+    <section id="popups">
+
+    </section>
+    <!-- Landing -->
+    <section class="landing">
+      <div class="landing-text">
+        <h1>Connecting Client, Providing Services</h1>
+        <p>
+          <strong>Buy or Sell</strong> services/products, all at one place, #ClientConnect
+        </p>
+        <a href="#" id="get-started" class="animate__animated animate__rubberBand btn btn-lg">Get Started</a>
+      </div>
+      <div class="landing-image">
+        <!-- <img
+          src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/illustration-working.svg"
+          alt="Working Illustration" /> -->
+        <img id="imgl" src="./Vector.png" alt="">
+        <img src="./client_resize.jpg" alt="">
+        <img src="./Vector-1.png" alt="" id="imgr">
+      </div>
+    </section>
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="more-features">
+        <div class="section-header">
+          <h2>Roles</h2>
+          <p>
+            User can act as a:-
+          </p>
+        </div>
+        <div class="more-features-content">
+          <div class="feature">
+            <div class="feature-illustration">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-brand-recognition.svg"
+                alt="Feature Illustration Icon" />
+            </div>
+            <div class="feature-details">
+              <h3>Customer</h3>
+              <p>
+                Get your job done by someone an experienced person.
+              </p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-illustration">
+              <img
+                src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-fully-customizable.svg"
+                alt="Feature Illustration Icon" />
+            </div>
+            <div class="feature-details">
+              <h3>Provider</h3>
+              <p>
+                You can provide service to others/sell your products.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer" id="resources">
+      <div class="container">
+        <!-- Website Logo -->
+        <div class="logo">
+          <a href="#">
+            <h2>ClientConnect</h2>
+          </a>
+        </div>
+        <!-- Quick Links -->
+        <div class="quick-links">
+          <div class="links-group">
+            <span>Resources</span>
+            <div>
+              <a href="#">Repository</a>
+              <a href="#">Developers</a>
+              <!-- <a href="#">Support</a> -->
+            </div>
+          </div>
+          <div class="links-group">
+            <span>Team</span>
+            <div>
+              <a href="#">Our Team</a>
+              <a href="#">Feedback</a>
+              <!-- <a href="#">Careers</a> -->
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/Practicum-4th-sem" style="font-size: 1.2rem;">
+          <i class="fa-brands fa-github icon" style="color: #fff;"></i>
+        </a>
+      </div>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!-- IONICONS CDN -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
