@@ -39,7 +39,7 @@
               <a href="#"></a>
             </div> -->
               <div class="nav-buttons">
-                <a href="/" id="login-btn" class="animate__animated animate__rubberBand log-in">Login</a>
+                <a href="/login" id="login-btn" class="animate__animated animate__rubberBand log-in">Login</a>
                 <a href="/" id="signup-btn" class="animate__animated animate__rubberBand sign-up btn btn-sm">Sign Up</a>
               </div>
             </nav>
@@ -49,7 +49,47 @@
     </header>
     <!-- Popups -->
     <section id="popups">
+      <!-- <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
+        <ion-icon class="closebtn" name="close-outline"></ion-icon>
+        </h2> <h2><b>ClientConnect</b></h2></div>
+      <form action="/log-dashboard" method="POST" style="display: flex; flex-direction: column;">
+        <label for="">Email</label>
+        <input type="email" name="email" placeholder="abc@xyz.com">
+        <label for="">Password</label>
+        <div style="position:relative">
+          <input type="password" id = "password" name="password">
+          <a href = '/forgotPassword'><span>forgot password?</span></a>
+          <span>
+          <i class="fa-solid fa-eye" id = "open" style = "cursor: pointer" onClick = "toggle()"></i>
+          <i class="fa-solid fa-eye-slash" id = "close" style = "display: none; cursor: pointer" onClick = "toggle()"></i>
+          </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-sm" style="width:120px">Login</button>
+      </form>
+      <hr />
+      <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+          aria-controls="collapseExample" id="phonelogin">Login with Phone No.</a> -->
+        <!-- <button class="btn btn-primary">Login with Google</button> -->
 
+        <!-- <a href="/auth/google">
+        <button type="button" class="login-with-google-btn">
+        Sign in with Google
+        </button>
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form action="" style="display:flex;flex-direction:column; flex-wrap:wrap">
+            <div><label for="Phone" style="width:125px">Phone Number: </label>
+            <input maxlength="10" placeholder="Phone..">
+            <button class="btn btn-primary">Send OTP</button></div>
+          <div>  <label for="" style="width:125px">Enter OTP: </label>
+            <input type="password" placeholder="OTP"></div>
+          </form>
+        </div>
+      </div> -->
     </section>
     <!-- Landing -->
     <section class="landing">

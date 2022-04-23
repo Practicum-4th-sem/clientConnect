@@ -1,8 +1,8 @@
 const User = require("../models/userModel");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
-
 const Db = require("../models/userModel");
+
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -14,8 +14,11 @@ const authcheck = (req, res, next) => {
 };
 
 router.get("/", (req, res) => {
-  res.render("login");
+  res.render("landing_page");
 });
+// router.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
 // ------------------- Routing for dashboard using google oauth--------------------
 router.get("/dashboard", authcheck, (req, res) => {
