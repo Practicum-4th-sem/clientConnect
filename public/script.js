@@ -41,7 +41,7 @@ var login_template = `
       <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
         </h2> <h2><b>ClientConnect</b></h2></div>
-      <form action="/log-dashboard" method="POST" style="display: flex; flex-direction: column;">
+      <form action="/login" method="POST" style="display: flex; flex-direction: column;">
         <label for="">Email</label>
         <input type="email" name="email" placeholder="abc@xyz.com">
         <label for="">Password</label>
