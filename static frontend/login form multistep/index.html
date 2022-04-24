@@ -30,14 +30,15 @@
                <br>
                <a href="">Forgot Password?</a>
             </p>
-
+            <br>
             <!-- login with google -->
-            <a href=""><button class="btn btn-light" style="border: 1px solid rgba(0,0,0,0.5);"><img
+            <a href=""><button type="button" class="btn btn-light" style="border: 1px solid rgba(0,0,0,0.5);"><img
                      src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
                      alt="" height="20px">Login with Google</button></a>
 
             <!-- login with phone -->
-            <button onclick="phoneDisplay()" class="btn btn-primary" style="border: 1px solid rgba(0,0,0,0.5);">Login
+            <button type="button" onclick="phoneDisplay()" class="btn btn-primary"
+               style="border: 1px solid rgba(0,0,0,0.5);" id="nextBtn" onclick="nextPrev(1)">Login
                with Phone
                No.</button>
             <div class="phoneno">
@@ -68,9 +69,9 @@
                <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">
                   Previous
                </button>
-               <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">
+               <!-- <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">
                   Next
-               </button>
+               </button> -->
             </div>
          </div>
 
