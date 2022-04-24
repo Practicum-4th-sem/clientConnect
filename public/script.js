@@ -2,7 +2,7 @@ var signup_tempalate = `
         <div style="display:flex; flex-direction:row; justify-content:space-between"><h2>
         <ion-icon class="closebtn" name="close-outline"></ion-icon>
         </h2> <h2><b>ClientConnect</b></h2></div>
-        <form action="/reg-dashboard" method="POST" id="signup">
+        <form action="/register" method="POST" id="signup">
         <div class="signup-div">
         <div>
         <label for="Phone">Name:</label>

@@ -110,7 +110,15 @@ exports.login = async (req, res, next) => {
 // };
 
 exports.protect = (req, res, next) => {
-  const token = req.cookies.jwt;
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {

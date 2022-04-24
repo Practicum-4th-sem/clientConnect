@@ -5,14 +5,6 @@ const Db = require("../models/userModel");
 
 const router = require("express").Router();
 
-const authcheck = (req, res, next) => {
-  if (!req.user) {
-    res.redirect("/");
-  } else {
-    next();
-  }
-};
-
 router.get("/", (req, res) => {
   res.render("landing_page");
 });
@@ -20,32 +12,9 @@ router.get("/", (req, res) => {
 //   res.render("login");
 // });
 
-// ------------------- Routing for dashboard using google oauth--------------------
-router.get("/dashboard", authcheck, (req, res) => {
-  const UserDetails = req.user;
-  res.render("dashboard", {
-    naam: UserDetails.name,
-    gmail: UserDetails.email,
-    pic: UserDetails.photo,
-    phone: "",
-  });
-});
-// ------------------- end of Routing for dashboard using google oauth--------------------
-
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
-router.post("/reg-dashboard", authController.register, (req, res) => {
-  console.log(req.body);
-  userdetails = req.body;
-  res.render("dashboard", {
-    naam: req.body.name,
-    gmail: req.body.email,
-    phone: req.body.phone,
-    pic: "",
-  });
-});
-
-router.get("/reg-dashboard", (req, res) => {
+router.get("/dashboard", authController.protect, (req, res) => {
   res.render("dashboard", {
     naam: userdetails.name,
     gmail: userdetails.email,
@@ -53,6 +22,12 @@ router.get("/reg-dashboard", (req, res) => {
     pic: "",
   });
 });
+router.post("/register", authController.register, (req, res) => {
+  // console.log(req.body);
+  userdetails = req.body;
+  res.redirect("/dashboard");
+});
+
 // -----------------------end of Routing for dashboard using Register ----------------------------------
 
 // -----------------------Routing for dashboard using login ----------------------------------
