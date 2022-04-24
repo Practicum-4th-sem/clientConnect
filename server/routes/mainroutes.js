@@ -17,7 +17,7 @@ var userdetails;
 router.get("/dashboard", authController.protect, (req, res) => {
   console.log(userdetails);
   res.render("dashboard", {
-    id: userdetails._id + "",
+    // id: userdetails._id + "",
     naam: userdetails.name,
     gmail: userdetails.email,
     phone: userdetails.phone,
