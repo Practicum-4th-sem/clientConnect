@@ -15,15 +15,20 @@ router.get("/", (req, res) => {
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
 router.get("/dashboard", authController.protect, (req, res) => {
+  console.log(userdetails);
   res.render("dashboard", {
+    id: userdetails._id + "",
     naam: userdetails.name,
     gmail: userdetails.email,
     phone: userdetails.phone,
-    pic: "",
+    pic: userdetails.photo,
   });
 });
-router.post("/register", authController.register, (req, res) => {
-  userdetails = req.body;
+router.post("/register", authController.register, async (req, res) => {
+  let oldUser = await User.find({ email: req.body.email });
+  oldUser.forEach((obj) => {
+    userdetails = obj;
+  });
   res.redirect("/dashboard");
 });
 
@@ -41,14 +46,14 @@ router.post("/login", authController.login, async (req, res) => {
 
 // -----------------------Routing for Profile ----------------------------------
 router.get("/profile/:id", authController.protect, async (req, res) => {
-  let oldUser = await User.findById(req.params.id);
-  // oldUser.forEach((obj) => {
-  //   userdetails = obj;
-  // });
-  // console.log(oldUser);
-  // userdetails = oldUser;
-  // console.log(userdetails);
-  res.render("profile");
+  const user = await User.findById(req.params.id);
+  console.log(user, req.params.id);
+  res.render("profile", {
+    id: req.params.id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+  });
 });
 // -----------------------end of Routing for Profile ----------------------------------
 
