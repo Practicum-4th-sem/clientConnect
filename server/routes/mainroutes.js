@@ -34,26 +34,19 @@ router.get("/Odashboard", authcheck, (req, res) => {
 
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
-router.get("/dashboard", authController.protect, (req, res) => {
+router.get("/dashboard", authController.protect, async (req, res) => {
+  let oldUser = await User.find({ email: req.body.email });
+  oldUser.forEach((obj) => {
+    userdetails = obj;
+  });
   console.log(userdetails);
-  // if (authcheck) {
-  //   userdetails = req.user;
-  //   res.render("dashboard", {
-  //     // id: userdetails._id + "",
-  //     naam: userdetails.name,
-  //     gmail: userdetails.email,
-  //     phone: userdetails.phone,
-  //     pic: userdetails.photo,
-  //   });
-  // } else {
   res.render("dashboard", {
-    // id: userdetails._id + "",
+    id: userdetails._id + "",
     naam: userdetails.name,
     gmail: userdetails.email,
     phone: userdetails.phone,
     pic: userdetails.photo,
   });
-  // }
 });
 router.post("/register", authController.register, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
@@ -77,14 +70,18 @@ router.post("/login", authController.login, async (req, res) => {
 
 // -----------------------Routing for Profile ----------------------------------
 router.get("/profile/:id", authController.protect, async (req, res) => {
-  const user = await User.findById(req.params.id);
-  console.log(user, req.params.id);
-  res.render("profile", {
-    id: req.params.id,
-    name: user.name,
-    email: user.email,
-    phone: user.phone,
-  });
+  let user;
+  if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    user = await User.findById(req.params.id);
+    console.log(user, req.params.id);
+
+    res.render("profile", {
+      id: req.params.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+    });
+  }
 });
 // -----------------------end of Routing for Profile ----------------------------------
 
