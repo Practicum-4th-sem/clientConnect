@@ -42,7 +42,7 @@ router.get("/O-profile", authcheck, async (req, res) => {
 
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
-router.get("/+dashboard", authController.protect, async (req, res) => {
+router.get("/dashboard", authController.protect, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
   oldUser.forEach((obj) => {
     userdetails = obj;
