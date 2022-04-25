@@ -26,13 +26,17 @@ router.get("/Odashboard", authcheck, async (req, res) => {
   const UserDetails = req.user;
   let auth_olduser = await authuser.find({ email: UserDetails.email });
   // console.log(auth_olduser);
-  res.render("dashboard", {
-    id: auth_olduser._id + "",
-    naam: UserDetails.name,
-    gmail: UserDetails.email,
-    pic: UserDetails.photo,
-    phone: "",
-  });
+  try {
+    res.render("dashboard", {
+      id: auth_olduser._id + "",
+      naam: UserDetails.name,
+      gmail: UserDetails.email,
+      pic: UserDetails.photo,
+      phone: "",
+    });
+  } catch (error) {
+    res.redirect("/");
+  }
 });
 router.get("/O-profile", authcheck, async (req, res) => {
   console.log(req.body);
@@ -48,14 +52,19 @@ router.get("/dashboard", authController.protect, async (req, res) => {
     userdetails = obj;
   });
   // console.log("params are " + req.params);
-  res.render("dashboard", {
-    id: userdetails._id + "",
-    naam: userdetails.name,
-    gmail: userdetails.email,
-    phone: userdetails.phone,
-    pic: userdetails.photo,
-  });
+  try {
+    res.render("dashboard", {
+      id: userdetails._id + "",
+      naam: userdetails.name,
+      gmail: userdetails.email,
+      phone: userdetails.phone,
+      pic: userdetails.photo,
+    });
+  } catch (err) {
+    res.redirect("/");
+  }
 });
+
 router.post("/register", authController.register, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
   oldUser.forEach((obj) => {
