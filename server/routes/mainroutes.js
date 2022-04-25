@@ -47,17 +47,21 @@ router.get("/Odashboard", authcheck, async (req, res) => {
 var dbuser;
 router.get("/O-profile/:id", authcheck, async (req, res) => {
   // res.send(req.body);
-  let user;
-  if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-    user = await authuser.findById(req.params.id);
-    // console.log(user, req.params.id);
+  let dbuser;
+  dbuser = await authuser.findById(UserDetails);
+
+  try {
     res.render("auth-profile", {
-      id: req.params.id,
-      name: user.name,
-      pic: user.photo,
-      email: user.email
+      id: dbuser._id,
+      name: dbuser.name,
+      pic: dbuser.photo,
+      email: dbuser.email
     });
+  } catch (error) {
+    console.log(error);
   }
+  // console.log(user, req.params.id);
+
 });
 // ------------------- end of Routing for dashboard using google oauth--------------------
 
@@ -107,12 +111,17 @@ router.get("/profile/:id", authController.protect, async (req, res) => {
     user = await User.findById(req.params.id);
     // console.log(user, req.params.id);
 
-    res.render("profile", {
-      id: req.params.id,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-    });
+    try {
+      res.render("profile", {
+        id: req.params.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+      });
+    } catch (error) {
+      console.log
+        (error.message)
+    }
   }
 });
 // -----------------------end of Routing for Profile ----------------------------------
