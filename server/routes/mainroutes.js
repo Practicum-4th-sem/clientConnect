@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const Db = require("../models/userModel");
+const authuser = require("../models/authModel");
 
 const router = require("express").Router();
 
@@ -21,25 +22,32 @@ router.get("/", (req, res) => {
 // });
 
 // ------------------- Routing for dashboard using google oauth--------------------
-router.get("/Odashboard", authcheck, (req, res) => {
+router.get("/Odashboard", authcheck, async (req, res) => {
   const UserDetails = req.user;
+  let auth_olduser = await authuser.find({ email: UserDetails.email });
+  // console.log(auth_olduser);
   res.render("dashboard", {
+    id: auth_olduser._id + "",
     naam: UserDetails.name,
     gmail: UserDetails.email,
     pic: UserDetails.photo,
     phone: "",
   });
 });
+router.get("/O-profile", authcheck, async (req, res) => {
+  console.log(req.body);
+  // const old-auth-user= await authuser.find({email:req.body.email});
+});
 // ------------------- end of Routing for dashboard using google oauth--------------------
 
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
-router.get("/dashboard", authController.protect, async (req, res) => {
+router.get("/+dashboard", authController.protect, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
   oldUser.forEach((obj) => {
     userdetails = obj;
   });
-  console.log(userdetails);
+  // console.log("params are " + req.params);
   res.render("dashboard", {
     id: userdetails._id + "",
     naam: userdetails.name,
@@ -73,7 +81,7 @@ router.get("/profile/:id", authController.protect, async (req, res) => {
   let user;
   if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     user = await User.findById(req.params.id);
-    console.log(user, req.params.id);
+    // console.log(user, req.params.id);
 
     res.render("profile", {
       id: req.params.id,
