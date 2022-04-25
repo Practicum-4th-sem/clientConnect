@@ -125,7 +125,7 @@ exports.protect = (req, res, next) => {
         console.log(err.message);
         res.redirect("/");
       } else {
-        console.log(decodedToken);
+        // console.log(decodedToken);
         next();
       }
     });
