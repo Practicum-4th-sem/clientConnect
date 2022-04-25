@@ -22,25 +22,42 @@ router.get("/", (req, res) => {
 // });
 
 // ------------------- Routing for dashboard using google oauth--------------------
+
+var UserDetails;
 router.get("/Odashboard", authcheck, async (req, res) => {
-  const UserDetails = req.user;
+  UserDetails = req.user;
   let auth_olduser = await authuser.find({ email: UserDetails.email });
-  // console.log(auth_olduser);
+  // console.log(req.path);
+  auth_olduser.forEach((obj) => {
+    UserDetails = obj;
+  });
+  // console.log(UserDetails.id);
   try {
-    res.render("dashboard", {
-      id: auth_olduser._id + "",
+    res.render("auth-dashboard", {
+      id: UserDetails._id,
       naam: UserDetails.name,
       gmail: UserDetails.email,
       pic: UserDetails.photo,
-      phone: "",
     });
   } catch (error) {
     res.redirect("/");
   }
 });
-router.get("/O-profile", authcheck, async (req, res) => {
-  console.log(req.body);
-  // const old-auth-user= await authuser.find({email:req.body.email});
+
+var dbuser;
+router.get("/O-profile/:id", authcheck, async (req, res) => {
+  // res.send(req.body);
+  let user;
+  if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    user = await authuser.findById(req.params.id);
+    // console.log(user, req.params.id);
+    res.render("auth-profile", {
+      id: req.params.id,
+      name: user.name,
+      pic: user.photo,
+      email: user.email
+    });
+  }
 });
 // ------------------- end of Routing for dashboard using google oauth--------------------
 
@@ -51,14 +68,12 @@ router.get("/dashboard", authController.protect, async (req, res) => {
   oldUser.forEach((obj) => {
     userdetails = obj;
   });
-  // console.log("params are " + req.params);
   try {
     res.render("dashboard", {
       id: userdetails._id + "",
       naam: userdetails.name,
       gmail: userdetails.email,
       phone: userdetails.phone,
-      pic: userdetails.photo,
     });
   } catch (err) {
     res.redirect("/");
