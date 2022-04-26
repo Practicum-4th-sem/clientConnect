@@ -55,13 +55,12 @@ router.get("/O-profile/:id", authcheck, async (req, res) => {
       id: dbuser._id,
       name: dbuser.name,
       pic: dbuser.photo,
-      email: dbuser.email
+      email: dbuser.email,
     });
   } catch (error) {
     console.log(error);
   }
   // console.log(user, req.params.id);
-
 });
 // ------------------- end of Routing for dashboard using google oauth--------------------
 
@@ -78,6 +77,7 @@ router.get("/dashboard", authController.protect, async (req, res) => {
       naam: userdetails.name,
       gmail: userdetails.email,
       phone: userdetails.phone,
+      pic: userdetails.photo,
     });
   } catch (err) {
     res.redirect("/");
@@ -109,29 +109,43 @@ router.get("/profile/:id", authController.protect, async (req, res) => {
   let user;
   if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     user = await User.findById(req.params.id);
-    // console.log(user, req.params.id);
-
     try {
       res.render("profile", {
         id: req.params.id,
         name: user.name,
         email: user.email,
         phone: user.phone,
+        pic: user.photo,
       });
     } catch (error) {
-      console.log
-        (error.message)
+      console.log(error.message);
     }
   }
 });
 // -----------------------end of Routing for Profile ----------------------------------
 
-router.patch(
-  "/updateProfile/:id",
-  authController.protect,
-  userController.upload.single("photo"),
-  userController.updateMe
-);
+router.post("/uploadPhoto", authController.protect, (req, res) => {
+  userController.upload(req, res, async (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const user = await User.findById(res.locals.id);
+      user.photo = req.file.filename;
+      await user.save();
+      console.log(user);
+    }
+  });
+});
+
+// router.post(
+//   "/updateProfile",
+// authController.protect,
+// userController.upload,
+// userController.updateMe,
+// (req, res) => {
+// res.redirect("/profile")
+//   }
+// );
 router.post("/verifyOtp", authController.verifyOTP);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword", authController.resetPassword);

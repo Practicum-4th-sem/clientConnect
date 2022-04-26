@@ -126,6 +126,7 @@ exports.protect = (req, res, next) => {
         res.redirect("/");
       } else {
         // console.log(decodedToken);
+        res.locals.id = decodedToken.sub;
         next();
       }
     });
