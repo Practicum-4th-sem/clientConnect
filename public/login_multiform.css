@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+/* CSS TO BE ADDED TO ALL STYLESHEETS */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit;
+  background-clip: padding-box;
+  padding: 1px !important;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00000073;
+  border-radius: 10px;
+  background-clip: padding-box;
+  padding: 1px !important;
+}
+
+/* SCROLLBAR END */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  /* filter: grayscale(100%) blur(5px); */
+  background: url(./gradient.jpg);
+}
+
+h1 {
+  margin: 1rem;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  margin: 15px auto;
+  /* width: max-content; */
+}
+
+/* Style the form */
+#regForm {
+  background-color: transparent;
+  margin: 10px auto;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+/* Style the input fields */
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* UPTO HERE */
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04aa6d;
+}
+.phoneno {
+  display: none;
+}
+.show {
+  display: block;
+}
+input {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.5rem;
+  padding-right: 0;
+  margin: 1rem 0;
+  /* width: 100%; */
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  color: #000;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  /* max-width: 500px; */
+}
+.btn {
+  margin: 0.5rem !important;
+  display: inline-block;
+  color: white;
+  background-color: #2acfcf;
+  text-transform: capitalize;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.3s;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+
+  background: rgba(11, 11, 80, 0.6);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
