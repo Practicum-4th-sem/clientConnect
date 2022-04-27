@@ -10,29 +10,36 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css" />
     <link rel="stylesheet" href="./login_multiform.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
     <h1>Welcome to ClientConnect</h1>
     <div class="container">
-        <form id="regForm" action="/login" method="post">
+        <form id="regForm" action="/login" method="POST">
             <h1>Login</h1>
 
             <!-- One "tab" for each step in the form: -->
             <div class="tab">
                 Email:
                 <p>
-                    <input type="email" placeholder="E-mail..." oninput="this.className = ''" />
+                    <input type="email" name="email" placeholder="E-mail..." oninput="this.className = ''" />
                 </p>
                 Password:
                 <p style="position: relative;">
                     <input type="password" id="password" name="password" />
-                    <b style="color: rgba(0,0,0,0.3);cursor: pointer;" onclick="toggle()">Show Password</b> &nbsp;
+                    <span>
+                        <i class="fa-solid fa-eye" id="open" style="cursor: pointer" onClick="eye_toggle()"></i>
+                        <i class="fa-solid fa-eye-slash" id="close" style="display: none; cursor: pointer"
+                            onClick="eye_toggle()"></i>
+                    </span>
+                    <!-- <b style="color: rgba(0,0,0,0.3);cursor: pointer;" onclick="toggle()">Show Password</b> &nbsp; -->
                     &nbsp;
                     <a href="">Forgot Password?</a>
                     <br>
                     <!-- sign in button -->
-                    <button type="button" class="btn btn-primary" onclick="nextPrev(2)">Sign In</button>
+                    <button class="btn btn-primary" onclick="nextPrev(2)">Sign In</button>
                 </p>
                 <br>
                 <!-- login with google -->
@@ -56,7 +63,8 @@
                 </div>
                 <br>
                 <!-- not registered -->
-                <p style="color: rgba(0,0,0,0.5);">Not Registered?&nbsp;<a href="/login">Click Here to Sign Up</a></p>
+                <p style="color: rgba(0,0,0,0.5);">Not Registered?&nbsp;<a href="/register">Click Here to Sign Up</a>
+                </p>
             </div>
             <!-- tab 2: verify otp iff using login with phone -->
             <div class="tab">
@@ -70,12 +78,12 @@
                 </a>
             </div>
             <!-- tab 3: submit -->
-            <div class="tab">
+            <div class="tab" onclick="countdown()">
                 <h2>Welcom to ClientConnect</h2>
                 <h3>you have successfully registered!</h3>
-                <h3>Submit to redirect</h3>
                 <!-- submit button -->
-                <button href="/login" type="button" class="btn btn-primary">Submit</button>
+                <!-- <button class="btn btn-primary">Submit</button> -->
+                <p>You'll be redirecting to the dashboard...</p>
             </div>
 
             <div style="overflow: auto">
@@ -121,6 +129,21 @@
         const phoneDisplay = () => {
             document.querySelector(".phoneno").classList.toggle("show");
         }
+        var state = false;
+        function eye_toggle() {
+            if (state) {
+                document.getElementById("password").setAttribute("type", "password");
+                state = false;
+                document.getElementById("open").style.display = "inline-block";
+                document.getElementById("close").style.display = "none";
+            } else {
+                document.getElementById("password").setAttribute("type", "text");
+                state = true;
+                document.getElementById("open").style.display = "none";
+                document.getElementById("close").style.display = "inline-block";
+            }
+        }
+
     </script>
 </body>
 

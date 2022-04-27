@@ -105,11 +105,16 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", authController.login, async (req, res) => {
+  // console.log(req.body);
   let oldUser = await User.find({ email: req.body.email });
+
   oldUser.forEach((obj) => {
     userdetails = obj;
   });
-  res.redirect("/dashboard");
+  setTimeout(() => {
+    res.redirect("/dashboard");
+  }, 4000);
+
 });
 // -----------------------end of routing for dashboard using login ----------------------------------
 
