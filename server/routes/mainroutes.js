@@ -132,6 +132,7 @@ router.post("/uploadPhoto", authController.protect, (req, res) => {
       const user = await User.findById(res.locals.id);
       user.photo = req.file.filename;
       await user.save();
+      res.redirect(`/profile/${res.locals.id}`);
       console.log(user);
     }
   });
