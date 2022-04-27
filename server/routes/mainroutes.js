@@ -138,15 +138,15 @@ router.post("/uploadPhoto", authController.protect, (req, res) => {
   });
 });
 
-// router.post(
-//   "/updateProfile",
-// authController.protect,
-// userController.upload,
-// userController.updateMe,
-// (req, res) => {
-// res.redirect("/profile")
-//   }
-// );
+router.patch(
+  "/updateProfile",
+  authController.protect,
+  userController.updateMe,
+  (req, res) => {
+    console.log("success");
+    res.redirect(`/profile/${res.locals.id}`);
+  }
+);
 router.post("/verifyOtp", authController.verifyOTP);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword", authController.resetPassword);
