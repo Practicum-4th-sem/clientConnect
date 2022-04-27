@@ -6,7 +6,7 @@ const fs = require("fs");
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
-  Object.keys[obj].forEach((el) => {
+  Object.keys(obj).forEach((el) => {
     if (allowedFields.includes(el)) {
       newObj[el] = obj[el];
     }
@@ -66,30 +66,36 @@ exports.getUser = async (req, res, next) => {
 };
 
 exports.updateMe = async (req, res, next) => {
-  //1) create error if user postd password data
-  if (req.body.password) {
-    throw new Error(
-      "Cannot update password here. Please route to /resetPassword"
-    );
-  }
+  try {
+    //1) create error if user postd password data
+    if (req.body.password) {
+      throw new Error(
+        "Cannot update password here. Please route to /resetPassword"
+      );
+    }
 
-  // updating user
-  const filteredBody = filterObj(req.body, "name", "email");
-  const updatedUser = await User.findByIdAndUpdate(
-    req.params.id,
-    filteredBody,
-    {
+    // updating user
+    const newObj = {};
+    Object.keys(req.query).forEach((el) => {
+      if (el != "password" && el != "user") {
+        newObj[el] = req.body[el];
+      }
+    });
+    // const user = await User.find({})
+    const updatedUser = await User.findByIdAndUpdate(res.locals.id, newObj, {
       new: true,
       runValidators: true,
-    }
-  );
+    });
 
-  res.status(200).json({
-    status: "success",
-    data: {
-      user: updatedUser,
-    },
-  });
+    res.status(200).json({
+      status: "success",
+      data: {
+        user: updatedUser,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.deleteUser = async (req, res) => {
