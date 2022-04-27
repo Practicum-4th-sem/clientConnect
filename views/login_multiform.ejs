@@ -15,7 +15,7 @@
 <body>
     <h1>Welcome to ClientConnect</h1>
     <div class="container">
-        <form id="regForm" action="" method="">
+        <form id="regForm" action="/login" method="post">
             <h1>Login</h1>
 
             <!-- One "tab" for each step in the form: -->
@@ -36,7 +36,8 @@
                 </p>
                 <br>
                 <!-- login with google -->
-                <a href=""><button type="button" class="btn btn-light" style="border: 1px solid rgba(0,0,0,0.5);"><img
+                <a href="/auth/google"><button type="button" class="btn btn-light"
+                        style="border: 1px solid rgba(0,0,0,0.5);"><img
                             src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
                             alt="" height="20px">Login with Google</button></a>
 
@@ -74,7 +75,7 @@
                 <h3>you have successfully registered!</h3>
                 <h3>Submit to redirect</h3>
                 <!-- submit button -->
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button href="/login" type="button" class="btn btn-primary">Submit</button>
             </div>
 
             <div style="overflow: auto">
@@ -123,4 +124,4 @@
     </script>
 </body>
 
-</html>login_multiform.
+</html>

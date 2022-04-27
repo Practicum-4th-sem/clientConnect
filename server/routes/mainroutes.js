@@ -84,6 +84,10 @@ router.get("/dashboard", authController.protect, async (req, res) => {
   }
 });
 
+router.get("/register", (req, res) => {
+  res.render("signup_multiform");
+});
+
 router.post("/register", authController.register, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
   oldUser.forEach((obj) => {
@@ -95,6 +99,11 @@ router.post("/register", authController.register, async (req, res) => {
 // -----------------------end of Routing for dashboard using Register ----------------------------------
 
 // -----------------------Routing for dashboard using login ----------------------------------
+
+router.get("/login", (req, res) => {
+  res.render("login_multiform");
+});
+
 router.post("/login", authController.login, async (req, res) => {
   let oldUser = await User.find({ email: req.body.email });
   oldUser.forEach((obj) => {
