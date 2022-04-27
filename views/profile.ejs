@@ -139,7 +139,7 @@
             </div>
             <div class="col-sm-7">
               <div class="p-3 border bg-light content-box">
-                <form onsubmit="submitHandler()">
+                <form action="/updateProfile" method="post">
                   <legend>Personal Info</legend>
                   <div>
                     <p>Name:</p>
@@ -171,11 +171,8 @@
                       onchange="changeHandler(this.name, this.value)"
                     />
                   </div>
-                  <button class="cta" type="submit">
-                    <span>Save Changes</span>
-                  </button>
 
-                  <!-- <div>
+                  <div>
                     <p>Expertise:</p>
                     <div class="to_add" id="toadd">
                       <div class="comp mb-3">
@@ -188,12 +185,12 @@
                         </div>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
                   <br />
                   <br />
-                  <!-- <button class="cta" type="submit">
+                  <button class="cta" type="submit">
                     <span>Save Changes</span>
-                  </button> -->
+                  </button>
                 </form>
               </div>
             </div>
@@ -230,8 +227,5 @@
         // ye input ko db me store kara lena
       }
     </script>
-
-    <!-- <script src="node_modules/axios/dist/axios.min.js"></script> -->
-    <script src="/profile.js"></script>
   </body>
 </html>

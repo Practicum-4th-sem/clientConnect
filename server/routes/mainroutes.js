@@ -138,10 +138,19 @@ router.post("/uploadPhoto", authController.protect, (req, res) => {
   });
 });
 
-router.patch(
+router.post(
   "/updateProfile",
   authController.protect,
-  userController.updateMe,
+  // userController.updateMe,
+  async function (req, res, next) {
+    const user = await User.findByIdAndUpdate(res.locals.id, {
+      name: req.body.name,
+      phone: req.body.phone,
+      email: req.body.email,
+    });
+    console.log(user);
+    next();
+  },
   (req, res) => {
     console.log("success");
     res.redirect(`/profile/${res.locals.id}`);
