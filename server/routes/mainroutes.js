@@ -1,6 +1,8 @@
 const User = require("../models/userModel");
+const Post = require("../models/postModel");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+const postController = require("../controllers/postController");
 const Db = require("../models/userModel");
 const authuser = require("../models/authModel");
 
@@ -114,7 +116,6 @@ router.post("/login", authController.login, async (req, res) => {
   setTimeout(() => {
     res.redirect("/dashboard");
   }, 4000);
-
 });
 // -----------------------end of routing for dashboard using login ----------------------------------
 
@@ -191,4 +192,10 @@ router.delete(
     res.redirect("/");
   }
 );
+
+router.get("/createPost", (req, res) => {
+  res.render("create-post");
+});
+
+router.post("/createPost", postController.newPost);
 module.exports = router;
