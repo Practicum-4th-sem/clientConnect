@@ -6,6 +6,7 @@ const postController = require("../controllers/postController");
 const Db = require("../models/userModel");
 const authuser = require("../models/authModel");
 const selectOptions = require("../../public/post");
+const { sendOtp } = require("../utils/twilio");
 
 const router = require("express").Router();
 
@@ -204,7 +205,4 @@ router.post("/createPost", postController.newPost, (req, res) => {
   res.redirect("/dashboard");
 });
 
-router.get("/page", (req, res) => {
-  res.render("notfound");
-});
 module.exports = router;
