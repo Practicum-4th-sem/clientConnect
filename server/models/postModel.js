@@ -14,6 +14,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     enum: ["service", "product"],
     default: "product",
+    required: [true, "Please provide a category"],
   },
   image: {
     type: Array,

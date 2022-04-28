@@ -5,11 +5,10 @@ exports.newPost = async (req, res, next) => {
     const post = new Post({
       name: req.body.name,
       price: req.body.price,
-      role: req.body.price,
+      role: req.body.role,
       description: req.body.description,
     });
     await post.save();
-    console.log(post);
     next();
   } catch (err) {
     console.log(err.message);
