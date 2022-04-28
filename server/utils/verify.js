@@ -1,7 +1,6 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
 const User = require("./../models/userModel");
-const sendSms = require("../utils/twilio");
+const { sendOtp } = require("../utils/twilio");
 
 exports.generateOtp = () => {
   var digits = "0123456789";
@@ -12,13 +11,13 @@ exports.generateOtp = () => {
   return OTP;
 };
 
-exports.sendOtp = async (phone) => {
+exports.sendotp = async (phone) => {
   const user = await User.findOne({ phone });
   const otpString = this.generateOtp();
   user.otp = otpString;
   await user.save();
   console.log(otpString);
-  sendSms(phone, otpString);
+  sendOtp(phone);
 };
 
 // const accountSid = process.env.TWILIO_ACCOUNT_SID;

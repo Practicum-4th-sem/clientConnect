@@ -2,10 +2,9 @@ const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const crypto = require("crypto");
-const sendSms = require("../utils/twilio");
 const sendEmail = require("../utils/email");
-const { sendOtp } = require("../utils/verify");
-const { deleteUser } = require("./userController");
+// const { sendotp } = require("../utils/verify");
+const { sendOtp } = require("../utils/twilio");
 
 function issueToken(res, user) {
   const id = user._id;
@@ -35,7 +34,7 @@ exports.register = async (req, res, next) => {
 
     // let otp = ;
     // user.otp = otp;
-    sendOtp(user.phone);
+    sendOtp(req.body.phone);
     // if (await this.verifyOTP(req)) {
     // await user.save();
     // sendSms(user.phone, `hello from client connect.`);

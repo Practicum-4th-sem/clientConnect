@@ -2,16 +2,57 @@ require("dotenv").config();
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require("twilio")(accountSid, authToken);
 
-const sendSms = (phone, message) => {
-  const client = require("twilio")(accountSid, authToken);
-  client.messages
-    .create({
-      body: message,
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: phone,
+exports.sendOtp = (phone) => {
+  client.verify
+    .services("VA6b4fd45f8163b3bcf09f008a031be7dd")
+    .verifications.create({
+      to: `+91${phone}`,
+      channel: "sms",
     })
-    .then((message) => console.log(message.sid));
+    .then((data) => {
+      res.status(200).json({ data });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
 };
 
-module.exports = sendSms;
+exports.verifyOtp = (req, res) => {
+  if (req.body.phone && req.body.code.length === 6) {
+    client.verify
+      .services(VA6b4fd45f8163b3bcf09f008a031be7dd)
+      .verificationChecks.create({
+        to: `+91${req.body.phone}`,
+        code: req.body.code,
+      })
+      .then((data) => {
+        if (data.status === "approved") {
+          res.status(200).json({
+            message: "User is Verified!!",
+            data,
+          });
+        }
+      });
+  } else {
+    res.status(400).json({
+      message: "Wrong phone number or code :(",
+      phonenumber: req.query.phone,
+      data,
+    });
+  }
+};
+
+// module.exports = sendSms;
+
+// const sendSms = (phone, message) => {
+
+//   client.messages
+//     .create({
+//       body: message,
+//       from: process.env.TWILIO_PHONE_NUMBER,
+//       to: phone,
+//     })
+//     .then((message) => console.log(message.sid));
+// };
