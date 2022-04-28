@@ -1,10 +1,11 @@
 const User = require("../models/userModel");
-const Post = require("../models/postModel");
+
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
 const Db = require("../models/userModel");
 const authuser = require("../models/authModel");
+const selectOptions = require("../../public/post");
 
 const router = require("express").Router();
 
@@ -194,10 +195,16 @@ router.delete(
 );
 
 router.get("/createPost", (req, res) => {
-  res.render("create-post");
+  res.render("create-post", {
+    selectOptions,
+  });
 });
 
 router.post("/createPost", postController.newPost, (req, res) => {
   res.redirect("/dashboard");
+});
+
+router.get("/page", (req, res) => {
+  res.render("notfound");
 });
 module.exports = router;

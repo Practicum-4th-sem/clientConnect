@@ -33,13 +33,35 @@
                     <span><label for="role2">Product</label></span>
                 </div>
                 <!-- next page -->
+                
+                <div>
+                    <label for="category">Select Category:</label>
+                    <select name="category" id="category">
+                        <option value="Painting">Painting</option>
+                        <option value="ApplianceRepair">Appliance Repair</option>
+                        <option value="ElectricalRepair">Electrical Repair</option>
+                        <option value="PestControl">Pest Control</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Carpenter">Carpenter</option>
+                        <option value="CarWash">Car Wash</option>
+                        <option value="HomeAppliances">Appliances</option>
+                        <option value="BeautyProducts">Beauty Products</option>
+                        <option value="KitchenAppliances">Kitchen Appliances</option>
+                        <option value="Books">Books</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Mobile,Laptop">Mobile, Laptop & PC</option>
+                        <option value="Stationery">Stationery</option>
+                        <option value="Groceries">Groceries</option>
+                    </select>
+                </div>
                 <div class="mb-3">
                     <small class="form-text">Name of Role</small>
                     <input type="text" placeholder="Name" name="name" class="inputField" />
                 </div>
                 <div class="mb-3" style="position: relative; width: fit-content; display: flex;">
                     <label for="desc">Some Description</label>
-                    <textarea name="desc" id="desc" cols="30" rows="10"
+                    <textarea name="description" id="desc" cols="30" rows="10"
                         placeholder="It must include every data regarding the product or service"></textarea>
                 </div>
                 <div class="mb-3">
@@ -59,6 +81,7 @@
             crossorigin="anonymous"></script>
         <!-- navmenu js -->
         <script src="/navmenu.js"></script>
+        <script src="/profile.js"></script>
 </body>
 
 </html>
