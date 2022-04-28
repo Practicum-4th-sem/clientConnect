@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ClientConnect-Login</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css" />
+   <link rel="stylesheet" href="./multi_step_form_style.css" />
+</head>
+
+<body>
+   <h1>Welcome to ClientConnect</h1>
+   <div class="container">
+      <form id="regForm" action="" method="">
+         <h1>Reset Password</h1>
+
+         <!-- One "tab" for each step in the form: -->
+         <div class="tab">
+            <h5> Email:</h5>
+            <p style="margin-bottom: 0;">
+               <input type="email" placeholder="E-mail..." oninput="this.className = ''" />
+            </p>
+            <button id="gettoken" type="button" class="btn btn-primary">Get Token</button>
+            <p id="tokensent" class="hide"
+               style="box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); width: fit-content; padding: 0.5rem; border-radius: 15px; margin: 15px;">
+               Token has
+               been sent to the
+               provided email!</p>
+            <br>
+            <br>
+            <h5>Enter token received on entered email:</h5>
+            <p style="position: relative;">
+               <input type="password" id="password" name="token" oninput="this.className = ''" />
+               <button id="nextBtn" type="button" class="btn btn-primary" onclick="nextPrev(1)">Verify Token</button>
+            </p>
+            <br>
+         </div>
+         <!-- tab 2: verify otp iff using login with phone -->
+         <div class="tab">
+            <label for="" style="width: fit-content">Enter New Password</label>
+            <input type="password" />
+            <label for="" style="width: fit-content">Re-enter New Password</label>
+            <input type="password" name="password" />
+
+            <button style="margin: 0.3rem" class="btn btn-primary" type="button" onclick="nextPrev(1)">
+               Reset Password
+            </button>
+         </div>
+         <!-- tab 3: submit -->
+         <div class="tab">
+            <h2>Welcom to ClientConnect</h2>
+            <h3>you have successfully registered!</h3>
+            <h3>Submit to redirect</h3>
+            <!-- submit button -->
+            <button type="button" class="btn btn-primary">Submit</button>
+         </div>
+
+         <div style="overflow: auto">
+            <div style="float: right">
+               <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">
+                  Previous
+               </button>
+            </div>
+         </div>
+
+         <!-- Circles which indicates the steps of the form: -->
+         <div style="text-align: center; margin-top: 10px">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+         </div>
+      </form>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+   <script src="./multi_step_form_script.js"></script>
+
+   <!-- script for show password -->
+   <script>
+      var state = false;
+      function toggle() {
+         if (state) {
+            document.getElementById("password").setAttribute("type", "password");
+            state = false;
+            document.getElementById("open").style.display = "inline-block";
+            document.getElementById("close").style.display = "none";
+         } else {
+            document.getElementById("password").setAttribute("type", "text");
+            state = true;
+            document.getElementById("open").style.display = "none";
+            document.getElementById("close").style.display = "inline-block";
+         }
+      }
+      const phoneDisplay = () => {
+         document.querySelector(".phoneno").classList.toggle("show");
+      }
+
+      const tokenbtn = document.getElementById("gettoken").addEventListener("click", () => {
+         const tokensent = document.getElementById("tokensent");
+         tokensent.classList.remove("hide");
+      })
+   </script>
+</body>
+
+</html>
