@@ -3,8 +3,7 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
-// const { sendotp } = require("../utils/verify");
-const { sendOtp } = require("../utils/twilio");
+const { sendOtp, verifyOtp } = require("../utils/twilio");
 
 function issueToken(res, user) {
   const id = user._id;
@@ -201,20 +200,22 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-exports.verifyOTP = async (req, res) => {
-  const user = await User.findOne({ phone: req.body.phone });
+exports.verifyOTP = async (req, res, next) => {
   const { otp } = req.body;
-  if (!(await user.verifyOntp(otp, user.otp))) {
-    throw new Error("Incorrect otp entered");
-    // deleteUser();
-  } else {
-    await sendEmail(
-      user,
-      { title: "Welcome to Client Connect family" },
-      "welcome"
-    );
-    res.json({
-      status: "verified",
-    });
-  }
+  // console.log(otp, res.locals.id);
+  const user = await User.findById(res.locals.id);
+  verifyOtp(user.phone, otp);
+  res.redirect("/dashboard");
+  // setTimeout(() => {
+  //   console.log(ans);
+  // }, 1000);
+  // if (verifyOtp(user.phone, otp)) {
+  //   await sendEmail(
+  //     user,
+  //     { title: "Welcome to Client Connect family" },
+  //     "welcome"
+  //   );
+  // } else {
+  //   res.redirect(`/deleteUser/${user._id}`);
+  // }
 };
