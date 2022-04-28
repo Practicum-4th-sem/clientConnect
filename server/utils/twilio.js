@@ -19,28 +19,33 @@ exports.sendOtp = (phone) => {
     });
 };
 
-exports.verifyOtp = (req, res) => {
-  if (req.body.phone && req.body.code.length === 6) {
+exports.verifyOtp = (phone, code) => {
+  if (phone && code.length === 6) {
     client.verify
-      .services(VA6b4fd45f8163b3bcf09f008a031be7dd)
+      .services("VA6b4fd45f8163b3bcf09f008a031be7dd")
       .verificationChecks.create({
-        to: `+91${req.body.phone}`,
-        code: req.body.code,
+        to: `${phone}`,
+        code: code,
       })
       .then((data) => {
         if (data.status === "approved") {
-          res.status(200).json({
-            message: "User is Verified!!",
-            data,
-          });
+          // res.status(200).json({
+          //   message: "User is Verified!!",
+          //   data,
+          // });
+
+          // console.log(data);
+          return true;
         }
       });
   } else {
-    res.status(400).json({
-      message: "Wrong phone number or code :(",
-      phonenumber: req.query.phone,
-      data,
-    });
+    // res.status(400).json({
+    //   message: "Wrong phone number or code :(",
+    //   phonenumber: phone,
+    //   data,
+    // });
+    console.log("hello");
+    return false;
   }
 };
 

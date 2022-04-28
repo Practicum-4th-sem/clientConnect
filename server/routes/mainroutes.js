@@ -97,10 +97,23 @@ router.post("/register", authController.register, async (req, res) => {
   oldUser.forEach((obj) => {
     userdetails = obj;
   });
-  res.redirect("/dashboard");
+  res.redirect("/verifyOtp");
 });
 
 // -----------------------end of Routing for dashboard using Register ----------------------------------
+
+router.get("/verifyOtp", (req, res) => {
+  res.render("otp");
+});
+
+router.post(
+  "/verifyOtp",
+  authController.protect,
+  authController.verifyOTP,
+  (req, res) => {
+    res.redirect("/dashboard");
+  }
+);
 
 // -----------------------Routing for dashboard using login ----------------------------------
 
