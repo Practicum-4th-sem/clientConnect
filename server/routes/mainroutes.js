@@ -1,13 +1,9 @@
 const User = require("../models/userModel");
-
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
-const Db = require("../models/userModel");
 const authuser = require("../models/authModel");
 const selectOptions = require("../../public/post");
-const { sendOtp } = require("../utils/twilio");
-
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -21,9 +17,6 @@ const authcheck = (req, res, next) => {
 router.get("/", (req, res) => {
   res.render("landing_page");
 });
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
 
 // ------------------- Routing for dashboard using google oauth--------------------
 
