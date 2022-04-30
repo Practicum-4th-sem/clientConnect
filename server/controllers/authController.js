@@ -15,8 +15,6 @@ function issueToken(res, user) {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
   });
-  // console.log(token);
-  // return token;
 }
 
 exports.register = async (req, res, next) => {
@@ -73,39 +71,6 @@ exports.login = async (req, res, next) => {
     res.send(error.message);
   }
 };
-
-// exports.protect = async (req, res, next) => {
-//   let token;
-//   if (
-//     req.headers.authorization &&
-//     req.headers.authorization.startsWith("Bearer")
-//   ) {
-//     token = req.headers.authorization.split(" ")[1];
-//   } else if (req.cookies.jwt) {
-//     token = req.cookies.jwt;
-//   }
-
-//   if (!token) {
-//     throw new Error("You are not logged in! Please log in to get access.");
-//   }
-
-//   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
-//   const currentUser = await User.findById({ _id: decoded.id });
-//   if (!currentUser) {
-//     throw new Error("The user does not exist anymore.");
-//   }
-//   // if (currentUser.changedPasswordAfter(decoded.iat)) {
-//   //   return next(
-//   //     new AppError('User recently changed password! Please log in again.', 401)
-//   //   );
-//   // }
-
-//   // GRANT ACCESS TO PROTECTED ROUTE
-//   req.user = currentUser;
-//   // res.locals.user = currentUser;
-//   next();
-// };
 
 exports.protect = (req, res, next) => {
   let token;
@@ -206,16 +171,37 @@ exports.verifyOTP = async (req, res, next) => {
   const user = await User.findById(res.locals.id);
   verifyOtp(user.phone, otp);
   res.redirect("/dashboard");
-  // setTimeout(() => {
-  //   console.log(ans);
-  // }, 1000);
-  // if (verifyOtp(user.phone, otp)) {
-  //   await sendEmail(
-  //     user,
-  //     { title: "Welcome to Client Connect family" },
-  //     "welcome"
-  //   );
-  // } else {
-  //   res.redirect(`/deleteUser/${user._id}`);
-  // }
 };
+
+// exports.protect = async (req, res, next) => {
+//   let token;
+//   if (
+//     req.headers.authorization &&
+//     req.headers.authorization.startsWith("Bearer")
+//   ) {
+//     token = req.headers.authorization.split(" ")[1];
+//   } else if (req.cookies.jwt) {
+//     token = req.cookies.jwt;
+//   }
+
+//   if (!token) {
+//     throw new Error("You are not logged in! Please log in to get access.");
+//   }
+
+//   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+//   const currentUser = await User.findById({ _id: decoded.id });
+//   if (!currentUser) {
+//     throw new Error("The user does not exist anymore.");
+//   }
+//   // if (currentUser.changedPasswordAfter(decoded.iat)) {
+//   //   return next(
+//   //     new AppError('User recently changed password! Please log in again.', 401)
+//   //   );
+//   // }
+
+//   // GRANT ACCESS TO PROTECTED ROUTE
+//   req.user = currentUser;
+//   // res.locals.user = currentUser;
+//   next();
+// };
