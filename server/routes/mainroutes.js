@@ -187,8 +187,20 @@ router.post(
   }
 );
 router.post("/verifyOtp", authController.verifyOTP);
-router.post("/forgotPassword", authController.forgotPassword);
-router.patch("/resetPassword", authController.resetPassword);
+
+router.get("/forgotPassword", (req, res) => {
+  res.render("forgot_multiform");
+});
+router.post("/forgotPassword", authController.forgotPassword, (req, res) => {
+  res.redirect("/resetPassword");
+});
+
+router.get("/resetPassword", (req, res) => {
+  res.render("resetPassword");
+});
+router.post("/resetPassword", authController.resetPassword, (req, res) => {
+  res.redirect("/login");
+});
 
 router.get(
   "/logout",

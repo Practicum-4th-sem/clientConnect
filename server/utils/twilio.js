@@ -22,7 +22,7 @@ exports.sendOtp = (phone) => {
     });
 };
 
-exports.verifyOtp = async (phone, code) => {
+exports.verifyOtp = (phone, code) => {
   if (phone && code.length === 6) {
     client.verify
       .services(process.env.SERVICE_SID)
@@ -30,14 +30,16 @@ exports.verifyOtp = async (phone, code) => {
         to: `${phone}`,
         code: code,
       })
-      .then((data) => {
+      .then(async (data) => {
         if (data.status === "approved") {
-          const user = await User.find({phone});
-            await sendEmail(
-              user,
-              { title: "Welcome to Client Connect family" },
-              "welcome"
-            );
+          let user = await User.find({ phone });
+          user = user[0];
+          // console.log(user);
+          await sendEmail(
+            user,
+            { title: "Welcome to Client Connect family" },
+            "welcome"
+          );
         }
       });
   } else {
