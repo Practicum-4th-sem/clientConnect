@@ -110,13 +110,14 @@ exports.logout = (req, res, next) => {
   next();
 };
 
-exports.forgotPassword = async (req, res) => {
+exports.forgotPassword = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
+    // user = user[0];
+    // console.log(user);
     if (!user) {
       throw new Error("There is no user existing with this email.");
     }
-
     const resetToken = user.createResetToken();
     await user.save({ validateBeforeSave: false });
     try {
@@ -125,10 +126,12 @@ exports.forgotPassword = async (req, res) => {
         { title: "Reset Password", token: resetToken },
         "resetPassword"
       );
-      res.status(200).json({
-        status: "success",
-        user,
-      });
+      // console.log("hello");
+      next();
+      // res.status(200).json({
+      //   status: "success",
+      //   user,
+      // });
     } catch (err) {
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
@@ -140,7 +143,7 @@ exports.forgotPassword = async (req, res) => {
   }
 };
 
-exports.resetPassword = async (req, res) => {
+exports.resetPassword = async (req, res, next) => {
   try {
     const hashedToken = crypto
       .createHash("sha256")
@@ -154,12 +157,8 @@ exports.resetPassword = async (req, res) => {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save();
-    const token = issueToken(res, user);
-
-    res.status(200).json({
-      status: "success",
-      token,
-    });
+    issueToken(res, user);
+    next();
   } catch (err) {
     res.json(err.message);
   }
