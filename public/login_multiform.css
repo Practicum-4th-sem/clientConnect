@@ -58,6 +58,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
   margin: 15px auto;
+  /* zoom: 85%; */
   /* width: max-content; */
 }
 
@@ -87,6 +88,9 @@ input.invalid {
 }
 
 /* Hide all steps by default: */
+.tab {
+  display: none;
+}
 
 /* Make circles that indicate the steps of the form: */
 .step {

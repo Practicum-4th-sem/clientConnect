@@ -15,31 +15,44 @@
 </head>
 
 <body>
-  <h1>Welcome to ClientConnect!</h1>
+  <div class="flex" style="margin: 1rem;">
+    <a href="/" style="display: flex;text-decoration: none !important;color: black;">
+      <img class="animate__animated animate__zoomIn" src="/title_favicon.png" alt="" style="height: 80px; float: left;">
+      <h2 style="margin: auto 0 auto 1rem;">ClientConnect</h2>
+    </a>
+  </div>
   <div class="container">
     <form id="regForm" action="/register" method="post">
       <h1>Register/Sign-Up:</h1>
 
       <!-- One "tab" for each step in the form: -->
       <div class="tab">
-        Name:
-        <p>
-          <input placeholder="Name..." name="name" oninput="this.className = ''" />
-        </p>
-        Email:
-        <p>
-          <input type="email" name="email" placeholder="E-mail..." oninput="this.className = ''" />
-        </p>
-        Password:
-        <p style="position: relative">
-          <input type="password" id="password" name="password" />
-          <i class="fas fa-eye" id="open" style="cursor: pointer" onClick="toggle()"></i>
-          <i class="fas fa-eye-slash" id="close" style="display: none; cursor: pointer" onClick="toggle()"></i>
-        </p>
-        Phone No:
-        <p>
-          <input placeholder="Phone..." name="phone" type="text" oninput="this.className = ''" />
-        </p>
+        <div class="flex">
+          <label for="">Name:</label>
+          <p>
+            <input placeholder="Name..." name="name" oninput="this.className = ''" />
+          </p>
+        </div>
+        <div class="flex">
+          <label for="">Email:</label>
+          <p>
+            <input type="email" name="email" placeholder="E-mail..." oninput="this.className = ''" />
+          </p>
+        </div>
+        <div class="flex">
+          <label for="">Password:</label>
+          <p style="position: relative; display: flex;">
+            <input type="password" id="password" name="password" />
+            <i class="fas fa-eye" id="open" style="cursor: pointer" onClick="toggle()"></i>
+            <i class="fas fa-eye-slash" id="close" style="display: none; cursor: pointer" onClick="toggle()"></i>
+          </p>
+        </div>
+        <div class="flex">
+          <label for="">Phone No:</label>
+          <p>
+            <input placeholder="Phone..." name="phone" type="text" oninput="this.className = ''" />
+          </p>
+        </div>
         <p style="color: rgba(0, 0, 0, 0.5)">
           Already Registered?&nbsp;<a href="/login">Click Here to Login</a>
         </p>
@@ -113,6 +126,14 @@
       }
     }
   </script>
+  <style>
+    .fas {
+      margin: auto;
+      position: relative;
+      right: 2rem;
+      top: 5px;
+    }
+  </style>
 </body>
 
 </html>
