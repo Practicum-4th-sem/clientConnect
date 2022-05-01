@@ -206,3 +206,6 @@ input.invalid {
   background-color: #04aa6d;
 }
 /* MULTI STEP FORM NEW CSS END*/
+.main {
+  background: url(./gradient.jpg);
+}

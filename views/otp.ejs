@@ -19,15 +19,19 @@
   <h1>Welcome to ClientConnect!</h1>
   <div class="container">
     <form id="regForm" action="/verifyOtp" method="post">
-      <h1>Verify:</h1>
+      <h1>Verify OTP:</h1>
 
       <div class="tab">
         <label for="otp" style="width: 125px">Enter OTP: </label>
-        <input type="password" placeholder="OTP" id="otp" name="otp" />
-        <span>
-          <i class="fas fa-eye" id="open" style="cursor: pointer" onClick="toggle()"></i>
-          <i class="fas fa-eye-slash" id="close" style="display: none; cursor: pointer" onClick="toggle()"></i>
-        </span>
+        <div style="position: relative;">
+          <input type="password" placeholder="OTP" id="otp" name="otp" />
+          <span>
+            <i class="fas fa-eye" id="open" style="cursor: pointer; position: absolute;top: 50%; right: 20px"
+              onClick="toggle()"></i>
+            <i class="fas fa-eye-slash" id="close"
+              style="display: none; cursor: pointer; position: absolute;top: 50%; right: 20px" onClick="toggle()"></i>
+          </span>
+        </div>
         <button style="margin: 0.3rem" class="btn btn-primary">
           Verify OTP
         </button>
@@ -59,18 +63,24 @@
     var state = false;
     function toggle() {
       if (state) {
-        document.getElementById("password").setAttribute("type", "password");
+        document.getElementById("otp").setAttribute("type", "password");
         state = false;
         document.getElementById("open").style.display = "inline-block";
         document.getElementById("close").style.display = "none";
       } else {
-        document.getElementById("password").setAttribute("type", "text");
+        document.getElementById("otp").setAttribute("type", "text");
         state = true;
         document.getElementById("open").style.display = "none";
         document.getElementById("close").style.display = "inline-block";
       }
     }
   </script>
+  <style>
+    input {
+      color: darkblue;
+      /* background-color: antiquewhite; */
+    }
+  </style>
 </body>
 
 </html>

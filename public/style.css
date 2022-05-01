@@ -261,9 +261,9 @@ img {
   }
 }
 
-.header .main-navgation div:first-child {
+/* .header .main-navgation div:first-child {
   border-bottom: 1px solid white;
-}
+} */
 
 .header .nav-buttons .btn {
   color: #fff;
@@ -434,6 +434,8 @@ img {
 .features {
   margin-top: 100px;
   background-color: #eff0f5;
+  /* background: url(./gradient.jpg); */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .more-features-content {

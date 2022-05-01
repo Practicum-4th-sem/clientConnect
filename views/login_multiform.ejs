@@ -27,13 +27,11 @@
 
       <!-- One "tab" for each step in the form: -->
       <div class="tab">
-        Email:
         <p>
-          <input type="email" name="email" placeholder="E-mail..." oninput="this.className = ''" />
+          <input type="email" name="email" placeholder="Enter Email" oninput="this.className = ''" />
         </p>
-        Password:
         <p style="position: relative">
-          <input type="password" id="password" name="password" />
+          <input placeholder="Enter Password" type="password" id="password" name="password" />
           <span>
             <i class="fas fa-eye" id="open" style="cursor: pointer" onClick="eye_toggle()"></i>
             <i class="fas fa-eye-slash" id="close" style="display: none; cursor: pointer" onClick="eye_toggle()"></i>
@@ -47,11 +45,15 @@
             Sign In
           </button>
         </p>
+        <div style="position: relative;">
+          <hr class="hr-text" data-content="OR LOGIN WITH">
+          <p style="position: absolute; top: -14px; left:37%">Or Login With</p>
+        </div>
         <!-- login with google -->
         <a href="/auth/google"><button type="button" class="btn btn-light" style="border: 1px solid rgba(0, 0, 0, 0.5)">
             <img
               src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
-              alt="" height="20px" />Login with Google
+              alt="" height="20px" />&nbsp; Google
           </button></a>
 
         <!-- login with phone button -->
