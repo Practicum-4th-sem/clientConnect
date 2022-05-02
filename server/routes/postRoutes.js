@@ -7,7 +7,10 @@ router.get("/", postController.getPosts, (req, res, next) => {
   if (res.locals.number == 0) {
     res.render("notfound");
   } else {
-    next();
+    const post = res.locals.data;
+    res.render("ad-post", {
+      post,
+    });
   }
 });
 

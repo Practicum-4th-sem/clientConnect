@@ -25,6 +25,7 @@ exports.getPosts = async (req, res, next) => {
     //execute query
     const posts = await query;
     res.locals.number = posts.length;
+    res.locals.data = posts;
     // res.status(200).json({
     //   status: "success",
     //   results: posts.length,

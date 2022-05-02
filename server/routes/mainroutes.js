@@ -214,9 +214,7 @@ router.delete(
 );
 
 router.get("/createPost", (req, res) => {
-  res.render("create-post", {
-    selectOptions,
-  });
+  res.render("create-post");
 });
 
 router.post("/createPost", postController.newPost, (req, res) => {
