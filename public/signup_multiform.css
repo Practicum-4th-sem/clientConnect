@@ -166,3 +166,16 @@ input {
   display: flex;
   gap: 1rem;
 }
+.tab .flex {
+  justify-content: center;
+  align-items: center;
+}
+.tab p {
+  width: 75%;
+}
+.tab {
+  text-align: center;
+}
+input {
+  width: 100%;
+}
