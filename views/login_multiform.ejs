@@ -31,19 +31,23 @@
           <input type="email" name="email" placeholder="Enter Email" oninput="this.className = ''" />
         </p>
         <p style="position: relative">
+        <div style="position: relative;">
           <input placeholder="Enter Password" type="password" id="password" name="password" />
           <span>
-            <i class="fas fa-eye" id="open" style="cursor: pointer" onClick="eye_toggle()"></i>
-            <i class="fas fa-eye-slash" id="close" style="display: none; cursor: pointer" onClick="eye_toggle()"></i>
+            <i style="position: absolute; top: 42%; right: 10px;" class="fas fa-eye" id="open" style="cursor: pointer"
+              onClick="eye_toggle()"></i>
+            <i style="position: absolute; top: 42%; right: 10px;" class="fas fa-eye-slash" id="close"
+              style="display: none; cursor: pointer" onClick="eye_toggle()"></i>
           </span>
-          <!-- <b style="color: rgba(0,0,0,0.3);cursor: pointer;" onclick="toggle()">Show Password</b> &nbsp; -->
-          &nbsp;
-          <a href="/forgotPassword">Forgot Password?</a>
-          <br />
-          <!-- sign in button -->
-          <button class="btn btn-primary" onclick="nextPrev(2)">
-            Sign In
-          </button>
+        </div>
+        <!-- <b style="color: rgba(0,0,0,0.3);cursor: pointer;" onclick="toggle()">Show Password</b> &nbsp; -->
+        &nbsp;
+        <a href="/forgotPassword">Forgot Password?</a>
+        <br />
+        <!-- sign in button -->
+        <button class="btn btn-primary" onclick="nextPrev(2)">
+          Sign In
+        </button>
         </p>
         <div style="position: relative;">
           <hr class="hr-text" data-content="OR LOGIN WITH">
@@ -118,9 +122,9 @@
 
       <!-- Circles which indicates the steps of the form: -->
       <div style="text-align: center; margin-top: 10px">
+        <!-- <span class="step"></span>
         <span class="step"></span>
-        <!-- <span class="step"></span> -->
-        <span class="step"></span>
+        <span class="step"></span> -->
       </div>
     </form>
   </div>

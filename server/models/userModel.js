@@ -37,10 +37,6 @@ const userSchema = new mongoose.Schema(
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
-    otp: {
-      type: String,
-      default: "",
-    },
   },
   {
     timestamps: true,
@@ -57,11 +53,11 @@ userSchema.pre("save", async function (next) {
 });
 
 // for otp
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("otp")) return next();
-  this.otp = await bcrypt.hash(this.otp, 12);
-  next();
-});
+//userSchema.pre("save", async function (next) {
+//  if (!this.isModified("otp")) return next();
+//  this.otp = await bcrypt.hash(this.otp, 12);
+//  next();
+//});
 
 userSchema.pre("save", function (next) {
   if (!this.isModified("password") || this.isNew) return next();
@@ -77,9 +73,9 @@ userSchema.methods.verifyPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userSchema.methods.verifyOntp = async function (candidateOtp, userOtp) {
-  return await bcrypt.compare(candidateOtp, userOtp);
-};
+//userSchema.methods.verifyOntp = async function (candidateOtp, userOtp) {
+//  return await bcrypt.compare(candidateOtp, userOtp);
+//};
 
 userSchema.methods.createResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString("hex");

@@ -209,3 +209,6 @@ input.invalid {
 .main {
   background: url(./gradient.jpg);
 }
+.sign-up:hover {
+  color: #000 !important;
+}
