@@ -62,23 +62,30 @@ router.get("/O-profile/:id", authcheck, async (req, res) => {
 
 // -----------------------Routing for dashboard using Register ----------------------------------
 var userdetails;
-router.get("/dashboard", authController.protect, async (req, res) => {
-  let oldUser = await User.find({ email: req.body.email });
-  oldUser.forEach((obj) => {
-    userdetails = obj;
-  });
-  try {
-    res.render("dashboard", {
-      id: userdetails._id + "",
-      naam: userdetails.name,
-      gmail: userdetails.email,
-      phone: userdetails.phone,
-      pic: userdetails.photo,
+router.get(
+  "/dashboard",
+  authController.protect,
+  postController.getUserPosts,
+  async (req, res) => {
+    let oldUser = await User.find({ email: req.body.email });
+    oldUser.forEach((obj) => {
+      userdetails = obj;
     });
-  } catch (err) {
-    res.redirect("/");
+    try {
+      res.render("dashboard", {
+        id: userdetails._id + "",
+        naam: userdetails.name,
+        gmail: userdetails.email,
+        phone: userdetails.phone,
+        pic: userdetails.photo,
+        num: res.locals.number,
+        post: res.locals.data,
+      });
+    } catch (err) {
+      res.redirect("/");
+    }
   }
-});
+);
 
 router.get("/register", (req, res) => {
   res.render("signup_multiform");
@@ -212,16 +219,54 @@ router.delete(
   }
 );
 
-router.get("/createPost/:id", authController.protect, (req, res) => {
+router.get("/createPost/:id", authController.protect, async (req, res) => {
+  const user = await User.findById(req.params.id);
   res.render("create-post", {
     id: req.params.id,
+    pic: user.photo,
   });
 });
 
-router.post("/createPost/:id", postController.newPost, (req, res) => {
-  res.redirect(
-    `/post/uploadImages/?user=${res.locals.userId}&post=${res.locals.postId}`
-  );
-});
+router.post(
+  "/createPost/:id",
+  authController.protect,
+  postController.newPost,
+  (req, res) => {
+    res.redirect(
+      `/post/uploadImages/?user=${res.locals.id}&post=${res.locals.postId}`
+    );
+  }
+);
+
+router.get(
+  "/customer",
+  authController.protect,
+  postController.getPosts,
+  async (req, res, next) => {
+    const user = await User.findById(res.locals.id);
+    res.render("customer", {
+      id: res.locals.id,
+      len: res.locals.len,
+      post: res.locals.data,
+      pic: user.photo,
+    });
+    next();
+  }
+);
+
+router.get(
+  "/provider",
+  authController.protect,
+  postController.getUserPosts,
+  async (req, res) => {
+    const user = await User.findById(res.locals.id);
+    res.render("provider", {
+      id: res.locals.id,
+      num: res.locals.number,
+      post: res.locals.data,
+      pic: user.photo,
+    });
+  }
+);
 
 module.exports = router;

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClientConnect-Provider</title>
+    <!-- animate.css cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- SLICK CDN -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="/global_css.css" />
+    <link rel="stylesheet" href="/navmenu.css" />
+    <link rel="stylesheet" href="/style_dashboard.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="/dashboard">
+              <span class="icon">
+                <ion-icon name="people-outline"></ion-icon>
+              </span>
+              <span class="title">
+                <h2>ClientConnect</h2>
+              </span>
+            </a>
+          </li>
+          <li class="hovered">
+            <a href="/dashboard">
+              <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/provider">
+              <span class="icon">
+                <ion-icon name="card-outline"></ion-icon>
+              </span>
+              <span class="title">Provider</span>
+            </a>
+          </li>
+          <li>
+            <a href="/customer">
+              <span class="icon">
+                <ion-icon name="cart-outline"></ion-icon>
+              </span>
+              <span class="title">Customer</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              </span>
+              <span class="title">Chat</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="help-circle-outline"></ion-icon>
+              </span>
+              <span class="title">Help</span>
+            </a>
+          </li>
+          <li>
+            <a href="/profile/<%=id%>">
+              <span class="icon">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </span>
+              <span class="title">Edit Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="/logout">
+              <span class="icon">
+                <ion-icon name="exit-outline"></ion-icon>
+              </span>
+              <span class="title">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- main -->
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+          <div class="user">
+            <a href="/profile/<%=id%>">
+              <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
+            </a>
+          </div>
+        </div>
+        <!-- SLIDER -->
+
+        <section id="sliding">
+          <p style="opacity: 0.4">Services:</p>
+          <div class="slider">
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=ApplianceRepair" target="_blank"
+                ><img
+                  src="/assets/appliancerepair.jpg"
+                  alt="Appliance Repair"
+                  class="img-responsive"
+                />Appliance Repair
+              </a>
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Painting" target="_blank"
+                ><img
+                  src="/assets/painting.jpg"
+                  alt="Painting"
+                  class="img-responsive"
+                />Painting</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Cleaning" target="_blank"
+                ><img
+                  src="/assets/cleaning.jpg"
+                  alt="Cleaning"
+                  class="img-responsive"
+                />Cleaning</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Plumbing" target="_blank"
+                ><img
+                  src="/assets/plumbing.jpg"
+                  alt="Plumbing"
+                  class="img-responsive"
+                />Plumbing</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=PestControl" target="_blank"
+                ><img
+                  src="/assets/pestcontrol.jpg"
+                  alt="Pest Control"
+                  class="img-responsive"
+                />Pest Control</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=ElectricalRepair" target="_blank"
+                ><img
+                  src="/assets/electricalrepairing.jpg"
+                  alt="Electrical"
+                  class="img-responsive"
+                />Electrical Repairing</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post?category=Carpenter" target="_blank"
+                ><img
+                  src="/assets/carpenter.jpg"
+                  alt="Carpenter"
+                  class="img-responsive"
+                />Carpenter</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=CarWash" target="_blank"
+                ><img
+                  src="/assets/carwash.jpg"
+                  alt="CarWash"
+                  class="img-responsive"
+                />Car Wash</a
+              >
+            </div>
+          </div>
+        </section>
+        <section id="sliding">
+          <p style="opacity: 0.4">Products:</p>
+          <div class="slider">
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Mobile,Laptop" target="_blank"
+                ><img
+                  src="/assets/mobilelaptop.jpg"
+                  alt="Mobile,Laptop"
+                  class="img-responsive"
+                />Mobile,Laptop&PC</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=HomeAppliances" target="_blank"
+                ><img
+                  src="/assets/homeappliances.jpg"
+                  alt="TV,Home Appliances"
+                  class="img-responsive"
+                />Appliances</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=BeautyProducts" target="_blank"
+                ><img
+                  src="/assets/beautyproducts.jpg"
+                  alt="Beauty"
+                  class="img-responsive"
+                />Beauty Products</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=KitchenAppliances" target="_blank"
+                ><img
+                  src="/assets/kitchenappliances.jpg"
+                  alt="Kitchen Appliances"
+                  class="img-responsive"
+                />Kitchen Appliances</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Sports" target="_blank"
+                ><img
+                  src="/assets/sports.jpg"
+                  alt="Sports"
+                  class="img-responsive"
+                />Sports</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Stationery" target="_blank"
+                ><img
+                  src="/assets/stationery.jpg"
+                  alt="Stationery"
+                  class="img-responsive"
+                />Stationery</a
+              >
+            </div>
+            <div class="slides slide slick-slide">
+              <a href="/post/?category=Groceries" target="_blank"
+                ><img
+                  src="/assets/groceries.jpg"
+                  alt="Groceries"
+                  class="img-responsive"
+                />Groceries</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+      <div>
+        <%if(num==0){%>
+        <h4>No posts yet</h4>
+        <h2>Willing to Sell / Provide</h2>
+        <a href="/createPost/<%=id%>">Add Post</a>
+        <%}else{%>
+        <h4>Your Posts</h4>
+        <span>
+          <a href="/createPost/<%=id%>">Add Post</a>
+        </span>
+        <div style="display: flex; flex-wrap: wrap; word-break: break-all">
+          <%for(var i=0; i < num; i++){%>
+          <div style="padding: 2rem">
+            <h2>Details:</h2>
+            <ul>
+              <li><%=post[i].name%></li>
+              <br />
+              <li><%=post[i].description%></li>
+              <br />
+              <li><%=post[i].price%></li>
+            </ul>
+          </div>
+          <%}%>
+        </div>
+        <%}%>
+      </div>
+    </div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="/navmenu.js"></script>
+  <script src="/script_dashboard.js"></script>
+  <!-- SCRIPT FOR SLIDER -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- slick slide -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript">
+    window.history.forward();
+    function noBack() {
+      window.history.forward();
+    }
+  </script>
+</body>
+<script type="text/javascript">
+  window.history.forward();
+  function noBack() {
+    window.history.forward();
+  }
+</script>
+
+  </body>
+</html>
