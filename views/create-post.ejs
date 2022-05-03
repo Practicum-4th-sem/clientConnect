@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- bootstrap cdn -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
-    <!-- stylesheet -->
-    <link rel="icon" href="/favicon.png" />
-    <link rel="stylesheet" href="/global_css.css" />
-    <link rel="stylesheet" href="/navmenu.css" />
-    <link rel="stylesheet" href="/create-post.css" />
-    <title>ClientConnect-Post</title>
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <div class="navigation">
-        <ul>
-          <li>
-            <a href="/dashboard">
-              <span class="icon">
-                <ion-icon name="people-outline"></ion-icon>
-              </span>
-              <span class="title">
-                <h2>ClientConnect</h2>
-              </span>
-            </a>
-          </li>
-          <li class="hovered">
-            <a href="/dashboard">
-              <span class="icon">
-                <ion-icon name="home-outline"></ion-icon>
-              </span>
-              <span class="title">Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/createPost/<%=id%>">
-              <span class="icon">
-                <ion-icon name="card-outline"></ion-icon>
-              </span>
-              <span class="title">Provider</span>
-            </a>
-          </li>
-          <li>
-            <a href="/customer">
-              <span class="icon">
-                <ion-icon name="cart-outline"></ion-icon>
-              </span>
-              <span class="title">Customer</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon">
-                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-              </span>
-              <span class="title">Chat</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon">
-                <ion-icon name="help-circle-outline"></ion-icon>
-              </span>
-              <span class="title">Help</span>
-            </a>
-          </li>
-          <!-- <li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- bootstrap cdn -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+  <!-- stylesheet -->
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="/global_css.css" />
+  <link rel="stylesheet" href="/navmenu.css" />
+  <link rel="stylesheet" href="/create-post.css" />
+  <title>ClientConnect-Post</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="/dashboard">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">
+              <h2>ClientConnect</h2>
+            </span>
+          </a>
+        </li>
+        <li class="hovered">
+          <a href="/dashboard">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/createPost/<%=id%>">
+            <span class="icon">
+              <ion-icon name="card-outline"></ion-icon>
+            </span>
+            <span class="title">Provider</span>
+          </a>
+        </li>
+        <li>
+          <a href="/customer">
+            <span class="icon">
+              <ion-icon name="cart-outline"></ion-icon>
+            </span>
+            <span class="title">Customer</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="help-circle-outline"></ion-icon>
+            </span>
+            <span class="title">Help</span>
+          </a>
+        </li>
+        <!-- <li>
             <a href="/updateProfile">
               <span class="icon">
                 <ion-icon name="person-circle-outline"></ion-icon>
@@ -77,127 +78,104 @@
               <span class="title">Edit Profile</span>
             </a>
           </li> -->
-          <li>
-            <a href="/logout">
-              <span class="icon">
-                <ion-icon name="exit-outline"></ion-icon>
-              </span>
-              <span class="title">Sign Out</span>
-            </a>
-          </li>
-        </ul>
+        <li>
+          <a href="/logout">
+            <span class="icon">
+              <ion-icon name="exit-outline"></ion-icon>
+            </span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- main -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <!-- userimg -->
+        <div class="user">
+          <img src="/img/users/default.png" alt="USER" height="50px" style="border-radius: 50%" />
+        </div>
       </div>
-
-      <!-- main -->
-      <div class="main">
-        <div class="topbar">
-          <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
-          </div>
-          <!-- userimg -->
-          <div class="user">
-            <img
-              src="/img/users/default.png"
-              alt="USER"
-              height="50px"
-              style="border-radius: 50%"
-            />
-          </div>
-        </div>
-        <div class="form-container">
-          <h1 class="large">Create Your Post</h1>
-          <h3 class="lead">
-            <ion-icon name="person-outline"></ion-icon>
-            Let's get some information to set your post.
-          </h3>
-          <form class="form" action="/createPost/<%=id%>" method="post">
-            <div class="form-group">
-              <div class="mb-3 radios">
-                <div class="mb-3">
-                  <input type="radio" name="role" id="role1" value="service" />
-                  <span><label for="role1">Service</label></span>
-                </div>
-                <div class="mb-3">
-                  <input type="radio" name="role" id="role2" value="product" />
-                  <span><label for="role2">Product</label></span>
-                </div>
-              </div>
-              <!-- next page -->
-
-              <div mb-3>
-                <label for="category">Select Category:</label>
-                <select name="category" id="category">
-                  <!-- services -->
-                  <option value="Painting">Painting</option>
-                  <option value="ApplianceRepair">Appliance Repair</option>
-                  <option value="ElectricalRepair">Electrical Repair</option>
-                  <option value="PestControl">Pest Control</option>
-                  <option value="Cleaning">Cleaning</option>
-                  <option value="Plumbing">Plumbing</option>
-                  <option value="Carpenter">Carpenter</option>
-                  <option value="CarWash">Car Wash</option>
-                  <!-- services end -->
-                  <!-- products -->
-                  <option value="HomeAppliances">Appliances</option>
-                  <option value="BeautyProducts">Beauty Products</option>
-                  <option value="KitchenAppliances">Kitchen Appliances</option>
-                  <option value="Books">Books</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Mobile,Laptop">Mobile, Laptop & PC</option>
-                  <option value="Stationery">Stationery</option>
-                  <option value="Groceries">Groceries</option>
-                  <!-- product end -->
-                </select>
+      <div class="form-container">
+        <h1 class="large">Create Your Post</h1>
+        <h3 class="lead">
+          <ion-icon name="person-outline"></ion-icon>
+          Let's get some information to set your post.
+        </h3>
+        <form class="form" action="/createPost/<%=id%>" method="post">
+          <div class="form-group">
+            <div class="mb-3 radios">
+              <div class="mb-3">
+                <input type="radio" name="role" id="role1" value="service" />
+                <span><label for="role1">Service</label></span>
               </div>
               <div class="mb-3">
-                <label class="form-text">Name of Role:</label>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  class="inputField"
-                />
-              </div>
-              <div
-                class="mb-3"
-                style="position: relative; width: fit-content; display: flex"
-              >
-                <label for="desc">Some Description</label>
-                <textarea
-                  name="description"
-                  id="desc"
-                  cols="30"
-                  rows="10"
-                  placeholder="It must include every data regarding the product or service"
-                ></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="price">Expected Price</label>
-                <input type="text" name="price" id="price" placeholder="₹" />
+                <input type="radio" name="role" id="role2" value="product" />
+                <span><label for="role2">Product</label></span>
               </div>
             </div>
-            <div class="my-2">
-              <button class="btn btn-primary btn-1">CREATE</button>
+            <!-- next page -->
+
+            <div mb-3>
+              <label for="category">Select Category:</label>
+              <select name="category" id="category">
+                <!-- services -->
+                <option value="Painting">Painting</option>
+                <option value="ApplianceRepair">Appliance Repair</option>
+                <option value="ElectricalRepair">Electrical Repair</option>
+                <option value="PestControl">Pest Control</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="CarWash">Car Wash</option>
+                <!-- services end -->
+                <!-- products -->
+                <option value="HomeAppliances">Appliances</option>
+                <option value="BeautyProducts">Beauty Products</option>
+                <option value="KitchenAppliances">Kitchen Appliances</option>
+                <option value="Books">Books</option>
+                <option value="Sports">Sports</option>
+                <option value="Mobile,Laptop">Mobile, Laptop & PC</option>
+                <option value="Stationery">Stationery</option>
+                <option value="Groceries">Groceries</option>
+                <!-- product end -->
+              </select>
             </div>
-          </form>
-        </div>
+            <div class="mb-3">
+              <label class="form-text">Name of Role:</label>
+              <input type="text" placeholder="Name" name="name" class="inputField" />
+            </div>
+            <div class="mb-3" style="position: relative; width: fit-content; display: flex">
+              <label for="desc">Some Description</label>
+              <textarea name="description" id="desc" cols="30" rows="10"
+                placeholder="It must include every data regarding the product or service"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="price">Expected Price</label>
+              <input type="text" name="price" id="price" placeholder="₹" />
+            </div>
+          </div>
+          <div class="my-2">
+            <button class="btn btn-primary btn-1">CREATE</button>
+          </div>
+        </form>
       </div>
     </div>
-    <!-- IONICONS CDN -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <!-- bootstrap cdn -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  </div>
+  <!-- IONICONS CDN -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- bootstrap cdn -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script> -->
-    <!-- navmenu js -->
-    <script src="/navmenu.js"></script>
-    <script src="/profile.js"></script>
-  </body>
+  <!-- navmenu js -->
+  <script src="/navmenu.js"></script>
+  <script src="/profile.js"></script>
+</body>
+
 </html>

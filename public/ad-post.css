@@ -1,0 +1,52 @@
+ul {
+  list-style-type: none;
+}
+.item {
+  background: url(./gradient.jpg);
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 15px;
+  text-align: center;
+  /* width: min-content; */
+  max-width: 250px;
+  height: auto;
+}
+.item li {
+  font-size: 1.5rem !important;
+  margin: 10px 0;
+}
+.item li small {
+  font-size: 1rem !important;
+  color: rgba(0, 0, 0, 0.5);
+}
+/* .item_description {
+  word-break: break-all !important;
+} */
+.btn {
+  display: inline-block;
+  color: white;
+  background-color: #2acfcf;
+  text-transform: capitalize;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.3s;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+
+  background: rgba(11, 11, 80, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.btn:hover {
+  background-color: #6be1e1;
+}
+.desc {
+  display: none;
+}
