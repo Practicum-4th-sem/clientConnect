@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>document</title>
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="/global_css.css" />
+    <link rel="stylesheet" href="/navmenu.css" />
   </head>
   <body>
     <div class="container">
@@ -61,7 +64,7 @@
             </a>
           </li>
           <li>
-            <a href="/profile/<%=user%>">
+            <a href="/profile/<%=id%>">
               <span class="icon">
                 <ion-icon name="person-circle-outline"></ion-icon>
               </span>
@@ -78,16 +81,38 @@
           </li>
         </ul>
       </div>
-      <form
-        action="/post/uploadImages/?user=<%=user%>&post=<%=post%>"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <div>
-          <input type="file" name="image" accept="image/*" multiple />
+
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+          <!-- userimg -->
+          <div class="user">
+            <a href="/profile/<%=id%>">
+              <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
+            </a>
+          </div>
         </div>
-        <button type="submit">Upload</button>
-      </form>
+        <div>
+          <h4>Search Results found: <%=len%></h4>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; word-break: break-all">
+          <%for(var i=0; i < len; i++){%>
+          <div style="padding: 2rem">
+            <h2>Details:</h2>
+            <ul>
+              <li><%=post[i].name%></li>
+              <br />
+              <li><%=post[i].description%></li>
+              <br />
+              <li><%=post[i].price%></li>
+            </ul>
+          </div>
+          <%}%>
+        </div>
+        <br />
+      </div>
     </div>
   </body>
 </html>

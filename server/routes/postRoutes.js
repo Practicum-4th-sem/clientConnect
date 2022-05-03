@@ -5,7 +5,12 @@ const authController = require("../controllers/authController");
 
 const router = require("express").Router();
 
-router.get("/", postController.getPostsOfUser, postController.addedPost);
+router.get(
+  "/",
+  authController.protect,
+  postController.getPostsOfUser,
+  postController.addedPost
+);
 
 router.get("/uploadImages", (req, res) => {
   res.render("uploadImage", {

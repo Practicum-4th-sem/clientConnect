@@ -38,7 +38,7 @@
             </a>
           </li>
           <li>
-            <a href="/createPost/<%=id%>">
+            <a href="/provider">
               <span class="icon">
                 <ion-icon name="card-outline"></ion-icon>
               </span>
@@ -69,14 +69,14 @@
               <span class="title">Help</span>
             </a>
           </li>
-          <!-- <li>
-            <a href="/updateProfile">
+          <li>
+            <a href="/profile/<%=id%>">
               <span class="icon">
                 <ion-icon name="person-circle-outline"></ion-icon>
               </span>
               <span class="title">Edit Profile</span>
             </a>
-          </li> -->
+          </li>
           <li>
             <a href="/logout">
               <span class="icon">
@@ -96,12 +96,9 @@
           </div>
           <!-- userimg -->
           <div class="user">
-            <img
-              src="/img/users/default.png"
-              alt="USER"
-              height="50px"
-              style="border-radius: 50%"
-            />
+            <a href="/profile/<%=id%>">
+              <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
+            </a>
           </div>
         </div>
         <div class="form-container">
