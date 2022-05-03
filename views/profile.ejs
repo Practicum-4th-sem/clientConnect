@@ -108,14 +108,18 @@
                   method="POST"
                   enctype="multipart/form-data"
                 >
-                  <img
-                    src="../img/users/<%=pic%>"
-                    alt="<%=name%>"
-                    height="100px"
-                    width="100px"
-                  />
-                  <br />
-                  <input style="width: fit-content" type="file" name="photo" />
+                  <div class="profile-pic-div">
+                    <img
+                      src="../img/users/<%=pic%>"
+                      alt="<%=name%>"
+                      height="100px"
+                      width="100px"
+                      id="photo"
+                    />
+                    <input type="file" name="photo" id="file" />
+                    <label for="file" id="uploadBtn">Choose Photo</label>
+                  </div>
+
                   <br />
                   <button style="width: fit-content" type="submit">
                     Upload
@@ -227,5 +231,6 @@
         // ye input ko db me store kara lena
       }
     </script>
+    <script src="/profile.js"></script>
   </body>
 </html>

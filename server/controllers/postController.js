@@ -1,7 +1,31 @@
 const Post = require("../models/postModel");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    var dir = "../public/img/posts";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1];
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+exports.upload = multer({
+  storage: multerStorage,
+}).array("image", 5);
 
 exports.newPost = async (req, res, next) => {
   try {
+    console.log(req);
+
     const post = new Post({
       name: req.body.name,
       price: req.body.price,
