@@ -3,7 +3,6 @@ const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
 const authuser = require("../models/authModel");
-const selectOptions = require("../../public/post");
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -212,5 +211,17 @@ router.delete(
     res.redirect("/");
   }
 );
+
+router.get("/createPost/:id", authController.protect, (req, res) => {
+  res.render("create-post", {
+    id: req.params.id,
+  });
+});
+
+router.post("/createPost/:id", postController.newPost, (req, res) => {
+  res.redirect(
+    `/post/uploadImages/?user=${res.locals.userId}&post=${res.locals.postId}`
+  );
+});
 
 module.exports = router;
