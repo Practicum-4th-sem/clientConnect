@@ -110,7 +110,12 @@
             <ion-icon name="person-outline"></ion-icon>
             Let's get some information to set your post.
           </h3>
-          <form class="form" action="/createPost" method="post">
+          <form
+            class="form"
+            action="/createPost"
+            method="post"
+            enctype="multipart/form-data"
+          >
             <div class="form-group">
               <div class="mb-3 radios">
                 <div class="mb-3">
@@ -179,6 +184,12 @@
             <div class="my-2">
               <button class="btn btn-primary btn-1">CREATE</button>
             </div>
+          </form>
+          <form action="/post/uploadImages" method="post">
+            <div>
+              <input type="file" name="image" accept="image/*" multiple />
+            </div>
+            <button type="submit">Upload</button>
           </form>
         </div>
       </div>
