@@ -37,7 +37,6 @@ exports.newPost = async (req, res, next) => {
     await newPost.save();
     await user.posts.push(newPost);
     await user.save();
-    res.locals.userId = user._id;
     res.locals.postId = newPost._id;
     next();
   } catch (err) {
@@ -45,13 +44,18 @@ exports.newPost = async (req, res, next) => {
   }
 };
 
-exports.addedPost = (req, res, next) => {
+exports.addedPost = async (req, res, next) => {
   if (res.locals.number == 0) {
-    res.render("notfound");
+    res.render("notfound", {
+      id: res.locals.id,
+    });
   } else {
     const post = res.locals.data;
+    const user = await User.findById(res.locals.id);
     res.render("ad-post", {
       post,
+      id: res.locals.id,
+      pic: user.photo,
     });
   }
   next();
@@ -60,10 +64,19 @@ exports.addedPost = (req, res, next) => {
 exports.getPosts = async (req, res, next) => {
   try {
     const posts = await Post.find();
-    res.status(200).json({
-      posts,
-      len: posts.length,
-    });
+    res.locals.len = posts.length;
+    res.locals.data = posts;
+    next();
+  } catch (error) {
+    res.json(error.message);
+  }
+};
+
+exports.getUserPosts = async (req, res, next) => {
+  try {
+    const user = await User.findById(res.locals.id);
+    res.locals.number = user.posts.length;
+    res.locals.data = user.posts;
     next();
   } catch (error) {
     res.json(error.message);
