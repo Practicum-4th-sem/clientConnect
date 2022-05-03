@@ -213,12 +213,4 @@ router.delete(
   }
 );
 
-router.get("/createPost", (req, res) => {
-  res.render("create-post");
-});
-
-router.post("/createPost", postController.newPost, (req, res) => {
-  res.redirect("/dashboard");
-});
-
 module.exports = router;
