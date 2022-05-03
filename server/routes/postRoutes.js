@@ -21,20 +21,36 @@ router.get("/createPost", (req, res) => {
 });
 
 router.post("/createPost", postController.newPost, (req, res) => {
-  res.redirect("/dashboard");
+  res.redirect(`/post/uploadImages/${res.locals.id}`);
 });
 
-router.post("/uploadImages", authController.protect, (req, res, next) => {
-  postController.upload(req, res, async (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      req.files.forEach((file) => {
-        post.image.push(file.filename);
-      });
-      console.log(post.image);
-    }
+router.get("/uploadImages/:id", (req, res) => {
+  res.render("uploadImage", {
+    id: req.params.id,
   });
 });
+
+router.post(
+  "/uploadImages/:id",
+  authController.protect,
+  (req, res, next) => {
+    postController.upload(req, res, async (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const post = await Post.findById(req.params.id);
+        req.files.forEach((file) => {
+          post.image.push(file.filename);
+        });
+        await post.save();
+        console.log(post.image);
+      }
+    });
+    next();
+  },
+  (req, res) => {
+    res.redirect("/dashboard");
+  }
+);
 
 module.exports = router;

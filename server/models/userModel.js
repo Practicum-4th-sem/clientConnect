@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema(
       enum: ["consumer", "merchant"],
       default: "consumer",
     },
+    posts: [{ type: mongoose.Schema.ObjectId, ref: "Post" }],
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
@@ -87,6 +88,12 @@ userSchema.methods.createResetToken = function () {
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
   return resetToken;
 };
+
+userSchema.pre(/^find/, function (next) {
+  this.populate("posts");
+
+  next();
+});
 
 const User = mongoose.model("User", userSchema);
 
