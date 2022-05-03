@@ -34,10 +34,10 @@
         <div style="position: relative;">
           <input placeholder="Enter Password" type="password" id="password" name="password" />
           <span>
-            <i style="position: absolute; top: 42%; right: 10px;" class="fas fa-eye" id="open" style="cursor: pointer"
+            <i style="position: absolute; top: 42%; right: 10px;cursor: pointer" class="fas fa-eye" id="open"
               onClick="eye_toggle()"></i>
-            <i style="position: absolute; top: 42%; right: 10px;" class="fas fa-eye-slash" id="close"
-              style="display: none; cursor: pointer" onClick="eye_toggle()"></i>
+            <i style="position: absolute; top: 42%; right: 10px;display: none; cursor: pointer" class="fas fa-eye-slash" id="close"
+               onClick="eye_toggle()"></i>
           </span>
         </div>
         <!-- <b style="color: rgba(0,0,0,0.3);cursor: pointer;" onclick="toggle()">Show Password</b> &nbsp; -->
@@ -136,7 +136,7 @@
   <!-- script for show password -->
   <script>
     var state = false;
-    function toggle() {
+    function eye_toggle() {
       if (state) {
         document.getElementById("password").setAttribute("type", "password");
         state = false;
@@ -152,20 +152,6 @@
     const phoneDisplay = () => {
       document.querySelector(".phoneno").classList.toggle("show");
     };
-    var state = false;
-    function eye_toggle() {
-      if (state) {
-        document.getElementById("password").setAttribute("type", "password");
-        state = false;
-        document.getElementById("open").style.display = "inline-block";
-        document.getElementById("close").style.display = "none";
-      } else {
-        document.getElementById("password").setAttribute("type", "text");
-        state = true;
-        document.getElementById("open").style.display = "none";
-        document.getElementById("close").style.display = "inline-block";
-      }
-    }
   </script>
 </body>
 

@@ -16,6 +16,14 @@ router.get("/", postController.getPosts, (req, res, next) => {
   }
 });
 
+router.get("/createPost", (req, res) => {
+  res.render("create-post");
+});
+
+router.post("/createPost", postController.newPost, (req, res) => {
+  res.redirect("/dashboard");
+});
+
 router.post("/uploadImages", authController.protect, (req, res, next) => {
   postController.upload(req, res, async (err) => {
     if (err) {
