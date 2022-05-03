@@ -24,7 +24,7 @@ exports.upload = multer({
 
 exports.newPost = async (req, res, next) => {
   try {
-    console.log(req);
+    // console.log(req);
 
     const post = new Post({
       name: req.body.name,
@@ -34,6 +34,7 @@ exports.newPost = async (req, res, next) => {
       category: req.body.category,
     });
     await post.save();
+    res.locals.id = post._id;
     next();
   } catch (err) {
     console.log(err.message);
