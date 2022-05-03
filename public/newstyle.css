@@ -212,3 +212,8 @@ input.invalid {
 .sign-up:hover {
   color: #000 !important;
 }
+#signun-btn,
+#login-btn {
+  font-size: 1.2rem !important;
+  padding: 0 !important;
+}
