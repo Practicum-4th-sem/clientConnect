@@ -1,53 +1,23 @@
 const Post = require("../models/postModel");
 const postController = require("../controllers/postController");
-// const User = require("../models/userModel");
+const User = require("../models/userModel");
 const authController = require("../controllers/authController");
 
 const router = require("express").Router();
 
-router.get("/", postController.getPosts, (req, res, next) => {
-  if (res.locals.number == 0) {
-    res.render("notfound");
-  } else {
-    const post = res.locals.data;
-    res.render("ad-post", {
-      post,
-    });
-  }
-});
+router.get("/", postController.getPostsOfUser, postController.addedPost);
 
-router.get("/createPost", (req, res) => {
-  res.render("create-post");
-});
-
-router.post("/createPost", postController.newPost, (req, res) => {
-  res.redirect(`/post/uploadImages/${res.locals.id}`);
-});
-
-router.get("/uploadImages/:id", (req, res) => {
+router.get("/uploadImages", (req, res) => {
   res.render("uploadImage", {
-    id: req.params.id,
+    user: req.query.user,
+    post: req.query.post,
   });
 });
 
 router.post(
-  "/uploadImages/:id",
+  "/uploadImages/",
   authController.protect,
-  (req, res, next) => {
-    postController.upload(req, res, async (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const post = await Post.findById(req.params.id);
-        req.files.forEach((file) => {
-          post.image.push(file.filename);
-        });
-        await post.save();
-        console.log(post.image);
-      }
-    });
-    next();
-  },
+  postController.uploadPhotos,
   (req, res) => {
     res.redirect("/dashboard");
   }
