@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/global_css.css" />
     <link rel="stylesheet" href="/navmenu.css" />
     <link rel="stylesheet" href="/style_dashboard.css" />
+    <link rel="stylesheet" href="/ad-post.css">
   </head>
 
   <body>
@@ -269,20 +270,33 @@
         <span>
           <a href="/createPost/<%=id%>">Add Post</a>
         </span>
-        <div style="display: flex; flex-wrap: wrap; word-break: break-all">
-          <%for(var i=0; i < num; i++){%>
-          <div style="padding: 2rem">
-            <h2>Details:</h2>
+        <div style="display: flex; flex-wrap: wrap; ">
+        <%for(var i=0; i < post.length; i++){%>
+          <div class="item">
+            <!-- <h2>Details for <%=i+1%>:</h2> -->
             <ul>
-              <li><%=post[i].name%></li>
-              <br />
-              <li><%=post[i].description%></li>
-              <br />
-              <li><%=post[i].price%></li>
+              <li class="item_name">
+                <small>NAME</small>
+                <br>
+                <%=post[i].name%>
+              </li>
+              <li class="item_description">
+                <button type="button" class="btn description">View Description</button>
+                <br>
+                <div class="desc">
+                  <%=post[i].description%>
+                </div>
+              </li>
+              <li class="item_price">
+                <small>PRICE</small>
+                <br>
+                Rs.<%=post[i].price%>
+              </li>
+              <button class="btn">SELECT</button>
             </ul>
           </div>
           <%}%>
-        </div>
+      </div>
         <%}%>
       </div>
     </div>
