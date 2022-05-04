@@ -314,7 +314,8 @@ button:hover {
   /* top: 50%; */
   left: 4%;
   /* transform: translate(-50%, -50%); */
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  /* background: transparent; */
   overflow: hidden;
   border: 1px solid grey;
 }
