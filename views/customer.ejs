@@ -1,142 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>document</title>
-    <link rel="icon" href="/favicon.png" />
-    <link rel="stylesheet" href="/global_css.css" />
-    <link rel="stylesheet" href="/navmenu.css" />
-    <link rel="stylesheet" href="/ad-post.css" />
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="navigation">
-        <ul>
-          <li>
-            <a href="/dashboard">
-              <span class="icon">
-                <ion-icon name="people-outline"></ion-icon>
-              </span>
-              <span class="title">
-                <h2>ClientConnect</h2>
-              </span>
-            </a>
-          </li>
-          <li class="hovered">
-            <a href="/dashboard">
-              <span class="icon">
-                <ion-icon name="home-outline"></ion-icon>
-              </span>
-              <span class="title">Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/provider">
-              <span class="icon">
-                <ion-icon name="card-outline"></ion-icon>
-              </span>
-              <span class="title">Provider</span>
-            </a>
-          </li>
-          <li>
-            <a href="/customer">
-              <span class="icon">
-                <ion-icon name="cart-outline"></ion-icon>
-              </span>
-              <span class="title">Customer</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon">
-                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-              </span>
-              <span class="title">Chat</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon">
-                <ion-icon name="help-circle-outline"></ion-icon>
-              </span>
-              <span class="title">Help</span>
-            </a>
-          </li>
-          <li>
-            <a href="/profile/<%=id%>">
-              <span class="icon">
-                <ion-icon name="person-circle-outline"></ion-icon>
-              </span>
-              <span class="title">Edit Profile</span>
-            </a>
-          </li>
-          <li>
-            <a href="/logout">
-              <span class="icon">
-                <ion-icon name="exit-outline"></ion-icon>
-              </span>
-              <span class="title">Sign Out</span>
-            </a>
-          </li>
-        </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>document</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="/global_css.css" />
+  <link rel="stylesheet" href="/navmenu.css" />
+  <link rel="stylesheet" href="/ad-post-new.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="/dashboard">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">
+              <h2>ClientConnect</h2>
+            </span>
+          </a>
+        </li>
+        <li class="hovered">
+          <a href="/dashboard">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/provider">
+            <span class="icon">
+              <ion-icon name="card-outline"></ion-icon>
+            </span>
+            <span class="title">Provider</span>
+          </a>
+        </li>
+        <li>
+          <a href="/customer">
+            <span class="icon">
+              <ion-icon name="cart-outline"></ion-icon>
+            </span>
+            <span class="title">Customer</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="help-circle-outline"></ion-icon>
+            </span>
+            <span class="title">Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="/profile/<%=id%>">
+            <span class="icon">
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </span>
+            <span class="title">Edit Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="/logout">
+            <span class="icon">
+              <ion-icon name="exit-outline"></ion-icon>
+            </span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <!-- userimg -->
+        <div class="user">
+          <a href="/profile/<%=id%>">
+            <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
+          </a>
+        </div>
       </div>
-
-      <div class="main">
-        <div class="topbar">
-          <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
-          </div>
-          <!-- userimg -->
-          <div class="user">
-            <a href="/profile/<%=id%>">
-              <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
-            </a>
-          </div>
-        </div>
-        <div>
-          <h4>Search Results found: <%=len%></h4>
-        </div>
-        <div style="display: flex; flex-wrap: wrap">
-          <%for(var i=0; i < post.length; i++){%>
-          <div class="item">
-            <!-- <h2>Details for <%=i+1%>:</h2> -->
-            <ul>
-              <li class="item_name">
-                <small>NAME</small>
-                <br />
-                <%=post[i].name%>
-              </li>
-              <li class="item_description">
-                <button type="button" class="btn description">
-                  View Description
-                </button>
-                <br />
-                <div class="desc"><%=post[i].description%></div>
-              </li>
-              <li class="item_price">
-                <small>PRICE</small>
-                <br />
-                Rs.<%=post[i].price%>
-              </li>
-              <button class="btn">SELECT</button>
-            </ul>
+      <div>
+        <h2 style="margin: 1rem;">Search Results found: <%=len%>
+        </h2>
+      </div>
+      <div style="display: flex; gap: 1rem; padding: 1rem;">
+        <%for(var i=0; i < post.length; i++){%>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; zoom: 80%">
+            <div class="main2">
+              <!-- <div class="item"> -->
+              <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
+                <div><button>Buy</button></div>
+                <div><button>Delete</button></div>
+              </div>
+              <div class="right" style="text-align: center;">
+                <div>
+                  <h1>
+                    <b>
+                      <%=post[i].name%>
+                    </b>
+                  </h1>
+                </div>
+                <div>
+                  <div class="desc">
+                    <%=post[i].description%>
+                  </div>
+                </div>
+                <div class="price-buy">
+                  <div>
+                    <p class="price"><span style="font-size:1.5rem; font-weight: bolder;">₹</span>
+                      <%=post[i].price%>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <%}%>
-        </div>
-        <br />
       </div>
+      <br />
     </div>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <script src="/navmenu.js"></script>
-  </body>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="/navmenu.js"></script>
+</body>
+
 </html>

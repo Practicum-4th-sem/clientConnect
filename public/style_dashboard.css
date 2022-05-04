@@ -489,3 +489,17 @@ body {
 }
 
 /* SLIDER END */
+.your-activity,
+.your-post {
+  margin: 2rem 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+}
+.your-activity p,
+.your-post p {
+  margin: 0.5rem;
+}
