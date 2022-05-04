@@ -30,7 +30,7 @@
             </span>
           </a>
         </li>
-        <li class="hovered">
+        <li>
           <a href="/dashboard">
             <span class="icon">
               <ion-icon name="home-outline"></ion-icon>
@@ -38,7 +38,7 @@
             <span class="title">Dashboard</span>
           </a>
         </li>
-        <li>
+        <li class="hovered">
           <a href="/createPost/<%=id%>">
             <span class="icon">
               <ion-icon name="card-outline"></ion-icon>
@@ -110,11 +110,11 @@
           <div class="form-group">
             <div class="mb-3 radios">
               <div class="mb-3">
-                <input type="radio" name="role" id="role1" value="service" />
+                <input type="radio" name="role" id="role1" value="service" onclick="showservice()" />
                 <span><label for="role1">Service</label></span>
               </div>
               <div class="mb-3">
-                <input type="radio" name="role" id="role2" value="product" />
+                <input type="radio" name="role" id="role2" value="product" onclick="showproduct()" />
                 <span><label for="role2">Product</label></span>
               </div>
             </div>
@@ -124,32 +124,14 @@
               <label for="category">Select Category:</label>
               <select name="category" id="category">
                 <!-- services -->
-                <option value="Painting">Painting</option>
-                <option value="ApplianceRepair">Appliance Repair</option>
-                <option value="ElectricalRepair">Electrical Repair</option>
-                <option value="PestControl">Pest Control</option>
-                <option value="Cleaning">Cleaning</option>
-                <option value="Plumbing">Plumbing</option>
-                <option value="Carpenter">Carpenter</option>
-                <option value="CarWash">Car Wash</option>
-                <!-- services end -->
-                <!-- products -->
-                <option value="HomeAppliances">Appliances</option>
-                <option value="BeautyProducts">Beauty Products</option>
-                <option value="KitchenAppliances">Kitchen Appliances</option>
-                <option value="Books">Books</option>
-                <option value="Sports">Sports</option>
-                <option value="Mobile,Laptop">Mobile, Laptop & PC</option>
-                <option value="Stationery">Stationery</option>
-                <option value="Groceries">Groceries</option>
-                <!-- product end -->
+                <option id="novalue" value="novalue">SELECT SERVICE/PRODUCT ABOVE</option>
               </select>
             </div>
             <div class="mb-3">
               <label class="form-text">Name of Role:</label>
               <input type="text" placeholder="Name" name="name" class="inputField" />
             </div>
-            <div class="mb-3" style="position: relative; width: fit-content; display: flex">
+            <div class="mb-3" style="position: relative; display: flex; justify-content: space-between;">
               <label for="desc">Some Description</label>
               <textarea name="description" id="desc" cols="30" rows="10"
                 placeholder="It must include every data regarding the product or service"></textarea>
@@ -176,6 +158,41 @@
   <!-- navmenu js -->
   <script src="/navmenu.js"></script>
   <script src="/profile.js"></script>
+  <script>
+    var serviceoptions = `
+                <!-- services -->
+                <option value="Painting">Painting</option>
+                <option value="ApplianceRepair">Appliance Repair</option>
+                <option value="ElectricalRepair">Electrical Repair</option>
+                <option value="PestControl">Pest Control</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="CarWash">Car Wash</option>
+                `;
+    var productoptions = `
+                   <option value="HomeAppliances">Appliances</option>
+                <option value="BeautyProducts">Beauty Products</option>
+                <option value="KitchenAppliances">Kitchen Appliances</option>
+                <option value="Books">Books</option>
+                <option value="Sports">Sports</option>
+                <option value="Mobile,Laptop">Mobile, Laptop & PC</option>
+                <option value="Stationery">Stationery</option>
+                <option value="Groceries">Groceries</option>
+                <!-- product end -->
+                `
+    var category = document.getElementById('category');
+    var defaultopt = document.getElementById('novalue');
+    function showservice() {
+      defaultopt.remove();
+      category.innerHTML = serviceoptions;
+    }
+    function showproduct() {
+      defaultopt.remove();
+      category.innerHTML = productoptions;
+    }
+
+  </script>
 </body>
 
 </html>

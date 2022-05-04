@@ -32,7 +32,7 @@
             </span>
           </a>
         </li>
-        <li class="hovered">
+        <li>
           <a href="/dashboard">
             <span class="icon">
               <ion-icon name="home-outline"></ion-icon>
@@ -40,7 +40,7 @@
             <span class="title">Dashboard</span>
           </a>
         </li>
-        <li>
+        <li class="hovered">
           <a href="/provider">
             <span class="icon">
               <ion-icon name="card-outline"></ion-icon>
@@ -176,22 +176,35 @@
           </div>
         </div>
       </section>
-      <div>
+      <div style="margin: 2rem 1rem;padding: 0.5rem; width: 100%;">
         <%if(num==0){%>
-          <h4>No posts yet</h4>
-          <h2>Willing to Sell / Provide</h2>
-          <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
-                <button>
-                  Add Post
-                </button>
-              </a>
+          <div style="display:flex; justify-content: space-between; padding: 0  2rem;">
+            <p style="opacity: 0.4">Your Posts:</p>
+          </div>
+          <div style="display: flex; justify-content: center; align-items: center; margin-top: 0.5rem;">
+            <h4 style="margin: auto;">No posts yet</h4>
+          </div>
+          <div style="margin: 1rem auto; display: flex; gap: 0.5rem; justify-content: center; align-items: center;">
+            <p style="margin: 0; padding: 0">Willing to Sell / Provide? Click Here
+            </p>
+            <ion-icon name="arrow-forward-circle-outline"
+              style="font-size: 1.2rem !important; height: 1.1rem !important;">
+            </ion-icon>
+            <a style="text-decoration: none !important;" href="/createPost/<%=id%>">
+              <button style="width: fit-content;">
+                Add Post
+              </button>
+            </a>
+          </div>
           <%}else{%>
-            <h4>Your Posts</h4>
-            <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
+            <div style="display:flex; justify-content: space-between; padding: 0 2rem;">
+              <p style="opacity: 0.4">Your Posts:</p>
+              <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
                 <button>
                   Add Post
                 </button>
               </a>
+            </div>
             <div style="display: flex; gap: 1rem; padding: 1rem;">
               <%for(var i=0; i < post.length; i++){%>
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; zoom: 80%">
@@ -199,12 +212,8 @@
                     <!-- <div class="item"> -->
                     <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
                       <div><button>Buy</button></div>
-                      <div><a
-                    style="text-decoration: none !important"
-                    href="/post/deletePost/<%=post[i]._id%>"
-                  >
-                    <button>Delete</button></a
-                  ></div>
+                      <div><a style="text-decoration: none !important" href="/post/deletePost/<%=post[i]._id%>">
+                          <button>Delete</button></a></div>
                     </div>
                     <div class="right" style="text-align: center;">
                       <div>

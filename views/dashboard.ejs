@@ -177,22 +177,28 @@
         </div>
       </section>
 
-      <div class="your-activity">
-        <p style="opacity: 0.4">Your Activity</p>
+      <div class="your-activity" style="padding: 0 2rem;">
+        <p style="opacity: 0.4">Your Activity:</p>
         <div style="margin: auto;">No activity yet</div>
       </div>
       <div class="your-post">
         <%if(num==0){%>
           <div style="display:flex; justify-content: space-between; padding: 0  2rem;">
             <p style="opacity: 0.4">Your Posts:</p>
-            <h4>No posts yet</h4>
+          </div>
+          <h4 style="margin: auto;">No posts yet</h4>
+          <div style="margin: 1rem auto; display: flex; gap: 0.5rem; justify-content: center; align-items: center;">
+            <p style="margin: 0; padding: 0">Willing to Sell / Provide? Click Here
+            </p>
+            <ion-icon name="arrow-forward-circle-outline"
+              style="font-size: 1.2rem !important; height: 1.1rem !important;">
+            </ion-icon>
             <a style="text-decoration: none !important;" href="/createPost/<%=id%>">
-              <button>
+              <button style="width: fit-content;">
                 Add Post
               </button>
             </a>
           </div>
-          <div style="margin: auto;">Willing to Sell / Provide </div>
           <%}else{%>
             <div style="display:flex; justify-content: space-between; padding: 0 2rem;">
               <p style="opacity: 0.4">Your Posts:</p>
@@ -209,12 +215,8 @@
                     <!-- <div class="item"> -->
                     <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
                       <div><button>Buy</button></div>
-                      <div><a
-                    style="text-decoration: none !important"
-                    href="/post/deletePost/<%=post[i]._id%>"
-                  >
-                    <button>Delete</button></a
-                  ></div>
+                      <div><a style="text-decoration: none !important" href="/post/deletePost/<%=post[i]._id%>">
+                          <button>Delete</button></a></div>
                     </div>
                     <div class="right" style="text-align: center;">
                       <div>

@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>ClientConnect-Upload Image</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="/global_css.css" />
+  <link rel="stylesheet" href="/navmenu.css" />
 </head>
 
 <body>
@@ -97,7 +100,8 @@
           <img src="/img/users/default.png" alt="USER" height="50px" />
         </div>
       </div>
-      <div>
+      <div style="display: flex; margin: 2rem; background: url(/gradient.jpg);  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); padding: 2rem; width: fit-content; border-radius: 15px;
+ ">
         <form action="/post/uploadImages/?user=<%=user%>&post=<%=post%>" method="post" enctype="multipart/form-data">
           <div>
             <input type="file" name="image" accept="image/*" multiple />
@@ -107,8 +111,62 @@
       </div>
     </div>
   </div>
-
+  <!-- IONICONS CDN -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="/navmenu.js"></script>
+  <script src="/script_dashboard.js"></script>
+  <script src="/navmenu.js"></script>
+  <style>
+    input {
+      padding: 10px;
+      width: 100%;
+      font-size: 17px;
+      font-family: Raleway;
+      border: 1px solid #aaaaaa;
+    }
+
+    input {
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.5rem;
+      padding-right: 0;
+      margin: 0rem 0 1rem;
+      /* width: 100%; */
+      /* font-size: 1.2rem; */
+      font-weight: bold;
+      color: #000;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      /* max-width: 500px; */
+    }
+
+    button,
+    input[type="file"] {
+      margin: 0.5rem !important;
+      display: inline-block;
+      color: white;
+      background-color: #2acfcf;
+      text-transform: capitalize;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 100px;
+      transition: 0.3s;
+      width: fit-content;
+      padding: 0.5rem 2rem;
+
+      background: rgba(11, 11, 80, 0.6);
+      /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+  </style>
 </body>
 
 </html>
