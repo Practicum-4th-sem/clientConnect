@@ -184,6 +184,7 @@
       <div class="your-post">
         <%if(num==0){%>
           <div style="display:flex; justify-content: space-between; padding: 0  2rem;">
+            <p style="opacity: 0.4">Your Posts:</p>
             <h4>No posts yet</h4>
             <a style="text-decoration: none !important;" href="/createPost/<%=id%>">
               <button>
@@ -191,7 +192,7 @@
               </button>
             </a>
           </div>
-          <h2>Willing to Sell / Provide </h2>
+          <div style="margin: auto;">Willing to Sell / Provide </div>
           <%}else{%>
             <div style="display:flex; justify-content: space-between; padding: 0 2rem;">
               <p style="opacity: 0.4">Your Posts:</p>
@@ -208,7 +209,12 @@
                     <!-- <div class="item"> -->
                     <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
                       <div><button>Buy</button></div>
-                      <div><button>Delete</button></div>
+                      <div><a
+                    style="text-decoration: none !important"
+                    href="/post/deletePost/<%=post[i]._id%>"
+                  >
+                    <button>Delete</button></a
+                  ></div>
                     </div>
                     <div class="right" style="text-align: center;">
                       <div>
