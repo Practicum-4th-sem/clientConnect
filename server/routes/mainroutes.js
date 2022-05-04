@@ -210,7 +210,7 @@ router.get(
   }
 );
 router.get("/getUser", authController.protect, userController.getUser);
-router.delete(
+router.get(
   "/deleteUser/:id",
   authController.protect,
   userController.deleteUser,

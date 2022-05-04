@@ -3,6 +3,7 @@ const multer = require("multer");
 // const sharp = require("sharp");
 const path = require("path");
 const fs = require("fs");
+const Post = require("../models/postModel");
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -98,12 +99,17 @@ exports.updateMe = async (req, res, next) => {
   }
 };
 
-exports.deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res, next) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findById(req.params.id);
+    user.posts.forEach(async (post) => {
+      await Post.findByIdAndRemove(post._id);
+    });
+    await User.findByIdAndRemove(req.params.id);
     res.status(204).json({
       status: "success",
     });
+    next();
   } catch (error) {
     res.json(error.message);
   }

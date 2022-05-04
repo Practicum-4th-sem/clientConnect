@@ -180,12 +180,18 @@
         <%if(num==0){%>
           <h4>No posts yet</h4>
           <h2>Willing to Sell / Provide</h2>
-          <a href="/createPost/<%=id%>">Add Post</a>
+          <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
+                <button>
+                  Add Post
+                </button>
+              </a>
           <%}else{%>
             <h4>Your Posts</h4>
-            <span>
-              <a href="/createPost/<%=id%>">Add Post</a>
-            </span>
+            <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
+                <button>
+                  Add Post
+                </button>
+              </a>
             <div style="display: flex; gap: 1rem; padding: 1rem;">
               <%for(var i=0; i < post.length; i++){%>
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; zoom: 80%">
@@ -193,7 +199,12 @@
                     <!-- <div class="item"> -->
                     <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
                       <div><button>Buy</button></div>
-                      <div><button>Delete</button></div>
+                      <div><a
+                    style="text-decoration: none !important"
+                    href="/post/deletePost/<%=post[i]._id%>"
+                  >
+                    <button>Delete</button></a
+                  ></div>
                     </div>
                     <div class="right" style="text-align: center;">
                       <div>

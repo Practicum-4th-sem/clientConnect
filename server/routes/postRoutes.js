@@ -28,4 +28,10 @@ router.post(
   }
 );
 
+router.get(
+  "/deletePost/:id",
+  authController.protect,
+  postController.deletePost
+);
+
 module.exports = router;
