@@ -67,6 +67,7 @@ router.get(
   authController.protect,
   postController.getUserPosts,
   async (req, res) => {
+    console.log("In the dashboard get request");
     let oldUser = await User.find({ email: req.body.email });
     oldUser.forEach((obj) => {
       userdetails = obj;
@@ -136,6 +137,7 @@ router.post("/login", authController.login, async (req, res) => {
 // -----------------------Routing for Profile ----------------------------------
 router.get("/profile/:id", authController.protect, async (req, res) => {
   let user;
+  console.log("In the profile get request");
   if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     user = await User.findById(req.params.id);
     try {
@@ -158,6 +160,7 @@ router.post("/uploadPhoto", authController.protect, (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      console.log("your profile picture is uploading...");
       const user = await User.findById(res.locals.id);
       user.photo = req.file.filename;
       await user.save();
@@ -259,6 +262,7 @@ router.get(
   authController.protect,
   postController.getUserPosts,
   async (req, res) => {
+    console.log("In the provider get request");
     const user = await User.findById(res.locals.id);
     res.render("provider", {
       id: res.locals.id,

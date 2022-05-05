@@ -25,31 +25,9 @@ const multerStorage = multer.diskStorage({
   },
 });
 
-// const multerStorage = multer.memoryStorage();
-
-// const multerFilter = (req, file, cb) => {
-//   if (file.mimetype.startsWith("photo")) {
-//     cb(null, true);
-//   } else {
-//     cb(new Error("Not an image. Please upload an image"), false);
-//   }
-// };
-
 exports.upload = multer({
   storage: multerStorage,
 }).single("photo");
-
-// exports.resizeUserPhoto = async (req, res, next) => {
-//   if (!req.file) return next();
-
-//   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-
-//   await sharp(req.file.buffer)
-//     .resize(500, 500)
-//     .toFormat("jpeg")
-//     .jpeg({ quality: 90 })
-//     .toFile(`public/img/users/${req.file.filename}`);
-// };
 
 exports.getUser = async (req, res, next) => {
   try {
