@@ -8,7 +8,7 @@ function changeHandler(key, value) {
 const imgDiv = document.querySelector(".profile-pic-div");
 const img = document.querySelector("#photo");
 const file = document.querySelector("#file");
-const uploadBtn = document.querySelector("#uploadBtn");
+const uploadBtn = document.querySelector(".uploaddiv");
 
 imgDiv.addEventListener("mouseenter", function () {
   uploadBtn.style.display = "block";
