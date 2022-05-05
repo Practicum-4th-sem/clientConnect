@@ -127,7 +127,7 @@ exports.uploadPhotos = (req, res, next) => {
 exports.deletePost = async (req, res, next) => {
   try {
     const user = await User.findById(res.locals.id);
-    user.posts = user.posts.filter((post) => post._id != req.params.id);
+    user.posts = user.posts.filter((post) => post._id != req.params.id) || [];
     await Post.findByIdAndDelete(req.params.id);
     res.redirect("/dashboard");
   } catch (error) {

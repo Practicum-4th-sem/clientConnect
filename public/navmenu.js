@@ -14,3 +14,7 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+
+let div1 = document.querySelector("#div0");
+
+div1.classList.add("active");
