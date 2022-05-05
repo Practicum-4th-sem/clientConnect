@@ -103,12 +103,9 @@ exports.deleteUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     user.posts.forEach(async (post) => {
-      await Post.findByIdAndRemove(post._id);
+      await Post.findByIdAndDelete(post._id);
     });
-    await User.findByIdAndRemove(req.params.id);
-    res.status(204).json({
-      status: "success",
-    });
+    await User.findByIdAndDelete(req.params.id);
     next();
   } catch (error) {
     res.json(error.message);

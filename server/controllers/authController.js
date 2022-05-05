@@ -4,6 +4,8 @@ const { promisify } = require("util");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
 const { sendOtp, verifyOtp } = require("../utils/twilio");
+const { showAlert } = require("../../public/alerts");
+require("dotenv").config();
 
 function issueToken(res, user) {
   const id = user._id;
@@ -14,6 +16,7 @@ function issueToken(res, user) {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
+    httpOnly: true,
   });
 }
 
@@ -65,10 +68,10 @@ exports.login = async (req, res, next) => {
     // return res.status(200).json({
     //   token,
     // });
-
+    // showAlert("success", "Logged in Succesfully");
     return next();
   } catch (error) {
-    res.send(error.message);
+    // showAlert("error", "Some error occured");
   }
 };
 

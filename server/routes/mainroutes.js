@@ -129,7 +129,7 @@ router.post("/login", authController.login, async (req, res) => {
   });
   setTimeout(() => {
     res.redirect("/dashboard");
-  }, 4000);
+  }, 1500);
 });
 // -----------------------end of routing for dashboard using login ----------------------------------
 
