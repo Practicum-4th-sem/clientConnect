@@ -124,3 +124,8 @@ button:hover {
   color: rgba(0, 0, 0, 0.6);
   font-family: "Radio Canada", sans-serif;
 }
+
+.carousel-item > img {
+  max-width: 200px;
+  min-height: 175px;
+}
