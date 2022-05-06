@@ -128,8 +128,9 @@ exports.deletePost = async (req, res, next) => {
   try {
     const user = await User.findById(res.locals.id);
     user.posts = user.posts.filter((post) => post._id != req.params.id) || [];
-    console.log(user.posts);
+    // console.log(user.posts);
     await Post.findByIdAndDelete(req.params.id);
+    await user.save();
     res.redirect("/dashboard");
   } catch (error) {
     res.json(error.message);

@@ -84,6 +84,10 @@ exports.deleteUser = async (req, res, next) => {
       await Post.findByIdAndDelete(post._id);
     });
     await User.findByIdAndDelete(req.params.id);
+    res.cookie("jwt", "account deleted", {
+      expires: new Date(Date.now() + 10 * 1000), //expires in 10 seconds
+      httpOnly: true,
+    });
     next();
   } catch (error) {
     res.json(error.message);
