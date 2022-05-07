@@ -3,6 +3,7 @@ const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
 const authuser = require("../models/authModel");
+const { verifyOtp } = require("../utils/twilio");
 const router = require("express").Router();
 
 const authcheck = (req, res, next) => {
@@ -105,14 +106,12 @@ router.get("/verifyOtp", (req, res) => {
   res.render("otp");
 });
 
-router.post(
-  "/verifyOtp",
-  authController.protect,
-  authController.verifyOTP,
-  (req, res) => {
-    res.redirect("/dashboard");
+router.post("/verifyOtp", authController.protect, verifyOtp, (req, res) => {
+  if (res.locals.status === "approved") res.redirect("/dashboard");
+  else {
+    res.redirect(`/deleteUser/${res.locals.id}`);
   }
-);
+});
 
 // -----------------------Routing for dashboard using login ----------------------------------
 
@@ -185,7 +184,7 @@ router.post(
     res.redirect(`/profile/${res.locals.id}`);
   }
 );
-router.post("/verifyOtp", authController.verifyOTP);
+// router.post("/verifyOtp", authController.verifyOTP);
 
 router.get("/forgotPassword", (req, res) => {
   res.render("forgot_multiform");

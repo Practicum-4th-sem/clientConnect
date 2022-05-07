@@ -22,26 +22,23 @@ exports.sendOtp = (phone) => {
     });
 };
 
-exports.verifyOtp = (phone, code) => {
-  if (phone && code.length === 6) {
-    client.verify
+exports.verifyOtp = async (req, res, next) => {
+  const user = await User.findById(res.locals.id);
+  if (user.phone && req.body.otp.length === 6) {
+    const data = await client.verify
       .services(process.env.SERVICE_SID)
       .verificationChecks.create({
-        to: `${phone}`,
-        code: code,
-      })
-      .then(async (data) => {
-        if (data.status === "approved") {
-          let user = await User.find({ phone });
-          user = user[0];
-          // console.log(user);
-          await sendEmail(
-            user,
-            { title: "Welcome to Client Connect family" },
-            "welcome"
-          );
-        }
+        to: `${user.phone}`,
+        code: req.body.otp,
       });
+    await sendEmail(
+      user,
+      { title: "Welcome to Client Connect family" },
+      "welcome"
+    );
+    res.locals.status = data.status;
+    next();
+    // console.log(res.locals.status);
   } else {
     console.log("Hello");
   }
