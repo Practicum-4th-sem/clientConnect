@@ -217,3 +217,86 @@ input.invalid {
   font-size: 1.2rem !important;
   padding: 0 !important;
 }
+#developers {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  height: fit-content;
+  /* width: 100%; */
+  padding: 2rem 0.5rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+#developers h2 {
+  margin: 2rem auto;
+  width: fit-content;
+}
+#developers .container {
+  display: flex;
+  gap: 5vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#developers .container .card {
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 0.5rem;
+  background: url(./gradient.jpg);
+  padding-bottom: 0 !important;
+}
+#developers .container .card img {
+  border-radius: 15px;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  object-fit: contain;
+}
+#developers .container .card h5 {
+  width: fit-content;
+  margin: auto;
+}
+#developers .container .card ul {
+  border-radius: 7px;
+}
+#developers .container .card ion-icon {
+  /* height: 10rem; */
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+#developers .container .card li.list-group-item {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+  margin: 5px 2px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#developers .container .card li.list-group-item:hover {
+  transform: scale(1.05);
+  /* transform: translate3d(0, -10px, 0); */
+}
+#developers .container .card .contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#developers .container .card .contact a.card-link {
+  height: fit-content !important;
+  display: flex !important;
+  align-items: center !important;
+  /* font-size: 2rem !important; */
+  color: #000;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  /* margin-left: 1rem; */
+}
+#developers .container .card .contact a.card-link:hover {
+  background-color: #bbbbbb;
+}
+
+#developers .container .card .contact a.card-link ion-icon {
+  margin: 0;
+  /* margin-left: 1rem; */
+}
