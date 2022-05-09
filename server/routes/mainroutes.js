@@ -102,8 +102,10 @@ router.post("/register", authController.register, async (req, res) => {
 
 // -----------------------end of Routing for dashboard using Register ----------------------------------
 
-router.get("/verifyOtp", (req, res) => {
-  res.render("otp");
+router.get("/verifyOtp", authController.protect, (req, res) => {
+  res.render("otp", {
+    id: res.locals.id,
+  });
 });
 
 router.post("/verifyOtp", authController.protect, verifyOtp, (req, res) => {

@@ -24,7 +24,7 @@
       <div class="tab">
         <label for="otp" style="width: 125px">Enter OTP: </label>
         <div style="position: relative">
-          <input type="password" placeholder="OTP" id="otp" name="otp" />
+          <input type="password" placeholder="OTP" id="otp" name="otp" style="letter-spacing: 20px;" />
           <span>
             <i class="fas fa-eye" id="open" style="
                   cursor: pointer;
@@ -58,9 +58,10 @@
           <button class="btn btn-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">
             Previous
           </button>
-          <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">
-            Next
-          </button>
+          <a style="text-decoration: none;" href="/deleteUser/<%=id%>"><button class="btn btn-primary" type="button"
+              id="nextBtn" onclick="nextPrev(1)">
+              Cancel
+            </button></a>
         </div>
       </div>
     </form>

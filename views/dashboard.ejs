@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClientConnect-Dashboard</title>
+  <!-- bootstrap cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <!-- animate.css cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -16,12 +19,32 @@
   <link rel="stylesheet" href="/navmenu.css" />
   <link rel="stylesheet" href="/style_dashboard.css" />
   <link rel="stylesheet" href="/ad-post-new.css">
+  <style>
+    .container1 {
+      position: relative;
+      width: 100%;
+    }
+
+    .carousel-item>img {
+      max-width: 200px;
+      min-height: 175px;
+    }
+
+    .main2 {
+      width: 450px;
+    }
+
+    .left,
+    .right {
+      margin: 1rem;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container1">
     <div class="navigation">
-      <ul>
+      <ul style="margin: 0 !important;padding: 0 !important;">
         <li>
           <a href="/dashboard">
             <span class="icon">
@@ -152,7 +175,7 @@
           </div>
           <div class="slides slide slick-slide">
             <a href="/post/?category=HomeAppliances" target="_blank"><img src="/assets/homeappliances.jpg"
-                alt="TV,Home Appliances" class="img-responsive" />Appliances</a>
+                alt="TV,Home Appliances" class="img-responsive" />Home Appliances</a>
           </div>
           <div class="slides slide slick-slide">
             <a href="/post/?category=BeautyProducts" target="_blank"><img src="/assets/beautyproducts.jpg" alt="Beauty"
@@ -169,6 +192,10 @@
           <div class="slides slide slick-slide">
             <a href="/post/?category=Stationery" target="_blank"><img src="/assets/stationery.jpg" alt="Stationery"
                 class="img-responsive" />Stationery</a>
+          </div>
+          <div class="slides slide slick-slide">
+            <a href="/post/?category=Books" target="_blank"><img src="/assets/books.jpg" alt="Stationery"
+                class="img-responsive" />Books</a>
           </div>
           <div class="slides slide slick-slide">
             <a href="/post/?category=Groceries" target="_blank"><img src="/assets/groceries.jpg" alt="Groceries"
@@ -200,7 +227,7 @@
             </a>
           </div>
           <%}else{%>
-            <div style="display:flex; justify-content: space-between; padding: 0 2rem;">
+            <div style="display:flex; justify-content: space-between; padding: 0 2rem; ;">
               <p style="opacity: 0.4">Your Posts:</p>
               <a style="text-decoration: none !important; width: fit-content;" href="/createPost/<%=id%>">
                 <button>
@@ -208,12 +235,23 @@
                 </button>
               </a>
             </div>
-            <div style="display: flex; gap: 1rem; padding: 1rem;">
+            <div style="display: flex; gap: 1rem; padding: 1rem;flex-wrap: wrap; justify-content: center">
               <%for(var i=0; i < post.length; i++){%>
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; zoom: 80%">
                   <div class="main2">
                     <!-- <div class="item"> -->
-                    <div class="left"><img class="prod-img" src="/assets/painting.jpg" alt="" />
+                    <div class="left" style="margin-right: 15px;">
+                      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <%for(var j=0;j< post[i].image.length;j++){ %>
+                            <div class="carousel-item" style="border-radius:12px">
+                              <img style="border-radius: 15px;" src="/img/posts/<%=post[i].image[j]%>"
+                                class="d-block w-100" alt="..." />
+                            </div>
+                            <%}%>
+                        </div>
+                      </div>
+                      <!-- carousel -->
                       <div><button>Buy</button></div>
                       <div><a style="text-decoration: none !important" href="/post/deletePost/<%=post[i]._id%>">
                           <button>Delete</button></a></div>
@@ -250,7 +288,10 @@
     </div>
   </div>
   </div>
-
+  <!-- BOOTSTRAP CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
   <!-- IONICONS CDN -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -266,6 +307,18 @@
       window.history.forward();
     }
   </script>
+
+  <script>
+
+    let div0 = document.querySelectorAll(".carousel-inner");
+    console.log(div0);
+    div0.forEach((el) => {
+      el.firstElementChild.classList.add("active");
+    });
+    console.log(div0);
+        // div0[0].classList.add("active");
+
+  </script>
 </body>
 <script type="text/javascript">
   window.history.forward();
@@ -273,5 +326,6 @@
     window.history.forward();
   }
 </script>
+
 
 </html>

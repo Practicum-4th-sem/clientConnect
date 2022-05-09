@@ -41,5 +41,6 @@ exports.verifyOtp = async (req, res, next) => {
     // console.log(res.locals.status);
   } else {
     console.log("Hello");
+    next();
   }
 };

@@ -317,7 +317,7 @@ input.invalid {
   ); */
   padding: 6vh 0;
   background-color: #eff0f5;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex !important;
   /* flex-direction: column; */
   justify-content: center !important;
