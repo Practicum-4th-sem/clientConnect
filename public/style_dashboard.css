@@ -7,8 +7,10 @@
   font-family: "Ubuntu", sans-serif;
 }
 :root {
-  --blue: rgb(4, 119, 134);
-  --white: #fff;
+  /* --blue: rgb(4, 119, 134); */
+  --blue: #0aa1dd;
+  /* --white: linear-gradient(to top, #c9d6ff, #e2e2e2); */
+  /* --white: transparent; */
   --grey: #f5f5f5;
   --black1: #222;
   --black2: #999;
@@ -430,7 +432,10 @@ body {
 
 #sliding {
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 1rem;
+  border-radius: 20px;
 }
 #sliding h1 {
   text-align: center;
@@ -442,7 +447,7 @@ body {
   margin: 3vh auto 5vh;
   text-align: center;
   /* padding: 20px 0; */
-  color: rgb(4, 119, 134);
+  color: #0aa1dd;
   animation-timing-function: ease-in-out;
   overflow: hidden;
   position: relative;
@@ -465,7 +470,7 @@ body {
 }
 .slider .slides a {
   text-decoration: none;
-  color: rgb(4, 119, 134);
+  color: #0aa1dd;
   font-size: 1.1rem;
   font-weight: 700;
 }

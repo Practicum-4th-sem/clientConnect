@@ -12,6 +12,10 @@
   <!-- animate.css cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
   <!-- SLICK CDN -->
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="icon" href="/favicon.png" />
@@ -42,7 +46,7 @@
 </head>
 
 <body>
-  <div class="container1">
+  <div class="container1" style="background: linear-gradient(to top, #c9d6ff, #e2e2e2);">
     <div class="navigation">
       <ul style="margin: 0 !important;padding: 0 !important;">
         <li>
@@ -116,9 +120,14 @@
 
     <!-- main -->
     <div class="main">
-      <div class="topbar">
+      <div class="topbar" style="margin: 1rem;">
         <div class="toggle">
           <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <div style=" padding: 1rem; border-radius: 15px;">
+          <h3 style="font-family: 'Macondo', cursive;font-weight: 600; margin-bottom: 0;">Welcome to ClientConnect...
+            <%=name%>
+          </h3>
         </div>
         <div class="user">
           <a href="/profile/<%=id%>">

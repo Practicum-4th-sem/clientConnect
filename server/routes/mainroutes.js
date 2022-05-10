@@ -75,7 +75,7 @@ router.get(
     try {
       res.render("dashboard", {
         id: userdetails._id + "",
-        naam: userdetails.name,
+        name: userdetails.name,
         gmail: userdetails.email,
         phone: userdetails.phone,
         pic: userdetails.photo,

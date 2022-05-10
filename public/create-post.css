@@ -74,7 +74,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
   margin: 15px auto;
-  width: fit-content;
+  width: max-content;
   /* display: flex; */
 }
 .form-group {
