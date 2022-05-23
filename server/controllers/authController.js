@@ -12,12 +12,13 @@ function issueToken(res, user) {
   const token = jwt.sign({ sub: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
-  res.cookie("jwt", token, {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  });
+  // res.cookie("jwt", token, {
+  //   expires: new Date(
+  //     Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+  //   ),
+  //   httpOnly: true,
+  // });
+  return token;
 }
 
 exports.register = async (req, res, next) => {
@@ -64,12 +65,12 @@ exports.login = async (req, res, next) => {
 
     user.password = undefined;
 
-    issueToken(res, user);
-    // return res.status(200).json({
-    //   token,
-    // });
+    const token = issueToken(res, user);
+    return res.status(200).json({
+      token,
+    });
     // showAlert("success", "Logged in Succesfully");
-    return next();
+    // return next();
   } catch (error) {
     // showAlert("error", "Some error occured");
   }

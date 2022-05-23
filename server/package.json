@@ -26,6 +26,7 @@
     "passport-google-oauth20": "^2.0.0",
     "pug": "^3.0.2",
     "sharp": "^0.30.4",
+    "stripe": "^9.2.0",
     "twilio": "^3.77.1",
     "validator": "^13.7.0"
   },
