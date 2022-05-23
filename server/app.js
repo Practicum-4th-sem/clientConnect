@@ -4,6 +4,7 @@ const path = require("path");
 const authRoutes = require("./routes/authroutes");
 const mainRoutes = require("./routes/mainroutes");
 const postRoutes = require("./routes/postRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 const keys = require("./config/keys");
 const CookieSession = require("cookie-session");
 const ejs = require("ejs");
@@ -39,5 +40,7 @@ app.use("/auth", authRoutes);
 app.use("/", mainRoutes);
 
 app.use("/post", postRoutes);
+
+app.use("/booking", bookingRoutes);
 
 module.exports = app;
