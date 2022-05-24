@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="/navmenu.css" />
   <link rel="stylesheet" href="/style_dashboard.css" />
   <link rel="stylesheet" href="/ad-post-new.css">
+  
+  <script src="https://js.stripe.com/v3/"></script>
   <style>
     .container1 {
       position: relative;
@@ -261,7 +263,9 @@
                         </div>
                       </div>
                       <!-- carousel -->
-                      <div><button>Buy</button></div>
+                      <!-- <div><button>Buy</button></div> -->
+                      <div>
+                        <button id="buyBtn" data-post-id="<%=post[i]._id%>">Buy</button></div>
                       <div><a style="text-decoration: none !important" href="/post/deletePost/<%=post[i]._id%>">
                           <button>Delete</button></a></div>
                     </div>
@@ -328,6 +332,9 @@
         // div0[0].classList.add("active");
 
   </script>
+  <!-- <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script> -->
+    
+  <!-- <script type="module" src="/js/index.js"></script> -->
 </body>
 <script type="text/javascript">
   window.history.forward();

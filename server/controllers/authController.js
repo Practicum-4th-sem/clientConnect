@@ -4,7 +4,7 @@ const { promisify } = require("util");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
 const { sendOtp, verifyOtp } = require("../utils/twilio");
-const { showAlert } = require("../../public/alerts");
+// const { showAlert } = require("../public/alerts");
 require("dotenv").config();
 
 function issueToken(res, user) {
@@ -18,6 +18,7 @@ function issueToken(res, user) {
     ),
     httpOnly: true,
   });
+  // return token;
 }
 
 exports.register = async (req, res, next) => {
