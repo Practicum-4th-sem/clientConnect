@@ -12,7 +12,7 @@ exports.getCheckoutSession = async (req, res, next) => {
       payment_method_types: ["card"],
       mode: "payment",
       success_url: "http://localhost:8000/dashboard",
-      cancel_url: "http://localhost:8000/dashboard",
+      cancel_url: "http://localhost:8000/customer",
       customer_email: user.email,
       client_reference_id: req.params.postId,
       line_items: [
@@ -28,10 +28,11 @@ exports.getCheckoutSession = async (req, res, next) => {
         },
       ],
     });
-    res.status(200).json({
-      status: "success",
-      session,
-    });
+    // res.status(200).json({
+    //   status: "success",
+    //   session,
+    // });
+    next();
   } catch (error) {
     console.log(error.message);
   }
