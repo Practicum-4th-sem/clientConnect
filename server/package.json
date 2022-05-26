@@ -2,10 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend of the project",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "build": "webpack --config webpack.config.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
