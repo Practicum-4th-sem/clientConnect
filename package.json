@@ -1,11 +1,17 @@
 {
-  "name": "server",
+  "name": "practicum",
   "version": "1.0.0",
-  "description": "Backend of the project",
+  "description": "- Naman Agarwal - 12011002 - [Github](https://github.com/NamanAgarwal214) -OP\r - Satwik Pal - 12011018 - [Github](https://github.com/Satwik-pal-git)\r - Gunjan Ashok Bhanarkar - 12011014 - [Github](https://github.com/gunjan1909)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NamanAgarwal214/practicum.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -34,5 +40,9 @@
     "@babel/core": "^7.18.0",
     "@babel/preset-env": "^7.18.0",
     "nodemon": "^2.0.16"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/NamanAgarwal214/practicum/issues"
+  },
+  "homepage": "https://github.com/NamanAgarwal214/practicum#readme"
 }
