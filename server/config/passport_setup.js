@@ -1,5 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../../keys");
+// const keys = require("../../keys");
+require("dotenv").config();
 const authuser = require("./../models/authModel");
 
 module.exports = (passport) => {
@@ -7,8 +8,8 @@ module.exports = (passport) => {
     new GoogleStrategy(
       {
         //options for the google strategy
-        clientID: keys.google.clientId,
-        clientSecret: keys.google.clientsecret,
+        clientID: process.env.clientId,
+        clientSecret: process.env.clientsecret,
         callbackURL: "/auth/google/redirect",
       },
       (accessToken, refeshToken, profile, done) => {
