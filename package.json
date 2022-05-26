@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd server && node index.js"
   },
+  "engines": {
+    "node": "14.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NamanAgarwal214/practicum.git"
