@@ -5,7 +5,8 @@ const authRoutes = require("./routes/authroutes");
 const mainRoutes = require("./routes/mainroutes");
 const postRoutes = require("./routes/postRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
-const keys = require("./config/keys");
+// const keys = require("../keys");
+require("dotenv").config();
 const CookieSession = require("cookie-session");
 const ejs = require("ejs");
 const passport = require("passport");
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   CookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey],
+    keys: [process.env.COOKIE_KEY],
   })
 );
 app.use(cookieParser());
