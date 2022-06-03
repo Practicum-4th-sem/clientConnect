@@ -8,8 +8,8 @@ module.exports = (passport) => {
     new GoogleStrategy(
       {
         //options for the google strategy
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
+        clientID: process.env.clientId,
+        clientSecret: process.env.clientsecret,
         callbackURL: "/auth/google/redirect",
       },
       (accessToken, refeshToken, profile, done) => {
