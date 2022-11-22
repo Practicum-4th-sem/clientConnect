@@ -5,9 +5,9 @@ const bookingController = require("../controllers/bookingController");
 const router = require("express").Router();
 
 router.get(
-  "/checkout/:postId",
-  authController.protect,
-  bookingController.getCheckoutSession
+    "/checkout/:postId",
+    authController.protect,
+    bookingController.getCheckoutSession
 );
 
 module.exports = router;
