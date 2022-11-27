@@ -3,25 +3,52 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const User = require("../models/userModel");
+const cloudinary = require("../utils/cloudinary");
 
-const multerStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    var dir = "../public/img/posts";
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-    cb(null, dir);
-  },
-  filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
-    console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+exports.upload = async (req, res, next) => {
+  const file = req.files.image;
+  let imageBuffer = [];
+  console.log(req);
+  for (let i = 0; i < file.length; i++) {
+    const result = await cloudinary.uploader.upload(file[i].tempFilePath, {
+      public_id: `${Date.now()}`,
+      folder: "images",
+    });
+    imageBuffer.push({
+      url: result.url,
+    });
+  }
 
-exports.upload = multer({
-  storage: multerStorage,
-}).array("image", 5);
+  const user = await User.findById(res.locals.id);
+  const post = await Post.findById(req.query.post);
+  // console.log(result);
+  post.image = imageBuffer;
+  // req.files.forEach((file) => {
+  //   // user.posts;
+  //   post.image.push(file.filename);
+  // });
+  await post.save();
+  next();
+};
+
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     var dir = "../public/img/posts";
+//     if (!fs.existsSync(dir)) {
+//       fs.mkdirSync(dir);
+//     }
+//     cb(null, dir);
+//   },
+//   filename: (req, file, cb) => {
+//     const ext = file.mimetype.split("/")[1];
+//     console.log(file);
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   },
+// });
+
+// exports.upload = multer({
+//   storage: multerStorage,
+// }).array("image", 5);
 
 exports.newPost = async (req, res, next) => {
   try {
@@ -52,6 +79,7 @@ exports.addedPost = async (req, res, next) => {
   } else {
     const post = res.locals.data;
     const user = await User.findById(res.locals.id);
+
     res.render("ad-post", {
       post,
       id: res.locals.id,
@@ -64,6 +92,10 @@ exports.addedPost = async (req, res, next) => {
 exports.getPosts = async (req, res, next) => {
   try {
     const posts = await Post.find();
+    for (let i = 0; i < posts.length; i++) {
+      console.log(posts[i].image);
+    }
+    // console.log(posts);
     res.locals.len = posts.length;
     res.locals.data = posts;
     next();
@@ -113,15 +145,16 @@ exports.uploadPhotos = (req, res, next) => {
     } else {
       const user = await User.findById(res.locals.id);
       const post = await Post.findById(req.query.post);
-      req.files.forEach((file) => {
-        // user.posts;
-        post.image.push(file.filename);
-      });
-      await post.save();
+      console.log("Req", req);
+      console.log("Res", res);
+      // req.files.forEach((file) => {
+      //   // user.posts;
+      //   post.image.push(file.filename);
+      // });
+      // await post.save();
       // await user.save();
     }
   });
-  next();
 };
 
 exports.deletePost = async (req, res, next) => {

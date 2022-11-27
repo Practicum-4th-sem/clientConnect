@@ -4,6 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const Post = require("../models/postModel");
+const cloudinary = require("../utils/cloudinary");
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -14,20 +15,34 @@ const filterObj = (obj, ...allowedFields) => {
   });
   return newObj;
 };
-const multerStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "../public/img/users");
-  },
-  filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
-    console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
 
-exports.upload = multer({
-  storage: multerStorage,
-}).single("photo");
+exports.upload = async (req, res, next) => {
+  const file = req.files.image;
+  const result = await cloudinary.uploader.upload(file.tempFilePath, {
+    public_id: `${Date.now()}`,
+    folder: "users",
+  });
+
+  const user = await User.findById(res.locals.id);
+  user.photo.url = result.url;
+  await user.save();
+  res.redirect(`/profile/${res.locals.id}`);
+};
+
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "../public/img/users");
+//   },
+//   filename: (req, file, cb) => {
+//     const ext = file.mimetype.split("/")[1];
+//     console.log(file);
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   },
+// });
+
+// exports.upload = multer({
+//   storage: multerStorage,
+// }).single("photo");
 
 exports.getUser = async (req, res, next) => {
   try {

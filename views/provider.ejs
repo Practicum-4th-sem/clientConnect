@@ -122,7 +122,7 @@
         </div>
         <div class="user">
           <a href="/profile/<%=id%>">
-            <img src="/img/users/<%=pic%>" alt="USER" height="50px" />
+            <img src="<%=pic.url%>" alt="USER" height="50px" />
           </a>
         </div>
       </div>
@@ -242,7 +242,7 @@
                         <div class="carousel-inner">
                           <%for(var j=0;j< post[i].image.length;j++){ %>
                             <div class="carousel-item" style="border-radius:12px">
-                              <img style="border-radius: 15px;" src="/img/posts/<%=post[i].image[j]%>"
+                              <img style="border-radius: 15px;" src="<%=post[i].image[j].url%>"
                                 class="d-block w-100" alt="..." />
                             </div>
                             <%}%>

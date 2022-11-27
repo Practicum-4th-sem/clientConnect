@@ -17,22 +17,24 @@ exports.getCheckoutSession = async (req, res, next) => {
       client_reference_id: req.params.postId,
       line_items: [
         {
-          name: post.name,
-          description: post.description,
-          currency: "inr",
-          amount: post.price * 100,
-          images: [
-            "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg",
-          ],
+          price_data: {
+            currency: "inr",
+            unit_amount: post.price * 100,
+            product_data: {
+              name: post.name,
+              description: post.description,
+              // images: [post[0].image[0].url],
+            },
+          },
           quantity: 1,
         },
       ],
     });
-    // res.status(200).json({
-    //   status: "success",
-    //   session,
-    // });
-    next();
+    res.status(200).json({
+      status: "success",
+      session,
+    });
+    // next();
   } catch (error) {
     console.log(error.message);
   }

@@ -1,10 +1,10 @@
 /* eslint-disable */
+// import "@babel/polyfill";
+import { buyPost } from "./stripe";
 
-import { buyPost } from "./stripe.js";
-// const { buyPost } = require("./stripe");
 const btn = document.getElementById("buyBtn");
-
-console.log(btn);
+console.log("hello");
+// console.log(btn);
 
 if (btn) {
   btn.addEventListener("click", (e) => {
@@ -14,3 +14,4 @@ if (btn) {
     buyPost(postId);
   });
 }
+// console.log("hello parcel");

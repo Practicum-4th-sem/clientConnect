@@ -19,11 +19,19 @@ const postSchema = new mongoose.Schema({
   category: {
     type: String,
   },
-  image: {
-    type: Array,
-    default: [],
-    // minlength: 1,
-  },
+  // image: {
+  //   type: Array,
+  //   default: [],
+  //   // minlength: 1,
+  // },
+  image: [
+    {
+      url: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   description: {
     type: String,
     required: [true, "Please write a detailed description."],

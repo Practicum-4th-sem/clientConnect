@@ -23,8 +23,10 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
     photo: {
-      type: String,
-      default: "default.png",
+      url: {
+        type: String,
+        default: "/img/users/default.png",
+      },
     },
     phone: {
       type: String,

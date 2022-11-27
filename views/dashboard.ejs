@@ -23,8 +23,7 @@
   <link rel="stylesheet" href="/navmenu.css" />
   <link rel="stylesheet" href="/style_dashboard.css" />
   <link rel="stylesheet" href="/ad-post-new.css">
-  
-  <script src="https://js.stripe.com/v3/"></script>
+  <!-- <script src="https://js.stripe.com/v3/"></script> -->
   <style>
     .container1 {
       position: relative;
@@ -133,7 +132,7 @@
         </div>
         <div class="user">
           <a href="/profile/<%=id%>">
-            <img src="/img/users/<%=pic%>" alt="USER" height="75px" />
+            <img src="<%=pic.url%>" alt="USER" height="75px" />
           </a>
         </div>
       </div>
@@ -256,7 +255,7 @@
                         <div class="carousel-inner">
                           <%for(var j=0;j< post[i].image.length;j++){ %>
                             <div class="carousel-item" style="border-radius:12px">
-                              <img style="border-radius: 15px;" src="/img/posts/<%=post[i].image[j]%>"
+                              <img style="border-radius: 15px;" src="<%=post[i].image[j].url%>"
                                 class="d-block w-100" alt="..." />
                             </div>
                             <%}%>
@@ -309,17 +308,14 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="/navmenu.js"></script>
+  
   <script src="/script_dashboard.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="/js/bundle.js"></script>
   <!-- SCRIPT FOR SLIDER -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- slick slide -->
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <!-- <script type="text/javascript">
-    window.history.forward();
-    function noBack() {
-      window.history.forward();
-    }
-  </script> -->
 
   <script>
 
@@ -332,16 +328,8 @@
         // div0[0].classList.add("active");
 
   </script>
-  <!-- <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script> -->
-    
-  <!-- <script type="module" src="/js/index.js"></script> -->
+  
 </body>
-<!-- <script type="text/javascript">
-  window.history.forward();
-  function noBack() {
-    window.history.forward();
-  }
-</script> -->
 
 
 </html>

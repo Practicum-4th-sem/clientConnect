@@ -154,19 +154,7 @@ router.get("/profile/:id", authController.protect, async (req, res) => {
 });
 // -----------------------end of Routing for Profile ----------------------------------
 
-router.post("/uploadPhoto", authController.protect, (req, res) => {
-  userController.upload(req, res, async (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      const user = await User.findById(res.locals.id);
-      user.photo = req.file.filename;
-      await user.save();
-      res.redirect(`/profile/${res.locals.id}`);
-      console.log(user);
-    }
-  });
-});
+router.post("/uploadPhoto", authController.protect, userController.upload);
 
 router.post(
   "/updateProfile",

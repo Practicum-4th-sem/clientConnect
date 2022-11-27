@@ -22,7 +22,7 @@ router.get("/uploadImages", (req, res) => {
 router.post(
   "/uploadImages/",
   authController.protect,
-  postController.uploadPhotos,
+  postController.upload,
   (req, res) => {
     res.redirect("/dashboard");
   }
