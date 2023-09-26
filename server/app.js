@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const authRoutes = require("./routes/authroutes");
+// const authRoutes = require("./routes/authroutes");
 const mainRoutes = require("./routes/mainroutes");
 const postRoutes = require("./routes/postRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
@@ -12,7 +12,7 @@ const fs = require("fs/promises");
 const CookieSession = require("cookie-session");
 const ejs = require("ejs");
 const passport = require("passport");
-require("./config/passport_setup")(passport);
+// require("./config/passport_setup")(passport);
 const cookieParser = require("cookie-parser");
 
 app.set("view engine", "ejs");
@@ -37,15 +37,21 @@ app.use(
 );
 app.use(cookieParser());
 //initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // cron job
-cron.schedule("0 */2 * * *", async function () {});
+cron.schedule("* * * * *", async function () {
+  let directory = "./tmp";
+  const files = await fs.readdir(directory);
+  if (files.length)
+    for (const file of files) {
+      await fs.unlink(path.join(directory, file));
+    }
+});
 
 //auth routes
-app.use("/auth", authRoutes);
-app.use("/", mainRoutes);
+// app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use("/booking", bookingRoutes);
 
