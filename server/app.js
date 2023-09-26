@@ -7,6 +7,8 @@ const postRoutes = require("./routes/postRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const fileUpload = require("express-fileupload");
 require("dotenv").config();
+const cron = require("node-cron");
+const fs = require("fs/promises");
 const CookieSession = require("cookie-session");
 const ejs = require("ejs");
 const passport = require("passport");
@@ -38,15 +40,13 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// middleware
+// cron job
+cron.schedule("0 */2 * * *", async function () {});
 
 //auth routes
 app.use("/auth", authRoutes);
-//home route
 app.use("/", mainRoutes);
-
 app.use("/post", postRoutes);
-
 app.use("/booking", bookingRoutes);
 
 module.exports = app;

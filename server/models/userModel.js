@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
       default: "consumer",
     },
     posts: [{ type: mongoose.Schema.ObjectId, ref: "Post" }],
+    googleid: {
+      type: String,
+      default: "",
+    },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
@@ -86,6 +90,6 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 module.exports = User;

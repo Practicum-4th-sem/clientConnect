@@ -4,22 +4,8 @@ const { promisify } = require("util");
 const crypto = require("crypto");
 const sendEmail = require("../utils/email");
 const { sendOtp, verifyOtp } = require("../utils/twilio");
-// const { showAlert } = require("../public/alerts");
+const { issueToken } = require("../utils/token");
 require("dotenv").config();
-
-function issueToken(res, user) {
-  const id = user._id;
-  const token = jwt.sign({ sub: id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
-  res.cookie("jwt", token, {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  });
-  // return token;
-}
 
 exports.register = async (req, res, next) => {
   try {
@@ -30,26 +16,17 @@ exports.register = async (req, res, next) => {
       phone: `+91${req.body.phone}`,
     });
 
-    // sendOtp(user.phone);
     await user.save();
-
-    // let otp = ;
-    // user.otp = otp;
     sendOtp(req.body.phone);
-    // if (await this.verifyOTP(req)) {
-    // await user.save();
-    // sendSms(user.phone, `hello from client connect.`);
 
-    issueToken(res, user);
-
-    // return res.status(200).json({
-    //   token,
-    // });
+    const token = issueToken(res, user);
+    res.locals.user = { user: user, token: token };
     return next();
-    // }
   } catch (err) {
-    res.json(err.message);
-    return;
+    return res.json({
+      status: "error",
+      message: err.message,
+    });
   }
 };
 
@@ -66,13 +43,14 @@ exports.login = async (req, res, next) => {
     user.password = undefined;
 
     issueToken(res, user);
-    // return res.status(200).json({
-    //   token,
-    // });
-    // showAlert("success", "Logged in Succesfully");
+    const token = issueToken(res, user);
+    res.locals.user = { user: user, token: token };
     return next();
   } catch (error) {
-    // showAlert("error", "Some error occured");
+    return res.json({
+      status: "error",
+      message: err.message,
+    });
   }
 };
 
@@ -108,17 +86,13 @@ exports.logout = (req, res, next) => {
     httpOnly: true,
   });
 
-  // res.status(200).json({
-  //   status: 'success'
-  // })
   next();
 };
 
 exports.forgotPassword = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    // user = user[0];
-    // console.log(user);
+
     if (!user) {
       throw new Error("There is no user existing with this email.");
     }
@@ -130,12 +104,8 @@ exports.forgotPassword = async (req, res, next) => {
         { title: "Reset Password", token: resetToken },
         "resetPassword"
       );
-      // console.log("hello");
+
       next();
-      // res.status(200).json({
-      //   status: "success",
-      //   user,
-      // });
     } catch (err) {
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
@@ -143,7 +113,10 @@ exports.forgotPassword = async (req, res, next) => {
       throw new Error("There was an error sending the email.");
     }
   } catch (err) {
-    res.json(err.message);
+    return res.json({
+      status: "error",
+      message: err.message,
+    });
   }
 };
 
@@ -164,7 +137,10 @@ exports.resetPassword = async (req, res, next) => {
     issueToken(res, user);
     next();
   } catch (err) {
-    res.json(err.message);
+    return res.json({
+      status: "error",
+      message: err.message,
+    });
   }
 };
 
@@ -175,36 +151,3 @@ exports.verifyOTP = async (req, res, next) => {
   verifyOtp(user.phone, otp);
   res.redirect("/dashboard");
 };
-
-// exports.protect = async (req, res, next) => {
-//   let token;
-//   if (
-//     req.headers.authorization &&
-//     req.headers.authorization.startsWith("Bearer")
-//   ) {
-//     token = req.headers.authorization.split(" ")[1];
-//   } else if (req.cookies.jwt) {
-//     token = req.cookies.jwt;
-//   }
-
-//   if (!token) {
-//     throw new Error("You are not logged in! Please log in to get access.");
-//   }
-
-//   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
-//   const currentUser = await User.findById({ _id: decoded.id });
-//   if (!currentUser) {
-//     throw new Error("The user does not exist anymore.");
-//   }
-//   // if (currentUser.changedPasswordAfter(decoded.iat)) {
-//   //   return next(
-//   //     new AppError('User recently changed password! Please log in again.', 401)
-//   //   );
-//   // }
-
-//   // GRANT ACCESS TO PROTECTED ROUTE
-//   req.user = currentUser;
-//   // res.locals.user = currentUser;
-//   next();
-// };
